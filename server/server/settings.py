@@ -11,19 +11,42 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# 初始化环境变量
+env = environ.Env(
+    DEBUG=(bool, False),
+    ALLOWED_HOSTS=(list, ['127.0.0.1', 'localhost']),
+    DB_NAME=(str, 'web_b2b'),
+    DB_USER=(str, 'root'),
+    DB_PASSWORD=(str, ''),
+    DB_HOST=(str, '127.0.0.1'),
+    DB_PORT=(str, '3306'),
+    SMTP_SERVER=(str, 'smtp.qq.com'),
+    SENDER_EMAIL=(str, ''),
+    SENDER_PASS=(str, ''),
+)
+
+# 读取环境变量文件
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-sz@madp0ifx!b)^lg_g!f+5s*w7w_=sjgq-k+erzb%x42$^r!d'
+# 在生产环境强制要求设置自定义密钥
+if not DEBUG:
+    SECRET_KEY = env('SECRET_KEY')
+else:
+    # 仅在开发环境使用默认密钥
+    SECRET_KEY = env('SECRET_KEY', default='django-insecure-sz@madp0ifx!b)^lg_g!f+5s*w7w_=sjgq-k+erzb%x42$^r!d')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
 LOGGING = {
     'version': 1,
@@ -45,10 +68,7 @@ LOGGING = {
 }
 
 
-ALLOWED_HOSTS = [
-    'mytest.com',
-    '127.0.0.1'
-]
+ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 
 # Application definition
 
@@ -102,15 +122,16 @@ WSGI_APPLICATION = 'server.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'your-db-name',
-        'USER': 'root',
-        'PASSWORD': 'xxxxxxxx',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
         'CONN_MAX_AGE': 60,  # 连接复用时间
         'OPTIONS': {
             'charset': 'utf8mb4',
-            'init_command': "SET NAMES 'utf8mb4'",
+            'init_command': "SET NAMES 'utf8mb4' COLLATE 'utf8mb4_unicode_ci'",
+            'sql_mode': 'STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION',
         }
     }
 }
@@ -186,9 +207,9 @@ CDN_VIDEO_UPLOAD_SIZE = 500 * 1024 * 2024
 CDN_FILE_UPLOAD_SIZE = 500 * 1024 * 2024
 
 # smtp设置
-SMTP_SERVER = 'smtp.qq.com'
-SENDER_EMAIL = '285126081@qq.com'
-SENDER_PASS = 'xxxxxxxxxxxxxxxxxxxxx'
+SMTP_SERVER = env('SMTP_SERVER')
+SENDER_EMAIL = env('SENDER_EMAIL')
+SENDER_PASS = env('SENDER_PASS')
 
 # 域名
 # BASE_HOST_URL = 'http://127.0.0.1:8000'

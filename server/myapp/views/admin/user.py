@@ -21,34 +21,47 @@ class UserRateThrottle(AnonRateThrottle):
 @api_view(['POST'])
 @throttle_classes([UserRateThrottle])
 def admin_login(request):
-    username = request.data['username']
-    password = utils.md5value(request.data['password'])
+    try:
+        username = request.data.get('username')
+        password = request.data.get('password')
 
-    users = User.objects.filter(username=username, password=password)
-    if len(users) > 0:
-        user = users[0]
+        if not username or not password:
+            return APIResponse(code=1, msg='用户名或密码不能为空')
+
+        try:
+            user = User.objects.get(username=username)
+        except User.DoesNotExist:
+            # 统一错误信息，防止用户名枚举
+            return APIResponse(code=1, msg='用户名或密码错误')
+
+        # 检查账号状态
+        if user.status == '1':
+            return APIResponse(code=1, msg='用户名或密码错误')
+
+        # 检查用户角色
+        if user.role == '2':
+            return APIResponse(code=1, msg='用户名或密码错误')
+
+        # 验证密码
+        if user.password != utils.md5value(password):
+            return APIResponse(code=1, msg='用户名或密码错误')
+
+        # 生成新的token和过期时间
         ts = utils.get_timestamp()
         data = {
-            'username': username,
-            'password': password,
-            'admin_token': md5value(username + str(ts)),  # 生成令牌
-            'exp': ts + (24 * 60 * 60 * 1000)  # 刷新过期时间
+            'admin_token': utils.md5value(username + str(ts)),  # 使用单一时间戳确保一致性
+            'exp': ts + (24 * 60 * 60 * 1000)  # 24小时过期
         }
 
-        if user.status == '1':
-            return APIResponse(code=1, msg='该帐号已禁用')
-
-        if user.role == '2':
-            return APIResponse(code=1, msg='请使用管理员账号登录')
-
-        serializer = UserSerializer(user, data=data)
+        serializer = UserSerializer(user, data=data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return APIResponse(code=0, msg='登录成功', data=serializer.data)
         else:
-            print(serializer.errors)
+            return APIResponse(code=1, msg='登录失败')
 
-    return APIResponse(code=1, msg='用户名或密码错误')
+    except Exception as e:
+        return APIResponse(code=1, msg='登录失败')
 
 
 @api_view(['GET'])
@@ -66,23 +79,42 @@ def list_api(request):
 @check_if_demo
 @after_call(clear_cache)
 def create(request):
-    print(request.data)
-    if not request.data.get('username', None) or not request.data.get('password', None):
-        return APIResponse(code=1, msg='用户名或密码不能为空')
-    users = User.objects.filter(username=request.data['username'])
-    if len(users) > 0:
-        return APIResponse(code=1, msg='该用户名已存在')
+    try:
+        username = request.data.get('username')
+        password = request.data.get('password')
 
-    data = request.data.copy()
-    data.update({'password': utils.md5value(request.data['password'])})
-    serializer = UserSerializer(data=data)
-    if serializer.is_valid():
-        serializer.save()
-        return APIResponse(code=0, msg='创建成功', data=serializer.data)
-    else:
-        print(serializer.errors)
+        if not username or not password:
+            return APIResponse(code=1, msg='用户名或密码不能为空')
 
-    return APIResponse(code=1, msg='创建失败')
+        # 检查用户名是否已存在
+        if User.objects.filter(username=username).exists():
+            return APIResponse(code=1, msg='该用户名已存在')
+
+        # 密码强度验证
+        if len(password) < 6:
+            return APIResponse(code=1, msg='密码长度不能少于6位')
+
+        # 准备用户数据
+        data = request.data.copy()
+        data['password'] = utils.md5value(password)
+        # 设置默认值
+        data.setdefault('role', '1')  # 默认为管理员
+        data.setdefault('status', '0')  # 默认为启用
+
+        serializer = UserSerializer(data=data)
+        if serializer.is_valid():
+            user = serializer.save()
+            # 生成初始token和过期时间
+            ts = utils.get_timestamp()
+            user.admin_token = utils.md5value(username + str(ts))
+            user.exp = ts + (24 * 60 * 60 * 1000)
+            user.save()
+            return APIResponse(code=0, msg='创建成功', data=UserSerializer(user).data)
+        else:
+            return APIResponse(code=1, msg='创建失败: ' + str(serializer.errors))
+
+    except Exception as e:
+        return APIResponse(code=1, msg='创建失败: ' + str(e))
 
 
 @api_view(['POST'])
@@ -117,34 +149,46 @@ def update(request):
 @after_call(clear_cache)
 def updatePwd(request):
     try:
-        pk = request.data.get('id', None)
-        user = User.objects.get(pk=pk)
-    except User.DoesNotExist:
-        return APIResponse(code=1, msg='对象不存在')
+        pk = request.data.get('id')
+        if not pk:
+            return APIResponse(code=1, msg='用户ID不能为空')
 
-    password = request.data.get('password', None)
-    newPassword1 = request.data.get('newPassword1', None)
-    newPassword2 = request.data.get('newPassword2', None)
+        try:
+            user = User.objects.get(pk=pk)
+        except User.DoesNotExist:
+            return APIResponse(code=1, msg='用户不存在')
 
-    if not password or not newPassword1 or not newPassword2:
-        return APIResponse(code=1, msg='不能为空')
+        password = request.data.get('password')
+        newPassword1 = request.data.get('newPassword1')
+        newPassword2 = request.data.get('newPassword2')
 
-    if user.password != utils.md5value(password):
-        return APIResponse(code=1, msg='原密码不正确')
+        if not password or not newPassword1 or not newPassword2:
+            return APIResponse(code=1, msg='所有字段不能为空')
 
-    if newPassword1 != newPassword2:
-        return APIResponse(code=1, msg='两次密码不一致')
+        # 验证原密码
+        if user.password != utils.md5value(password):
+            return APIResponse(code=1, msg='原密码不正确')
 
-    data = request.data.copy()
-    data.update({'password': utils.md5value(newPassword1)})
-    serializer = UserSerializer(user, data=data)
-    if serializer.is_valid():
-        serializer.save()
-        return APIResponse(code=0, msg='更新成功', data=serializer.data)
-    else:
-        print(serializer.errors)
+        # 验证两次新密码是否一致
+        if newPassword1 != newPassword2:
+            return APIResponse(code=1, msg='两次密码不一致')
 
-    return APIResponse(code=1, msg='更新失败')
+        # 密码强度验证
+        if len(newPassword1) < 6:
+            return APIResponse(code=1, msg='新密码长度不能少于6位')
+
+        # 更新密码
+        user.password = utils.md5value(newPassword1)
+        # 重置token和过期时间
+        ts = utils.get_timestamp()
+        user.admin_token = utils.md5value(user.username + str(ts))
+        user.exp = ts + (24 * 60 * 60 * 1000)
+        user.save()
+
+        return APIResponse(code=0, msg='密码更新成功', data=UserSerializer(user).data)
+
+    except Exception as e:
+        return APIResponse(code=1, msg='密码更新失败: ' + str(e))
 
 
 @api_view(['POST'])
@@ -153,9 +197,24 @@ def updatePwd(request):
 @after_call(clear_cache)
 def delete(request):
     try:
-        ids_arr = [request.data['id']]
-        User.objects.filter(id__in=ids_arr).delete()
-    except User.DoesNotExist:
-        return APIResponse(code=1, msg='对象不存在')
+        user_id = request.data.get('id')
+        if not user_id:
+            return APIResponse(code=1, msg='用户ID不能为空')
 
-    return APIResponse(code=0, msg='删除成功')
+        # 检查用户是否存在
+        try:
+            user = User.objects.get(id=user_id)
+        except User.DoesNotExist:
+            return APIResponse(code=1, msg='用户不存在')
+
+        # 防止删除最后一个管理员
+        admin_count = User.objects.filter(role='1').count()
+        if admin_count <= 1 and user.role == '1':
+            return APIResponse(code=1, msg='不能删除最后一个管理员账号')
+
+        # 执行删除
+        user.delete()
+        return APIResponse(code=0, msg='删除成功')
+
+    except Exception as e:
+        return APIResponse(code=1, msg='删除失败: ' + str(e))
