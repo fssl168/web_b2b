@@ -11,11 +11,37 @@
 
 ## 开发环境
 
-- 后端： Python 3.8 + Django 3.2
-- 前端： Javascript + Vue
-- 数据库：MySQL 5.7
+- 后端： Python 3.8 + Django 4.2.27
+- 前端： Javascript + React + Next.js 16.1.6
+- 数据库：MySQL 5.7+
 - 开发平台：Pycharm + vscode
 - 运行环境：Windows 10/11
+
+## 变更摘要
+
+### 2026年2月14日更新
+
+#### 修复的Bug
+1. **认证逻辑错误**：修复了authentication.py中的认证逻辑，添加了对空字符串token的处理，确保返回None让DRF继续处理其他认证方法。
+2. **token生成逻辑重复时间戳**：修复了user.py中的登录部分，将重复的时间戳调用改为单一时间戳，确保token生成的一致性。
+3. **用户创建时token生成不一致**：修复了user.py中的用户创建部分，确保登录和创建用户时使用相同的token生成逻辑。
+4. **前端cookie设置HttpOnly冲突**：修复了axios.js中的cookie设置，移除了HttpOnly属性，因为在前端JavaScript中设置该属性是无效的。
+5. **管理员删除保护逻辑不完善**：修复了user.py中的管理员删除保护逻辑，确保即使管理员处于非激活状态，也不会删除最后一个管理员账号。
+6. **默认密钥安全隐患**：修复了settings.py中的SECRET_KEY设置，在生产环境强制要求设置自定义密钥，保留开发环境的默认密钥以便于开发。
+
+#### 升级的依赖
+- **前端**：将@next/third-parties和eslint-config-next升级到与Next.js 16.1.6兼容的版本
+- **后端**：将Django从3.2.11升级到4.2.27，以及其他依赖的安全版本
+
+#### 安全改进
+- 移除了硬编码的敏感信息（数据库密码、SMTP密码、SECRET_KEY）
+- 实现了环境变量管理使用django-environ
+- 设置DEBUG=False为生产环境
+- 改进了AdminTokenAuthtication类的安全性
+- 添加了密码强度验证
+- 防止了用户名枚举攻击
+- 改进了文件上传安全性
+- 将token存储从localStorage改为cookie，并添加了安全cookie属性
 
 ## 关键技术
 
