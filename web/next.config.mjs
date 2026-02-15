@@ -4,18 +4,33 @@ const nextConfig = {
     basePath: '', // 设置统一前缀如/en
     assetPrefix: '', // 静态资源前缀
     reactStrictMode: false,
-    eslint: {
-        ignoreDuringBuilds: true, // build时跳过eslint
-    },
     env: {
         NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: "da9h8exvs",
         NEXT_PUBLIC_CLOUDINARY_PRESET_NAME: "fi0lxkc1",
     },
     images: {
-        domains: [process.env.NEXT_PUBLIC_HOST, 'localhost'],
+        remotePatterns: [
+            {
+                protocol: 'http',
+                hostname: process.env.NEXT_PUBLIC_HOST || 'localhost',
+                port: '',
+                pathname: '/**',
+            },
+            {
+                protocol: 'http',
+                hostname: 'localhost',
+                port: '8000',
+                pathname: '/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'localhost',
+                port: '',
+                pathname: '/**',
+            },
+        ],
         unoptimized: true, // 禁用图片优化，避免私有IP限制
     },
-    swcMinify: true,
     compiler: {
         removeConsole: process.env.NODE_ENV === 'production',
     },
