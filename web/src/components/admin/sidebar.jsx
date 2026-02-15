@@ -11,7 +11,6 @@ import { Menu } from 'antd';
 import { useRouter, usePathname } from 'next/navigation';
 import {useSelector} from "react-redux";
 import Image from "next/image";
-import LogoIcon from "/public/admin/logo.png";
 
 const items = [
   {
@@ -96,7 +95,7 @@ const SideBar = () => {
           <div className="flex items-center">
             <div className="relative flex items-center justify-center h-9 w-9 bg-white/10 shadow-inner">
               <Image
-                src={LogoIcon}
+                src="/admin/logo.png"
                 alt="管理系统Logo"
                 width={24}
                 height={24}

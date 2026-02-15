@@ -12,6 +12,17 @@ import {
     AlertDialogTitle
 } from "@/components/ui/alert-dialog";
 
+// 过滤用户输入，防止XSS攻击
+const sanitizeInput = (input) => {
+    if (!input) return '';
+    return input
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+};
+
 
 const InquiryForm = () => {
     const [formData, setFormData] = useState({
@@ -68,9 +79,10 @@ const InquiryForm = () => {
         try {
             setLoading(true);
             const submitData = new FormData();
-            submitData.append('name', formData.name);
-            submitData.append('email', formData.email);
-            submitData.append('message', formData.message);
+            // 过滤用户输入，防止XSS攻击
+            submitData.append('name', sanitizeInput(formData.name));
+            submitData.append('email', sanitizeInput(formData.email));
+            submitData.append('message', sanitizeInput(formData.message));
 
             const { code, msg } = await api.post('/myapp/index/inquiry/create', submitData);
 

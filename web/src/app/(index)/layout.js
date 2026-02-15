@@ -121,19 +121,149 @@ export default async function RootLayout({children}) {
     );
 }
 
-
 // 服务端获取数据
 async function getSectionData() {
     try {
-        const {code, msg, data} = await api.get('/myapp/index/common/section');
-        if (code === 0) {
-            return data;
-        } else {
-            console.error(`获取导航数据错误: ${msg}`);
-            return null;
-        }
+        // 调用API获取实际数据
+        const data = await api.getSectionData();
+        return data;
     } catch (err) {
-        console.error("获取导航数据失败:", err);
-        return null;
+        // 如果出错，返回默认值
+        return {
+            "navSectionData": {
+                "basicSite": {
+                    "site_gaid": "",
+                    "site_logo": ""
+                },
+                "basicGlobal": {
+                    "global_facebook": "",
+                    "global_twitter": "",
+                    "global_instagram": "",
+                    "global_linkedin": "",
+                    "global_youtube": "",
+                    "global_whatsapp": ""
+                },
+                "navigationItems": [
+                    {
+                        "type": "link",
+                        "name": "首页",
+                        "href": "/"
+                    },
+                    {
+                        "type": "link",
+                        "name": "关于我们",
+                        "href": "/about"
+                    },
+                    {
+                        "type": "dropdown",
+                        "name": "产品中心",
+                        "href": "/product",
+                        "subItems": [
+                            {
+                                "name": "产品分类1",
+                                "href": "/product/category1"
+                            },
+                            {
+                                "name": "产品分类2",
+                                "href": "/product/category2"
+                            },
+                            {
+                                "name": "产品分类3",
+                                "href": "/product/category3"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "link",
+                        "name": "新闻资讯",
+                        "href": "/news"
+                    },
+                    {
+                        "type": "link",
+                        "name": "案例展示",
+                        "href": "/case"
+                    },
+                    {
+                        "type": "link",
+                        "name": "常见问题",
+                        "href": "/faq"
+                    },
+                    {
+                        "type": "link",
+                        "name": "下载中心",
+                        "href": "/download"
+                    },
+                    {
+                        "type": "link",
+                        "name": "联系我们",
+                        "href": "/contact"
+                    }
+                ]
+            }, 
+            "footerSectionData": {
+                "navData": [
+                    {
+                        "type": "link",
+                        "name": "首页",
+                        "href": "/"
+                    },
+                    {
+                        "type": "link",
+                        "name": "关于我们",
+                        "href": "/about"
+                    },
+                    {
+                        "type": "link",
+                        "name": "产品中心",
+                        "href": "/product"
+                    },
+                    {
+                        "type": "link",
+                        "name": "新闻资讯",
+                        "href": "/news"
+                    },
+                    {
+                        "type": "link",
+                        "name": "案例展示",
+                        "href": "/case"
+                    },
+                    {
+                        "type": "link",
+                        "name": "常见问题",
+                        "href": "/faq"
+                    },
+                    {
+                        "type": "link",
+                        "name": "下载中心",
+                        "href": "/download"
+                    },
+                    {
+                        "type": "link",
+                        "name": "联系我们",
+                        "href": "/contact"
+                    }
+                ],
+                "categoryData": [
+                    {
+                        "id": "1",
+                        "title": "产品分类1"
+                    },
+                    {
+                        "id": "2",
+                        "title": "产品分类2"
+                    },
+                    {
+                        "id": "3",
+                        "title": "产品分类3"
+                    }
+                ],
+                "contactData": {
+                    "global_email": "contact@example.com",
+                    "global_phone": "1234567890",
+                    "global_address": "北京市朝阳区",
+                    "global_company_name": "示例公司"
+                }
+            }
+        };
     }
 }

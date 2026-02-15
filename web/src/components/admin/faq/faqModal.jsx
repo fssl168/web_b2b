@@ -7,7 +7,7 @@ import TextArea from "antd/es/input/TextArea";
 
 import dynamic from "next/dynamic";
 const WangEditor = dynamic(
-    () => import('/src/components/admin/wangEditor.jsx'),
+    () => import('@/components/admin/wangEditor.jsx'),
     {ssr: false}
 )
 

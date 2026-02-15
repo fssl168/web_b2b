@@ -4,7 +4,6 @@ import {Button, message, Pagination, Popconfirm, Space, Spin, Table} from 'antd'
 import {useDispatch, useSelector} from "react-redux";
 import axiosInstance from "@/utils/axios";
 import Image from 'next/image';
-import DataIcon from '/public/admin/icon_data.svg';
 
 export default function OverViewInfo() {
 
@@ -38,9 +37,10 @@ export default function OverViewInfo() {
             <div className="bg-white px-4 py-4 flex flex-col gap-4">
                 <h2 className="flex flex-row">
                     <Image
-                        src={DataIcon}
+                        src="/admin/icon_data.svg"
                         alt="数据统计"
-                        style={{width: '20px', height: 'auto'}}
+                        width={20}
+                        height={20}
                     />
                     <span className="ml-1 text-gray-500">数据统计</span>
                 </h2>

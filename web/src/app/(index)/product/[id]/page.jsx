@@ -26,12 +26,40 @@ const getThingDetailCached = cache(async (id) => {
 // 动态生成metadata
 export async function generateMetadata({params}) {
     // 读取路由参数
-    const {id} = params;
+    const {id} = await params;
 
     // 使用缓存的函数获取案例详情数据
     const data = await getThingDetailCached(id);
 
     // 从详情数据中提取信息
+    if (!data || !data.detailData) {
+        return {
+            title: 'Product Not Found',
+            description: 'The requested product was not found.',
+            keywords: 'product, not found',
+            // Open Graph
+            openGraph: {
+                title: 'Product Not Found',
+                description: 'The requested product was not found.',
+                url: process.env.NEXT_PUBLIC_BASE_URL,
+                siteName: 'B2B外贸演示站',
+                image: '',
+                type: 'website',
+            },
+            // Twitter
+            twitter: {
+                card: 'summary',
+                title: 'Product Not Found',
+                description: 'The requested product was not found.',
+                image: '',
+            },
+            robots: {
+                index: false,
+                follow: false,
+            },
+        };
+    }
+
     const {seo_title, seo_description, seo_keywords, title, summary} = data.detailData;
     const siteName = data.siteName;
 
@@ -64,10 +92,20 @@ export async function generateMetadata({params}) {
 }
 
 export default async function Page({params}) {
-    const {id} = params;
+    const {id} = await params;
 
     // 使用相同的缓存函数获取数据
-    const {detailData, relatedData} = await getThingDetailCached(id);
+    const data = await getThingDetailCached(id);
+
+    // 检查数据是否存在
+    if (!data || !data.detailData) {
+        return <div className="container mx-auto px-4 py-12">
+            <h1 className="text-3xl font-bold text-center mb-6">Product Not Found</h1>
+            <p className="text-center text-gray-600">The requested product was not found.</p>
+        </div>;
+    }
+
+    const {detailData, relatedData} = data;
 
     // 获取模板id
     const templateId = process.env.NEXT_PUBLIC_TEMPLATE_ID;

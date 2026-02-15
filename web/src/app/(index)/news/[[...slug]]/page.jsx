@@ -17,6 +17,14 @@ export default async function Page({params}) {
     const urlParams = {page: pageNumber, pageSize: pageSize};
     const sectionData = await getSectionDataCached(urlParams);
 
+    // 检查数据是否存在
+    if (!sectionData) {
+        return <div className="container mx-auto px-4 py-12">
+            <h1 className="text-3xl font-bold text-center mb-6">News Not Found</h1>
+            <p className="text-center text-gray-600">No news articles were found.</p>
+        </div>;
+    }
+
     // 获取模板id
     const templateId = process.env.NEXT_PUBLIC_TEMPLATE_ID;
 

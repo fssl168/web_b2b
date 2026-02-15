@@ -7,7 +7,7 @@ import TextArea from "antd/es/input/TextArea";
 import LabelPanel from "@/components/admin/labelPanel";
 import dynamic from "next/dynamic";
 const WangEditor = dynamic(
-    () => import('/src/components/admin/wangEditor.jsx'),
+    () => import('@/components/admin/wangEditor.jsx'),
     {ssr: false}
 )
 const CaseModal = ({isOpen, onRequestClose, initialItem}) => {

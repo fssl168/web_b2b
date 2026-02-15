@@ -15,11 +15,17 @@ export default function NavBar({sectionData}) {
                     <div className="flex items-center ">
                         <Link href="/" className="-m-1.5 p-1.5">
                             <span className="sr-only">Logo</span>
-                            <img
-                                alt="logo"
-                                src={`${process.env.NEXT_PUBLIC_BASE_URL}/upload/img/${sectionData.basicSite.site_logo}`}
-                                className="h-12 w-auto"
-                            />
+                            {sectionData.basicSite.site_logo ? (
+                                <img
+                                    alt="logo"
+                                    src={`${process.env.NEXT_PUBLIC_BASE_URL}/upload/img/${sectionData.basicSite.site_logo}`}
+                                    className="h-12 w-auto"
+                                />
+                            ) : (
+                                <div className="h-12 w-32 bg-gray-200 flex items-center justify-center">
+                                    <span className="text-gray-500">Logo</span>
+                                </div>
+                            )}
                         </Link>
                     </div>
 

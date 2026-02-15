@@ -7,9 +7,7 @@ import FaqModal from "@/components/admin/faq/faqModal";
 import {ProfileOutlined} from "@ant-design/icons";
 import {LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend} from 'recharts';
 import {Flex, Radio} from 'antd';
-import VisitIcon from '/public/admin/icon_visit.svg';
 import Image from "next/image";
-import DataIcon from "../../../../public/admin/icon_data.svg";
 
 export default function VisitInfo() {
     const adminApp = useSelector((state) => state.adminSetting);
@@ -69,9 +67,10 @@ export default function VisitInfo() {
             <div className="bg-white px-4 py-4 flex flex-col gap-4">
                 <h2 className="flex flex-row items-center justify-center">
                     <Image
-                        src={VisitIcon}
+                        src="/admin/icon_visit.svg"
                         alt="访问统计"
-                        style={{width:'20px',height:'auto'}}
+                        width={20}
+                        height={20}
                     />
                     <span className="ml-1 text-gray-500 ">访问统计</span>
                     <div className="ml-auto min-w-[290px]">

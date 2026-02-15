@@ -65,21 +65,23 @@ function WangEditor({htmlText, onHtmlResult}) {
 
         // 单个文件上传成功之后
         onSuccess(file, res) {
-            console.log(`${file.name} 上传成功`, res)
+            // 移除调试信息输出
         },
 
         // 单个文件上传失败
         onFailed(file, res) {
-            console.log(`${file.name} 上传失败`, res)
+            // 移除调试信息输出
             if(res){
                 message.error(res.message || '上传失败');
+            } else {
+                message.error('上传失败');
             }
         },
 
         //上传错误，或者触发 timeout 超时
         onError(file, err, res) {
-            console.log(`${file.name} 上传出错`,err)
-            alert('上传出错');
+            // 移除调试信息输出，使用更友好的错误提示
+            message.error('上传出错，请稍后重试');
         },
 
     }
@@ -111,21 +113,23 @@ function WangEditor({htmlText, onHtmlResult}) {
 
         // 单个文件上传成功之后
         onSuccess(file, res) {
-            console.log(`${file.name} 上传成功`, res)
+            // 移除调试信息输出
         },
 
         // 单个文件上传失败
         onFailed(file, res) {
-            console.log(`${file.name} 上传失败`, res)
+            // 移除调试信息输出
             if(res){
                 message.error(res.message || '上传失败');
+            } else {
+                message.error('上传失败');
             }
         },
 
         //上传错误，或者触发 timeout 超时
         onError(file, err, res) {
-            console.log(`${file.name} 上传出错`,err)
-            alert('上传出错');
+            // 移除调试信息输出，使用更友好的错误提示
+            message.error('上传出错，请稍后重试');
         },
     }
 

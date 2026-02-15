@@ -27,12 +27,40 @@ const getNewsDetailCached = cache(async (id) => {    // 这里应该是从API获
 
 export async function generateMetadata({params}) {
     // 读取路由参数
-    const {id} = params;
+    const {id} = await params;
 
     // 使用缓存的函数获取案例详情数据
     const data = await getNewsDetailCached(id);
 
     // 从详情数据中提取信息
+    if (!data || !data.detailData) {
+        return {
+            title: 'News Not Found',
+            description: 'The requested news article was not found.',
+            keywords: 'news, not found',
+            // Open Graph
+            openGraph: {
+                title: 'News Not Found',
+                description: 'The requested news article was not found.',
+                url: process.env.NEXT_PUBLIC_BASE_URL,
+                siteName: 'B2B外贸演示站',
+                image: '',
+                type: 'website',
+            },
+            // Twitter
+            twitter: {
+                card: 'summary',
+                title: 'News Not Found',
+                description: 'The requested news article was not found.',
+                image: '',
+            },
+            robots: {
+                index: false,
+                follow: false,
+            },
+        };
+    }
+
     const {seo_title, seo_description, seo_keywords, title} = data.detailData;
     const siteName = data.siteName;
 
@@ -66,17 +94,17 @@ export async function generateMetadata({params}) {
 
 
 export default async function Page({params}) {
-    const {id} = params;
+    const {id} = await params;
     const data = await getNewsDetailCached(id);
 
     // 获取模板id
     const templateId = process.env.NEXT_PUBLIC_TEMPLATE_ID;
 
-    if (!data) {
-        // 动态导入对应模板并传入空数据
-        const NewsDetailTemplateModule = await import(`@/templates/${templateId}/newsDetailTemplate`);
-        const NewsDetailTemplate = NewsDetailTemplateModule.default;
-        return <NewsDetailTemplate detailData={null} />;
+    if (!data || !data.detailData) {
+        return <div className="container mx-auto px-4 py-12">
+            <h1 className="text-3xl font-bold text-center mb-6">News Not Found</h1>
+            <p className="text-center text-gray-600">The requested news article was not found.</p>
+        </div>;
     }
 
     const {detailData, categoryData, recommendData} = data;

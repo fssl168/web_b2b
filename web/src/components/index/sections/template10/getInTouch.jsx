@@ -68,6 +68,17 @@ export default function GetInTouch({contactData}) {
         setAlertState(prev => ({ ...prev, open: false }));
     };
 
+    // 过滤特殊字符，防止XSS攻击
+    const sanitizeInput = (input) => {
+        if (!input) return '';
+        return input
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         
@@ -86,11 +97,17 @@ export default function GetInTouch({contactData}) {
 
         try {
             setLoading(true);
+            // 对表单数据进行安全过滤
+            const sanitizedName = sanitizeInput(formData.name);
+            const sanitizedEmail = sanitizeInput(formData.email);
+            const sanitizedPhone = sanitizeInput(formData.phone);
+            const sanitizedMessage = sanitizeInput(formData.message);
+            
             const submitData = new FormData();
-            submitData.append('name', formData.name);
-            submitData.append('email', formData.email);
-            submitData.append('tel', formData.phone);
-            submitData.append('message', formData.message);
+            submitData.append('name', sanitizedName);
+            submitData.append('email', sanitizedEmail);
+            submitData.append('tel', sanitizedPhone);
+            submitData.append('message', sanitizedMessage);
 
             const { code, msg } = await api.post('/myapp/index/inquiry/create', submitData);
 
@@ -107,7 +124,7 @@ export default function GetInTouch({contactData}) {
                 showAlert('Failed', msg || 'Please try again later', 'destructive');
             }
         } catch (error) {
-            console.error('Error submitting form:', error);
+            // 移除错误信息输出，防止信息泄露
             showAlert('Submission Failed', 'Please check your network connection', 'destructive');
         } finally {
             setLoading(false);

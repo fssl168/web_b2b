@@ -20,8 +20,8 @@ function findParent(categoryData, id) {
     // 遍历顶层，查找子节点
     for (const item of categoryData) {
         if (Array.isArray(item.children)) {
-            // 看children数组中有没有id匹配
-            if (item.children.some(child => child.id === id)) {
+            // 看children数组中有没有id匹配，考虑类型转换
+            if (item.children.some(child => String(child.id) === String(id))) {
                 return item; // 找到父级
             }
         }
@@ -64,13 +64,22 @@ export default function ProductList({ categoryId, pageNumber, total, pageSize, c
         })
     }
     // 不是一级分类的情况
-    else if(currentCategory && currentCategory !== '-1' && !isFirstCategory(categoryData, Number(currentCategory))){
+    else if(currentCategory && currentCategory !== '-1' && !isFirstCategory(categoryData, Number(currentCategory))){ 
         let data = findParent(categoryData, Number(currentCategory))
-        mCategoryData = data.children
-        mCategoryData.unshift({
-            id: data.id,
-            title: lang.All
-        })
+        if(data && data.children) {
+            mCategoryData = data.children
+            mCategoryData.unshift({
+                id: data.id,
+                title: lang.All
+            })
+        } else {
+            // 如果找不到父分类，使用默认分类数据
+            mCategoryData = categoryData;
+            mCategoryData.unshift({
+                id: -1,
+                title: lang.All
+            })
+        }
     }else{
         // 是一级分类并且不含有子分类的情况
         mCategoryData = categoryData;

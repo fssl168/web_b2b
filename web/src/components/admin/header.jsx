@@ -5,10 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {setCollapsed} from "@/redux/adminSettingSlice";
 import React, {useEffect, useState} from "react";
 import Image from "next/image";
-import MenuIcon from "/public/admin/menu.png";
-import AvatarIcon from "/public/admin/icon_avatar.svg";
 import {Dropdown} from "antd";
-import HomeIcon from "/public/admin/icon_home.svg";
 import {useRouter} from "next/navigation";
 import Link from "next/link";
 
@@ -60,7 +57,7 @@ const Header = () => {
         <>
             <div className="h-14 px-4 flex flex-row items-center bg-white border-b border-b-gray-300 ">
                 <Image
-                    src={MenuIcon}
+                    src="/admin/menu.png"
                     alt="menu"
                     width={26}
                     height={26}
@@ -73,9 +70,10 @@ const Header = () => {
                           target="_blank"
                     >
                         <Image
-                            src={HomeIcon}
+                            src="/admin/icon_home.svg"
                             alt="home"
-                            style={{width: '20px', height: 'auto'}}
+                            width={20}
+                            height={20}
                             className="cursor-pointer"
                         />
                         <div className="text-[14px] text-gray-900">网站首页</div>
@@ -93,7 +91,7 @@ const Header = () => {
                     >
                         <div size="4" className="cursor-pointer flex flex-row gap-1">
                             <Image
-                                src={AvatarIcon}
+                                src="/admin/icon_avatar.svg"
                                 alt="avatar"
                                 width={38}
                                 height={38}

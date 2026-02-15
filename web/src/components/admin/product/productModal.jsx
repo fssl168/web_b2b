@@ -18,7 +18,7 @@ import { Checkbox } from 'antd';
 const CheckboxGroup = Checkbox.Group;
 
 const WangEditor = dynamic(
-    () => import('/src/components/admin/wangEditor.jsx'),
+    () => import('@/components/admin/wangEditor.jsx'),
     {ssr: false}
 )
 

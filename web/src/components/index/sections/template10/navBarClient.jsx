@@ -110,17 +110,17 @@ export function DesktopNav({navigationItems, current}) {
     };
 
     return (
-        <div className="hidden lg:-ml-20 lg:flex lg:flex-1 items-center justify-center ">
+        <div className="hidden lg:flex lg:flex-1 items-center justify-center ">
             {navigationItems.map((item, index) => (
                 item.type === 'link' ? (
                     <Link
-                        key={item.name}
-                        href={item.href}
-                        className={`px-0 flex items-center justify-center ${current === item.href ? 'text-mainColorNormal' : 'text-gray-900'} hover:text-mainColorNormal transition-colors duration-200 text-base/6 font-semibold ${index > 0 ? 'ml-14' : ''}`}
-                        onClick={scrollToTop}
-                    >
-                        {lang[item.name]}
-                    </Link>
+                                key={item.name}
+                                href={item.href}
+                                className={`px-0 flex items-center justify-center ${current === item.href ? 'text-mainColorNormal' : 'text-gray-900'} hover:text-mainColorNormal transition-colors duration-200 text-base/6 font-semibold ${index > 0 ? 'ml-14' : ''}`}
+                                onClick={scrollToTop}
+                            >
+                                {item.name}
+                            </Link>
                 ) : (
                     <div
                         key={item.name}
@@ -136,7 +136,7 @@ export function DesktopNav({navigationItems, current}) {
                             className={`px-0 ${current.indexOf(item.href) >= 0 ? 'text-mainColorNormal' : 'text-gray-900'} hover:text-mainColorNormal transition-colors duration-200 cursor-pointer h-full flex items-center gap-x-0.5 text-base/6 font-semibold`}
                             onClick={handleMenuItemClick}
                         >
-                            {lang[item.name]}
+                            {item.name}
                         </Link>
 
                         {/* 下拉菜单 */}
@@ -254,11 +254,17 @@ export function MobileNav({sectionData, mobileMenuOpen, setMobileMenuOpen}) {
                 <div className="flex items-center justify-between">
                     <Link href="/" className="p-0">
                         <span className="sr-only">Logo</span>
-                        <img
-                            alt="Logo"
-                            src={`${process.env.NEXT_PUBLIC_BASE_URL}/upload/img/${sectionData.basicSite.site_logo}`}
-                            className="h-12 w-auto"
-                        />
+                        {sectionData.basicSite.site_logo ? (
+                            <img
+                                alt="Logo"
+                                src={`${process.env.NEXT_PUBLIC_BASE_URL}/upload/img/${sectionData.basicSite.site_logo}`}
+                                className="h-12 w-auto"
+                            />
+                        ) : (
+                            <div className="h-12 w-32 bg-gray-200 flex items-center justify-center">
+                                <span className="text-gray-500">Logo</span>
+                            </div>
+                        )}
                     </Link>
                     <button
                         type="button"

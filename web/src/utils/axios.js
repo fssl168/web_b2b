@@ -7,7 +7,7 @@ const axiosInstance = axios.create({
     headers: {
         'Content-Type': 'application/json',
     },
-    withCredentials: true, // 允许携带cookie
+    withCredentials: false, // 暂时禁用携带cookie，避免跨域问题
 });
 
 // 从cookie中获取token
@@ -36,7 +36,7 @@ axiosInstance.interceptors.request.use(
         // 在发送请求之前添加 token 等信息
         if (typeof window !== 'undefined') {
             const token = getCookie('admintoken'); // 从cookie中获取token
-            config.headers.ADMINTOKEN = token || '';
+            config.headers.admintoken = token || '';
         }
 
         return config;

@@ -1,10 +1,9 @@
 import { redirect } from 'next/navigation';
 import { headers } from 'next/headers';
 
-export default async function Page() {
+export async function AdminProtectedRoute() {
   // 从请求头中获取token
-  const headersList = await headers();
-  const token = headersList.get('admintoken');
+  const token = headers().get('admintoken');
   
   // 如果没有token，重定向到登录页面
   if (!token) {
@@ -33,8 +32,10 @@ export default async function Page() {
     redirect('/adminLogin');
   }
   
-  // 验证通过，重定向到主页面
-  redirect('/admin/main');
-  
   return null;
+}
+
+export default async function AdminRouteWrapper({ children }) {
+  await AdminProtectedRoute();
+  return children;
 }
