@@ -1,41 +1,77 @@
-import { redirect } from 'next/navigation';
-import { headers } from 'next/headers';
+'use client';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Spin } from 'antd';
+import axios from 'axios';
 
-export async function AdminProtectedRoute() {
-  // 从请求头中获取token
-  const token = headers().get('admintoken');
-  
-  // 如果没有token，重定向到登录页面
-  if (!token) {
-    redirect('/adminLogin');
-  }
-  
-  // 验证token的有效性
-  try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/admin/verify-token`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'admintoken': token
-      }
-    });
-    
-    if (!response.ok) {
-      redirect('/adminLogin');
-    }
-    
-    const data = await response.json();
-    if (!data.success) {
-      redirect('/adminLogin');
-    }
-  } catch (error) {
-    redirect('/adminLogin');
-  }
-  
-  return null;
-}
+export default function AdminRouteWrapper({ children }) {
+    const router = useRouter();
+    const [loading, setLoading] = useState(true);
+    const [isVerified, setIsVerified] = useState(false);
 
-export default async function AdminRouteWrapper({ children }) {
-  await AdminProtectedRoute();
-  return children;
+    useEffect(() => {
+        checkAccess();
+    }, []);
+
+    const checkAccess = async () => {
+        try {
+            // 检查是否有访问令牌
+            const accessToken = document.cookie.split('; ').find(row => row.startsWith('admin_access_token='))?.split('=')[1];
+            
+            if (!accessToken) {
+                // 没有访问令牌，重定向到访问验证页面
+                router.push('/admin/access-verify');
+                return;
+            }
+
+            // 验证token的有效性
+            const token = document.cookie.split('; ').find(row => row.startsWith('admintoken='))?.split('=')[1];
+            
+            if (!token) {
+                // 没有登录token，重定向到登录页面
+                router.push('/adminLogin');
+                return;
+            }
+
+            // 验证登录token
+            const response = await axios.post(
+                `${process.env.NEXT_PUBLIC_DJANGO_BASE_URL}/myapp/admin/verify-token`,
+                {},
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'admintoken': token
+                    }
+                }
+            );
+
+            if (response.data.code === 0) {
+                // 验证成功
+                setIsVerified(true);
+            } else {
+                // 验证失败，重定向到登录页面
+                router.push('/adminLogin');
+            }
+        } catch (error) {
+            console.error('验证失败:', error);
+            // 验证失败，重定向到登录页面
+            router.push('/adminLogin');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    if (loading) {
+        return (
+            <div className="flex items-center justify-center h-screen">
+                <Spin size="large" />
+            </div>
+        );
+    }
+
+    if (!isVerified) {
+        return null;
+    }
+
+    return children;
 }

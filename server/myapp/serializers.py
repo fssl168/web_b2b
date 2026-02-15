@@ -62,10 +62,10 @@ class CategorySerializer(serializers.ModelSerializer):
     def get_children(self, obj):
         # 获取当前类别的所有子类别，并根据 sort 排序
         children = Category.objects.filter(pid=obj.id).order_by('sort', '-id')
-        # 如果有子类，继续序列化；如果没有则返回 None
+        # 如果有子类，继续序列化；如果没有则返回空数组
         if children.exists():
             return CategorySerializer(children, many=True).data
-        return None  # 如果没有子类则返回 None
+        return []  # 如果没有子类则返回空数组
 
 
 class NewsSerializer(serializers.ModelSerializer):

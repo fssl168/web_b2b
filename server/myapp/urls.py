@@ -3,6 +3,7 @@ from django.urls import path
 from myapp import views
 from myapp.views.admin import verify_token
 from myapp.views.admin.captcha import CaptchaView, get_captcha_key
+from myapp.views.admin.verify_access import verify_access
 
 app_name = 'myapp'
 urlpatterns = [
@@ -76,6 +77,7 @@ urlpatterns = [
     path('admin/user/updatePwd', views.admin.user.updatePwd),
     path('admin/adminLogin', views.admin.user.admin_login),
     path('admin/verify-token', verify_token.VerifyTokenView.as_view()),
+    path('admin/verify-access', verify_access),
 
 
     # 前台管理api

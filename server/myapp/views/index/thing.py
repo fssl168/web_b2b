@@ -28,6 +28,7 @@ class MyPageNumberPagination(PageNumberPagination):
 @api_view(['GET'])
 def section(request):
     if request.method == 'GET':
+        print(f"Received request: {request.GET}")
 
         sectionData = {}
 
@@ -65,14 +66,24 @@ def section(request):
         # 产品数据
         searchQuery = request.GET.get("searchQuery", None)
         categoryId = request.GET.get("categoryId", None)
+        print(f"Received parameters: categoryId={categoryId}, searchQuery={searchQuery}")
+        
         if searchQuery:
             things = Thing.objects.filter(status=0, title__contains=searchQuery).order_by('-create_time')
+            print(f"Search query found {things.count()} products")
         elif categoryId and categoryId != '-1':
-            # 分类以及子分类的数据
-            category_ids = get_all_category_ids(categoryId)
-            things = Thing.objects.filter(category_id__in=category_ids, status=0).order_by('-create_time')
+            try:
+                # 分类以及子分类的数据
+                category_ids = get_all_category_ids(int(categoryId))
+                print(f"Category IDs to search: {category_ids}")
+                things = Thing.objects.filter(category_id__in=category_ids, status=0).order_by('-create_time')
+                print(f"Category filter found {things.count()} products")
+            except Exception as e:
+                print(f"Error processing category: {e}")
+                things = Thing.objects.filter(status=0).order_by('-create_time')
         else:
             things = Thing.objects.filter(status=0).order_by('-create_time')
+            print(f"No category specified, found {things.count()} products")
 
         # 分页
         paginator = MyPageNumberPagination()
@@ -83,6 +94,7 @@ def section(request):
 
         sectionData['productData'] = serializer.data
         sectionData['total'] = total
+        print(f"Returning {len(serializer.data)} products, total: {total}")
 
         return APIResponse(code=0, msg='查询成功', data=sectionData)
 

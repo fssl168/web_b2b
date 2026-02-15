@@ -29,10 +29,18 @@ env = environ.Env(
     SMTP_SERVER=(str, 'smtp.qq.com'),
     SENDER_EMAIL=(str, ''),
     SENDER_PASS=(str, ''),
+    ADMIN_ACCESS_PASSWORD=(str, ''),
+    ADMIN_ALLOWED_IPS=(list, []),
 )
 
-# 读取环境变量文件
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+# 读取环境变量文件 - 支持多环境配置
+env_mode = os.environ.get('DJANGO_ENV', 'development')
+if env_mode == 'production':
+    env_file = os.path.join(BASE_DIR, '.env.production')
+else:
+    env_file = os.path.join(BASE_DIR, '.env.development')
+    
+environ.Env.read_env(env_file)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -69,7 +77,8 @@ LOGGING = {
 
 
 # 直接设置ALLOWED_HOSTS以确保正确解析
-ALLOWED_HOSTS = ['*']
+# 生产环境请配置具体域名，如: ['example.com', 'www.example.com']
+ALLOWED_HOSTS = env('ALLOWED_HOSTS', default=['localhost', '127.0.0.1'])
 
 # Application definition
 
@@ -90,12 +99,19 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',  # 跨域配置
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',  # CSRF保护
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # 'myapp.middlewares.LogMiddleware.OpLogs'
+    'myapp.middlewares.AdminProtectionMiddleware.AdminProtectionMiddleware',
 ]
+
+# 后台防黑保护设置
+ADMIN_ALLOWED_IPS = env('ADMIN_ALLOWED_IPS', default=[])  # 允许访问的IP白名单，留空则不限制
+ADMIN_ACCESS_PASSWORD = env('ADMIN_ACCESS_PASSWORD', default='')  # 后台访问密码，留空则不启用
+ADMIN_PASSWORD_EXPIRE_TIME = env('ADMIN_PASSWORD_EXPIRE_TIME', default=3600)  # 访问密码有效期（秒）
+ADMIN_PATH_PREFIX = env('ADMIN_PATH_PREFIX', default='admin')  # 后台入口路径前缀
 
 ROOT_URLCONF = 'server.urls'
 
@@ -195,8 +211,7 @@ CORS_ORIGIN_ALLOW_ALL = False  # 3.x之前写法
 CORS_ALLOW_ALL_ORIGINS = False  # 3.3以上写法
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
-    'http://127.0.0.1:3000',
-    'http://mytest.com'
+    'http://127.0.0.1:3000'
 ]
 
 # 允许的请求头
@@ -244,3 +259,58 @@ SENDER_PASS = env('SENDER_PASS')
 # 域名
 # BASE_HOST_URL = 'http://127.0.0.1:8000'
 BASE_HOST_URL = 'http://mytest.com'
+
+# ========================================
+# 生产环境安全配置
+# ========================================
+if not DEBUG:
+    # HTTPS 相关配置（需要在部署HTTPS后启用）
+    # SECURE_SSL_REDIRECT = True
+    # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    
+    # HSTS - 强制使用HTTPS
+    # SECURE_HSTS_SECONDS = 31536000  # 1年
+    # SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    # SECURE_HSTS_PRELOAD = True
+    
+    # 安全响应头
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    X_FRAME_OPTIONS = 'DENY'
+    
+    # Cookie 安全配置
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_HTTPONLY = True
+    CSRF_COOKIE_HTTPONLY = True
+    SESSION_COOKIE_SAMESITE = 'Lax'
+    CSRF_COOKIE_SAMESITE = 'Lax'
+    
+    # 其他安全配置
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
+else:
+    # 开发环境配置
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
+
+# REST Framework 配置
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'myapp.auth.authentication.AdminTokenAuthtication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '100/hour',
+        'user': '1000/hour',
+    },
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ],
+}
+
