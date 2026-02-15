@@ -7,10 +7,9 @@ import axiosInstance from '@/utils/axios';
 import dayjs from 'dayjs';
 
 const { Password } = Input;
-const { confirm } = Modal;
 
 const SecuritySettingsPage = () => {
-  const { message: antdMessage } = App.useApp();
+  const { message: antdMessage, modal } = App.useApp();
   const router = useRouter();
   
   // 状态管理
@@ -82,7 +81,7 @@ const SecuritySettingsPage = () => {
 
   // 禁用双因素认证
   const handleDisable2FA = async () => {
-    confirm({
+    modal.confirm({
       title: '确认禁用双因素认证',
       icon: <ExclamationCircleOutlined />,
       content: '禁用后，您的账户安全性将降低。确定要禁用吗？',
@@ -144,7 +143,7 @@ const SecuritySettingsPage = () => {
 
   // 撤销设备
   const handleRevokeDevice = async (deviceId, deviceName) => {
-    confirm({
+    modal.confirm({
       title: '确认撤销设备',
       icon: <ExclamationCircleOutlined />,
       content: `确定要撤销设备 "${deviceName}" 吗？该设备将被强制下线。`,
