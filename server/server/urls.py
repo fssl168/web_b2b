@@ -19,7 +19,10 @@ from django.urls import path, include
 
 from server import settings
 
+from myapp.views.index.common import simple_test
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('myapp/', include('myapp.urls')),
+    path('simple_test/', simple_test),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

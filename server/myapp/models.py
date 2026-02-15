@@ -9,7 +9,8 @@ class User(models.Model):
     )
     id = models.BigAutoField(primary_key=True)
     username = models.CharField(max_length=50, null=True)
-    password = models.CharField(max_length=50, null=True)
+    password = models.CharField(max_length=255, null=True)  # 增加长度以支持bcrypt
+    password_hash_type = models.CharField(max_length=20, default='bcrypt')  # 密码加密类型
     role = models.CharField(max_length=2, blank=True, null=True)
     status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='0')
     nickname = models.CharField(blank=True, null=True, max_length=20)
@@ -20,6 +21,11 @@ class User(models.Model):
     admin_token = models.CharField(max_length=32, blank=True, null=True)
     token = models.CharField(max_length=32, blank=True, null=True)
     exp = models.CharField(max_length=32, blank=True, null=True)
+    # 登录安全相关字段
+    login_attempts = models.IntegerField(default=0)  # 登录失败次数
+    lock_time = models.DateTimeField(null=True, blank=True)  # 账户锁定时间
+    last_login_time = models.DateTimeField(null=True, blank=True)  # 最后登录时间
+    last_login_ip = models.CharField(max_length=50, null=True, blank=True)  # 最后登录IP
 
     class Meta:
         db_table = "b_user"

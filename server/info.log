@@ -81,3 +81,2540 @@ Watching for file changes with StatReloader
 "GET /myapp/index/thing/section?page=1&pageSize=9 HTTP/1.1" 200 3521
 "GET /myapp/index/thing/section?page=1&pageSize=12&searchQuery= HTTP/1.1" 200 3937
 "GET /myapp/index/about/section HTTP/1.1" 200 4216
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\leanpython\web_b2b\server\server\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\leanpython\web_b2b\server\server\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+D:\leanpython\web_b2b\server\server\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+D:\leanpython\web_b2b\server\myapp\middlewares\LogMiddleware.py changed, reloading.
+D:\leanpython\web_b2b\server\myapp\middlewares\LogMiddleware.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+D:\leanpython\web_b2b\server\server\settings.py changed, reloading.
+D:\leanpython\web_b2b\server\server\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+D:\leanpython\web_b2b\server\myapp\views\index\common.py changed, reloading.
+D:\leanpython\web_b2b\server\myapp\views\index\common.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+D:\leanpython\web_b2b\server\myapp\views\index\common.py changed, reloading.
+D:\leanpython\web_b2b\server\myapp\views\index\common.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\leanpython\web_b2b\server\myapp\views\index\common.py changed, reloading.
+D:\leanpython\web_b2b\server\myapp\views\index\common.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+D:\leanpython\web_b2b\server\myapp\views\index\common.py changed, reloading.
+D:\leanpython\web_b2b\server\myapp\views\index\common.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\leanpython\web_b2b\server\myapp\views\index\common.py changed, reloading.
+D:\leanpython\web_b2b\server\myapp\views\index\common.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+D:\leanpython\web_b2b\server\myapp\views\index\common.py changed, reloading.
+D:\leanpython\web_b2b\server\myapp\views\index\common.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+"GET /myapp/index/home/section HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+D:\leanpython\web_b2b\server\myapp\views\index\common.py changed, reloading.
+D:\leanpython\web_b2b\server\myapp\views\index\common.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+D:\leanpython\web_b2b\server\server\settings.py changed, reloading.
+D:\leanpython\web_b2b\server\server\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/section HTTP/1.1" 400 143
+D:\leanpython\web_b2b\server\myapp\views\index\common.py changed, reloading.
+D:\leanpython\web_b2b\server\myapp\views\index\common.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+D:\leanpython\web_b2b\server\myapp\urls.py changed, reloading.
+D:\leanpython\web_b2b\server\myapp\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/test HTTP/1.1" 400 143
+D:\leanpython\web_b2b\server\myapp\views\index\common.py changed, reloading.
+D:\leanpython\web_b2b\server\myapp\views\index\common.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/test HTTP/1.1" 400 143
+D:\leanpython\web_b2b\server\myapp\views\index\common.py changed, reloading.
+D:\leanpython\web_b2b\server\myapp\views\index\common.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/test HTTP/1.1" 400 143
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/test HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/test HTTP/1.1" 400 143
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/test HTTP/1.1" 400 143
+D:\leanpython\web_b2b\server\server\settings.py changed, reloading.
+D:\leanpython\web_b2b\server\server\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/test HTTP/1.1" 400 143
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/test HTTP/1.1" 400 143
+D:\leanpython\web_b2b\server\myapp\views\index\common.py changed, reloading.
+Watching for file changes with StatReloader
+D:\leanpython\web_b2b\server\myapp\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+"GET /myapp/index/common/simple_test HTTP/1.1" 400 82486
+D:\leanpython\web_b2b\server\server\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: 'localhost:8000'. You may need to add 'localhost' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'localhost:8000'. You may need to add 'localhost' to ALLOWED_HOSTS.
+"GET /simple_test/ HTTP/1.1" 400 82167
+D:\leanpython\web_b2b\server\server\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: 'localhost:8000'. You may need to add 'localhost' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\utils\deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\middleware\common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\django\http\request.py", line 150, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'localhost:8000'. You may need to add 'localhost' to ALLOWED_HOSTS.
+"GET /simple_test/ HTTP/1.1" 400 82167
+Watching for file changes with StatReloader
+"GET /simple_test/ HTTP/1.1" 200 19
+- Broken pipe from ('127.0.0.1', 50811)
+"GET /simple_test/ HTTP/1.1" 200 19
+- Broken pipe from ('127.0.0.1', 50827)
+"GET /simple_test/ HTTP/1.1" 200 19
+- Broken pipe from ('127.0.0.1', 50844)
+"GET /simple_test/ HTTP/1.1" 200 19
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"OPTIONS /myapp/myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"OPTIONS /myapp/myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"OPTIONS /myapp/myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"OPTIONS /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"OPTIONS /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"OPTIONS /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"OPTIONS /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"OPTIONS /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"OPTIONS /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"OPTIONS /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"GET /myapp/admin/captcha?key=1771127404654&t=1771127404655 HTTP/1.1" 200 6213
+"GET /myapp/admin/captcha?key=1771127404634&t=1771127404634 HTTP/1.1" 200 5550
+"OPTIONS /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"GET /myapp/admin/captcha?key=1771127413951&t=1771127413951 HTTP/1.1" 200 6232
+"GET /myapp/admin/captcha HTTP/1.1" 200 5574
+"GET /myapp/admin/captcha?key=1771127438108&t=1771127438108 HTTP/1.1" 200 6484
+"GET /myapp/admin/captcha?key=1771127439384&t=1771127439384 HTTP/1.1" 200 6877
+"OPTIONS /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"OPTIONS /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"GET /myapp/admin/captcha?key=1771127444537&t=1771127444537 HTTP/1.1" 200 5593
+"GET /myapp/admin/captcha?key=1771127444550&t=1771127444550 HTTP/1.1" 200 5280
+"OPTIONS /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"OPTIONS /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"GET /myapp/admin/captcha?key=1771127451592&t=1771127451592 HTTP/1.1" 200 6475
+"GET /myapp/admin/captcha?key=1771127451600&t=1771127451600 HTTP/1.1" 200 5521
+"OPTIONS /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"GET /myapp/admin/captcha?key=1771127500090&t=1771127500090 HTTP/1.1" 200 5711
+"OPTIONS /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"GET /myapp/admin/captcha?key=1771127501227&t=1771127501227 HTTP/1.1" 200 5175
+"OPTIONS /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"GET /myapp/admin/captcha?key=1771127504576&t=1771127504576 HTTP/1.1" 200 6133
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"OPTIONS /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"GET /myapp/admin/captcha?key=1771127602342&t=1771127602342 HTTP/1.1" 200 5066
+"OPTIONS /myapp/admin/adminLogin HTTP/1.1" 200 0
+"GET /myapp/admin/captcha?key=1771127626470&t=1771127626470 HTTP/1.1" 200 6535
+"OPTIONS /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"OPTIONS /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"GET /myapp/admin/captcha?key=1771127642084&t=1771127642085 HTTP/1.1" 200 5905
+"GET /myapp/admin/captcha?key=1771127642094&t=1771127642094 HTTP/1.1" 200 6496
+"OPTIONS /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"GET /myapp/admin/captcha?key=1771127651734&t=1771127651734 HTTP/1.1" 200 5988
+"OPTIONS /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"OPTIONS /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"GET /myapp/admin/captcha?key=1771127667475&t=1771127667475 HTTP/1.1" 200 5908
+"GET /myapp/admin/captcha?key=1771127667490&t=1771127667490 HTTP/1.1" 200 7462
+"OPTIONS /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"GET /myapp/admin/captcha?key=1771127681208&t=1771127681208 HTTP/1.1" 200 5205
+"OPTIONS /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"GET /myapp/admin/captcha?key=1771127684460&t=1771127684460 HTTP/1.1" 200 6683
+"OPTIONS /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"OPTIONS /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 0
+"GET /myapp/admin/captcha?key=1771127702500&t=1771127702500 HTTP/1.1" 200 6310
+"GET /myapp/admin/captcha?key=1771127702504&t=1771127702504 HTTP/1.1" 200 5994
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771127740665&t=1771127740665 HTTP/1.1" 200 5913
+"GET /myapp/admin/captcha?key=1771127740673&t=1771127740673 HTTP/1.1" 200 5146
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771127779108&t=1771127779108 HTTP/1.1" 200 6142
+"GET /myapp/admin/captcha?key=1771127787236&t=1771127787236 HTTP/1.1" 200 5941
+"GET /myapp/admin/captcha?key=1771127788155&t=1771127788155 HTTP/1.1" 200 5278
+"GET /myapp/admin/captcha?key=1771127789283&t=1771127789283 HTTP/1.1" 200 5984
+"GET /myapp/admin/captcha?key=1771127790452&t=1771127790452 HTTP/1.1" 200 5248
+"OPTIONS /myapp/admin/adminLogin HTTP/1.1" 200 0
+"GET /myapp/admin/captcha?key=1771127794437&t=1771127794437 HTTP/1.1" 200 5842
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771127829568&t=1771127829568 HTTP/1.1" 200 5257
+"GET /myapp/admin/captcha?key=1771127829573&t=1771127829573 HTTP/1.1" 200 6062
+D:\leanpython\web_b2b\server\server\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /myapp/admin/captcha HTTP/1.1" 200 4943
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 68
+D:\leanpython\web_b2b\server\myapp\views\admin\captcha.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /myapp/admin/captcha HTTP/1.1" 200 6990
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771128007097&t=1771128007097 HTTP/1.1" 200 5990
+"GET /myapp/admin/captcha?key=1771128013299&t=1771128013299 HTTP/1.1" 200 6750
+"GET /myapp/admin/captcha?key=1771128014203&t=1771128014203 HTTP/1.1" 200 6013
+"GET /myapp/admin/captcha?key=1771128023099&t=1771128023099 HTTP/1.1" 200 5955
+"GET /myapp/admin/captcha?key=1771128024371&t=1771128024371 HTTP/1.1" 200 7511
+"GET /myapp/admin/captcha?key=1771128026619&t=1771128026619 HTTP/1.1" 200 5485
+D:\leanpython\web_b2b\server\myapp\views\admin\captcha.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771128106433&t=1771128106433 HTTP/1.1" 200 5711
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771128110905&t=1771128110905 HTTP/1.1" 200 6748
+D:\leanpython\web_b2b\server\myapp\views\admin\captcha.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /myapp/admin/captcha HTTP/1.1" 200 7492
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771128193160&t=1771128193160 HTTP/1.1" 200 6641
+D:\leanpython\web_b2b\server\myapp\views\admin\captcha.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /myapp/admin/captcha HTTP/1.1" 200 5109
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771128257349&t=1771128257349 HTTP/1.1" 200 4238
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 68
+"GET /myapp/admin/captcha?key=1771128270505&t=1771128270505 HTTP/1.1" 200 4532
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771128305989&t=1771128305989 HTTP/1.1" 200 4485
+"GET /myapp/admin/captcha?key=1771128305996&t=1771128305996 HTTP/1.1" 200 4988
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771128305996&t=1771128305996 HTTP/1.1" 200 4713
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771128311639&t=1771128311639 HTTP/1.1" 200 4328
+"GET /myapp/admin/captcha?key=1771128311653&t=1771128311653 HTTP/1.1" 200 4765
+"GET /myapp/admin/captcha?key=1771128311648&t=1771128311648 HTTP/1.1" 200 4896
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 68
+"GET /myapp/admin/captcha?key=1771128334109&t=1771128334109 HTTP/1.1" 200 4233
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 68
+"GET /myapp/admin/captcha?key=1771128342551&t=1771128342551 HTTP/1.1" 200 5380
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771128384987&t=1771128384987 HTTP/1.1" 200 4647
+"GET /myapp/admin/captcha?key=1771128384985&t=1771128384985 HTTP/1.1" 200 4633
+"GET /myapp/admin/captcha?key=1771128384986&t=1771128384986 HTTP/1.1" 200 4474
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 68
+D:\leanpython\web_b2b\server\myapp\views\admin\captcha.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /myapp/admin/captcha?key=1771128447 HTTP/1.1" 200 4924
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 44
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 68
+"GET /myapp/admin/captcha?key=1771128480059&t=1771128480059 HTTP/1.1" 200 4445
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 44
+"GET /myapp/admin/captcha?key=1771128484983&t=1771128484984 HTTP/1.1" 200 4880
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 78
+"GET /myapp/admin/captcha?key=1771128489952&t=1771128489952 HTTP/1.1" 200 5199
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 78
+"GET /myapp/admin/captcha?key=1771128497518&t=1771128497518 HTTP/1.1" 200 4706
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 44
+"GET /myapp/admin/captcha?key=1771128504934&t=1771128504934 HTTP/1.1" 200 5186
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 498
+"OPTIONS /myapp/admin/overview/dataCount HTTP/1.1" 200 0
+"OPTIONS /myapp/admin/overview/count?days=7 HTTP/1.1" 200 0
+"GET /myapp/admin/overview/dataCount HTTP/1.1" 200 135
+"GET /myapp/admin/overview/count?days=7 HTTP/1.1" 200 66
+"OPTIONS /myapp/admin/user/list HTTP/1.1" 200 0
+"GET /myapp/admin/user/list HTTP/1.1" 200 1179
+"OPTIONS /myapp/admin/user/updatePwd HTTP/1.1" 200 0
+"POST /myapp/admin/user/updatePwd HTTP/1.1" 200 504
+Forbidden: /myapp/admin/user/list
+"GET /myapp/admin/user/list HTTP/1.1" 403 33
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771128663399&t=1771128663399 HTTP/1.1" 200 4725
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 498
+"GET /myapp/admin/overview/dataCount HTTP/1.1" 200 135
+"GET /myapp/admin/overview/count?days=7 HTTP/1.1" 200 66
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771128705728&t=1771128705728 HTTP/1.1" 200 5035
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771128705719&t=1771128705719 HTTP/1.1" 200 4968
+"OPTIONS /myapp/admin/faq/list?page=1&pageSize=10 HTTP/1.1" 200 0
+"GET /myapp/admin/faq/list?page=1&pageSize=10 HTTP/1.1" 200 3627
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771128737469&t=1771128737469 HTTP/1.1" 200 4861
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 44
+"GET /myapp/admin/captcha?key=1771128747452&t=1771128747452 HTTP/1.1" 200 4646
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771128809237&t=1771128809237 HTTP/1.1" 200 5066
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 41
+- Broken pipe from ('127.0.0.1', 54978)
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771128885159&t=1771128885159 HTTP/1.1" 200 4520
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771128885170&t=1771128885170 HTTP/1.1" 200 4661
+"GET /myapp/admin/captcha?key=1771128885192&t=1771128885192 HTTP/1.1" 200 5183
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 50
+- Broken pipe from ('127.0.0.1', 55087)
+D:\leanpython\web_b2b\server\myapp\handler.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 50
+- Broken pipe from ('127.0.0.1', 55129)
+"GET /myapp/admin/captcha?key=test123&t=123456 HTTP/1.1" 200 5249
+- Broken pipe from ('127.0.0.1', 55179)
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 50
+- Broken pipe from ('127.0.0.1', 55201)
+D:\leanpython\web_b2b\server\myapp\views\admin\user.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 68
+- Broken pipe from ('127.0.0.1', 55240)
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 68
+- Broken pipe from ('127.0.0.1', 55276)
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771129026408&t=1771129026408 HTTP/1.1" 200 5039
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771129027074&t=1771129027074 HTTP/1.1" 200 4566
+"GET /myapp/admin/captcha?key=1771129027402&t=1771129027402 HTTP/1.1" 200 4710
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771129042634&t=1771129042634 HTTP/1.1" 200 4729
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 44
+"GET /myapp/admin/captcha?key=1771129051138&t=1771129051138 HTTP/1.1" 200 4811
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771129070813&t=1771129070813 HTTP/1.1" 200 5067
+"GET /myapp/admin/captcha?key=1771129070823&t=1771129070823 HTTP/1.1" 200 5015
+"GET /myapp/admin/captcha?key=1771129070830&t=1771129070831 HTTP/1.1" 200 4914
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771129144839&t=1771129144839 HTTP/1.1" 200 5061
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771129145258&t=1771129145258 HTTP/1.1" 200 4272
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771129146090&t=1771129146090 HTTP/1.1" 200 4679
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771129150668&t=1771129150668 HTTP/1.1" 200 4894
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771129150693&t=1771129150694 HTTP/1.1" 200 4735
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771129150710&t=1771129150710 HTTP/1.1" 200 5147
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771129154294&t=1771129154294 HTTP/1.1" 200 5017
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771129158341&t=1771129158341 HTTP/1.1" 200 5460
+"GET /myapp/admin/captcha?key=1771129158343&t=1771129158343 HTTP/1.1" 200 5328
+"GET /myapp/admin/captcha?key=1771129158353&t=1771129158353 HTTP/1.1" 200 4969
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771129162360&t=1771129162360 HTTP/1.1" 200 5109
+"GET /myapp/admin/captcha?key=1771129162369&t=1771129162369 HTTP/1.1" 200 4463
+"GET /myapp/admin/captcha?key=1771129162373&t=1771129162373 HTTP/1.1" 200 5806
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 44
+"GET /myapp/admin/captcha?key=1771129163588&t=1771129163588 HTTP/1.1" 200 4931
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771129167884&t=1771129167884 HTTP/1.1" 200 5189
+"GET /myapp/admin/captcha?key=1771129167886&t=1771129167886 HTTP/1.1" 200 5140
+"GET /myapp/admin/captcha?key=1771129167903&t=1771129167903 HTTP/1.1" 200 4711
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771129181552&t=1771129181552 HTTP/1.1" 200 4808
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 44
+"GET /myapp/admin/captcha?key=1771129195703&t=1771129195703 HTTP/1.1" 200 4893
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 78
+"GET /myapp/admin/captcha?key=1771129204397&t=1771129204398 HTTP/1.1" 200 5525
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 498
+"GET /myapp/admin/overview/dataCount HTTP/1.1" 200 135
+"GET /myapp/admin/overview/count?days=7 HTTP/1.1" 200 66
+"OPTIONS /myapp/admin/case/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 0
+"GET /myapp/admin/case/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 23177
+"GET /upload/img/1747121224330.jpg HTTP/1.1" 200 187159
+"OPTIONS /myapp/admin/thing/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 0
+"GET /myapp/admin/thing/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 41325
+"OPTIONS /myapp/admin/category/list HTTP/1.1" 200 0
+"GET /myapp/admin/category/list HTTP/1.1" 200 1141
+"GET /myapp/admin/category/list HTTP/1.1" 200 1141
+"GET /upload/img/1745462544431.jpg HTTP/1.1" 200 72923
+"GET /upload/img/1745891764973.jpg HTTP/1.1" 200 62578
+"GET /myapp/admin/category/list HTTP/1.1" 200 1141
+"GET /myapp/admin/overview/dataCount HTTP/1.1" 200 135
+"GET /myapp/admin/overview/count?days=7 HTTP/1.1" 200 66
+"GET /myapp/admin/user/list HTTP/1.1" 200 1179
+"OPTIONS /myapp/admin/inquiry/list?page=1&pageSize=10 HTTP/1.1" 200 0
+"GET /myapp/admin/inquiry/list?page=1&pageSize=10 HTTP/1.1" 200 1827
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771129311950&t=1771129311950 HTTP/1.1" 200 4768
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771129319543&t=1771129319543 HTTP/1.1" 200 4417
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771129358949&t=1771129358949 HTTP/1.1" 200 4821
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771129416057&t=1771129416057 HTTP/1.1" 200 5531
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"OPTIONS /myapp/index/inquiry/create HTTP/1.1" 200 0
+"POST /myapp/index/inquiry/create HTTP/1.1" 200 207
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 68
+"GET /myapp/admin/captcha?key=1771130209749&t=1771130209750 HTTP/1.1" 200 5235
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771130255632&t=1771130255632 HTTP/1.1" 200 5122
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771130264296&t=1771130264296 HTTP/1.1" 200 5191
+"GET /myapp/admin/captcha?key=1771130264341&t=1771130264341 HTTP/1.1" 200 4712
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 44
+"GET /myapp/admin/captcha?key=1771130264592&t=1771130264592 HTTP/1.1" 200 5615
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+Too Many Requests: /myapp/admin/adminLogin
+"POST /myapp/admin/adminLogin HTTP/1.1" 429 73
+"GET /myapp/admin/captcha?key=1771130271593&t=1771130271593 HTTP/1.1" 200 5105
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771130286054&t=1771130286054 HTTP/1.1" 200 5064
+"GET /myapp/admin/captcha?key=1771130286064&t=1771130286064 HTTP/1.1" 200 5014
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+Too Many Requests: /myapp/admin/adminLogin
+"POST /myapp/admin/adminLogin HTTP/1.1" 429 73
+"GET /myapp/admin/captcha?key=1771130286608&t=1771130286608 HTTP/1.1" 200 4919
+Too Many Requests: /myapp/admin/adminLogin
+"POST /myapp/admin/adminLogin HTTP/1.1" 429 73
+"GET /myapp/admin/captcha?key=1771130290723&t=1771130290723 HTTP/1.1" 200 4576
+"GET /myapp/admin/thing/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 41325
+"GET /myapp/admin/category/list HTTP/1.1" 200 1141
+"OPTIONS /myapp/admin/news/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 0
+"GET /myapp/admin/news/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 62770
+"GET /upload/img/1747118675095.jpg HTTP/1.1" 200 187159
+"OPTIONS /myapp/admin/opLog/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 0
+"GET /myapp/admin/opLog/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 1613
+"GET /myapp/admin/thing/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 41325
+"GET /myapp/admin/category/list HTTP/1.1" 200 1141
+"GET /myapp/admin/opLog/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 1613
+"GET /myapp/admin/user/list HTTP/1.1" 200 1179
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771130377705&t=1771130377705 HTTP/1.1" 200 4772
+D:\leanpython\web_b2b\server\myapp\views\admin\user.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /myapp/admin/captcha?key=1771130387752&t=1771130387752 HTTP/1.1" 200 4717
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 498
+"GET /myapp/admin/overview/dataCount HTTP/1.1" 200 135
+"GET /myapp/admin/overview/count?days=7 HTTP/1.1" 200 66
+"GET /myapp/admin/user/list HTTP/1.1" 200 1179
+"OPTIONS /myapp/admin/basicSite/list HTTP/1.1" 200 0
+"GET /myapp/admin/basicSite/list HTTP/1.1" 200 428
+"GET /upload/img/logo.png HTTP/1.1" 200 10236
+"GET /upload/img/favicon.ico HTTP/1.1" 200 16958
+"OPTIONS /myapp/admin/basicBanner/list HTTP/1.1" 200 0
+"GET /myapp/admin/basicBanner/list HTTP/1.1" 200 272
+"GET /upload/img/1745460011834.jpg HTTP/1.1" 200 166653
+"GET /upload/img/1745460019136.jpg HTTP/1.1" 200 117457
+"GET /upload/img/1749538555679.jpg HTTP/1.1" 200 298026
+"GET /upload/img/1749538547679.jpg HTTP/1.1" 200 535714
+"OPTIONS /myapp/admin/basicGlobal/list HTTP/1.1" 200 0
+"GET /myapp/admin/basicGlobal/list HTTP/1.1" 200 611
+"GET /upload/img/1746598578851.jpg HTTP/1.1" 200 175071
+"GET /myapp/admin/inquiry/list?page=1&pageSize=10 HTTP/1.1" 200 1808
+"GET /myapp/admin/news/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 62770
+"GET /myapp/admin/thing/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 41325
+"GET /myapp/admin/category/list HTTP/1.1" 200 1141
+"GET /myapp/admin/news/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 62770
+"GET /myapp/admin/thing/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 41325
+"GET /myapp/admin/category/list HTTP/1.1" 200 1141
+"GET /myapp/admin/category/list HTTP/1.1" 200 1141
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/admin/news/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 62770
+"GET /myapp/admin/thing/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 41325
+"GET /myapp/admin/category/list HTTP/1.1" 200 1141
+"OPTIONS /myapp/admin/thing/list?page=2&pageSize=10&keyword= HTTP/1.1" 200 0
+"GET /myapp/admin/thing/list?page=2&pageSize=10&keyword= HTTP/1.1" 200 12417
+"GET /myapp/admin/category/list HTTP/1.1" 200 1141
+"GET /upload/img/1747127398455.jpg HTTP/1.1" 200 48804
+"GET /upload/img/1749280975639.jpeg HTTP/1.1" 200 21482
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+"GET /myapp/index/common/section HTTP/1.1" 200 93
+D:\leanpython\web_b2b\server\myapp\views\index\common.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/thing/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 41325
+"GET /myapp/admin/category/list HTTP/1.1" 200 1141
+"GET /myapp/admin/captcha?key=1771130868762&t=1771130868762 HTTP/1.1" 200 5068
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 54
+D:\leanpython\web_b2b\server\myapp\views\index\common.py changed, reloading.
+D:\leanpython\web_b2b\server\myapp\views\index\common.py changed, reloading.
+D:\leanpython\web_b2b\server\myapp\views\index\common.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /upload/img/logo.png HTTP/1.1" 200 10236
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/about/section HTTP/1.1" 200 4216
+"GET /myapp/index/news/section?page=1&pageSize=9 HTTP/1.1" 200 2684
+"GET /myapp/index/news/section?page=1&pageSize=9 HTTP/1.1" 200 2684
+"GET /myapp/index/news/detail HTTP/1.1" 200 44
+"GET /myapp/index/about/section HTTP/1.1" 200 4216
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/faq/section HTTP/1.1" 200 3996
+"GET /myapp/index/download/section HTTP/1.1" 200 1652
+"GET /myapp/index/contact/section HTTP/1.1" 200 1614
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/thing/section?page=1&pageSize=9 HTTP/1.1" 200 3521
+"GET /myapp/index/thing/section?page=1&pageSize=12&searchQuery= HTTP/1.1" 200 3937
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/thing/section?page=1&pageSize=12&searchQuery= HTTP/1.1" 200 3937
+"GET /myapp/index/thing/section?page=1&pageSize=9 HTTP/1.1" 200 3521
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/thing/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 41325
+"GET /myapp/admin/captcha?key=1771132445538&t=1771132445538 HTTP/1.1" 200 4458
+"GET /myapp/admin/category/list HTTP/1.1" 200 1141
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/thing/section?page=1&pageSize=9 HTTP/1.1" 200 3521
+"GET /myapp/index/thing/section?page=1&pageSize=12&searchQuery= HTTP/1.1" 200 3937
+"GET /myapp/index/thing/detail HTTP/1.1" 200 44
+"GET /myapp/index/thing/section?page=1&pageSize=9 HTTP/1.1" 200 3521
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/thing/section?page=1&pageSize=12&searchQuery= HTTP/1.1" 200 3937
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/thing/section?page=1&pageSize=9 HTTP/1.1" 200 3521
+"GET /myapp/index/thing/section?page=1&pageSize=12&searchQuery= HTTP/1.1" 200 3937
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/thing/section?page=1&pageSize=9 HTTP/1.1" 200 3521
+"GET /myapp/index/thing/section?page=1&pageSize=12&searchQuery= HTTP/1.1" 200 3937
+"GET /myapp/index/thing/detail HTTP/1.1" 200 44
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/thing/detail?id=41 HTTP/1.1" 200 3829
+"GET /myapp/index/thing/section?page=1&pageSize=9 HTTP/1.1" 200 3521
+"GET /myapp/index/thing/section?page=1&pageSize=12&searchQuery= HTTP/1.1" 200 3937
+"GET /myapp/index/news/section?page=1&pageSize=9 HTTP/1.1" 200 2684
+"GET /myapp/index/news/section?page=1&pageSize=9 HTTP/1.1" 200 2684
+"GET /myapp/index/thing/section?page=1&pageSize=9 HTTP/1.1" 200 3521
+"GET /myapp/index/thing/section?page=1&pageSize=12&searchQuery= HTTP/1.1" 200 3937
+"GET /myapp/index/thing/detail?id=41 HTTP/1.1" 200 3829
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/thing/detail?id=41 HTTP/1.1" 200 3829
+"GET /myapp/index/news/section?page=1&pageSize=9 HTTP/1.1" 200 2684
+"GET /myapp/index/news/section?page=1&pageSize=9 HTTP/1.1" 200 2684
+"GET /myapp/index/news/detail?id=16 HTTP/1.1" 200 19782
+"GET /myapp/index/news/section?page=1&pageSize=9 HTTP/1.1" 200 2684
+"GET /myapp/index/news/section?page=1&pageSize=9 HTTP/1.1" 200 2684
+"GET /myapp/index/news/detail?id=10 HTTP/1.1" 200 23983
+"GET /myapp/index/news/section?page=1&pageSize=9 HTTP/1.1" 200 2684
+"GET /myapp/index/news/section?page=1&pageSize=9 HTTP/1.1" 200 2684
+"GET /myapp/index/news/section?page=1&pageSize=9 HTTP/1.1" 200 2684
+"GET /myapp/index/news/section?page=1&pageSize=9 HTTP/1.1" 200 2684
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/news/section?page=1&pageSize=9 HTTP/1.1" 200 2684
+"GET /myapp/index/news/section?page=1&pageSize=9 HTTP/1.1" 200 2684
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/thing/section?page=1&pageSize=9 HTTP/1.1" 200 3521
+"GET /myapp/index/thing/section?page=1&pageSize=12&searchQuery= HTTP/1.1" 200 3937
+"GET /myapp/index/news/detail?id=16 HTTP/1.1" 200 19782
+"GET /myapp/index/thing/detail?id=39 HTTP/1.1" 200 5504
+"GET /myapp/index/thing/detail?id=39 HTTP/1.1" 200 5504
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/thing/section?page=1&pageSize=9 HTTP/1.1" 200 3521
+"GET /myapp/index/thing/section?page=1&pageSize=12&searchQuery= HTTP/1.1" 200 3937
+"GET /myapp/index/thing/detail?id=39 HTTP/1.1" 200 5504
+"GET /myapp/index/news/section?page=1&pageSize=9 HTTP/1.1" 200 2684
+"GET /myapp/index/news/section?page=1&pageSize=9 HTTP/1.1" 200 2684
+"GET /myapp/index/case/section?page=1&pageSize=9 HTTP/1.1" 200 21318
+"GET /myapp/index/case/section?page=1&pageSize=9 HTTP/1.1" 200 21318
+"GET /myapp/index/common/section HTTP/1.1" 200 3254
+"GET /myapp/index/thing/section?page=1&pageSize=9 HTTP/1.1" 200 3521
+"GET /myapp/index/thing/section?page=1&pageSize=12&searchQuery= HTTP/1.1" 200 3937
+"GET /myapp/index/news/section?page=1&pageSize=9 HTTP/1.1" 200 2684
+"GET /myapp/index/news/section?page=1&pageSize=9 HTTP/1.1" 200 2684
+"GET /myapp/index/news/detail?id=15 HTTP/1.1" 200 20516
+"GET /myapp/index/thing/section?page=1&pageSize=12&searchQuery= HTTP/1.1" 200 3937
+"GET /myapp/index/thing/section?page=1&pageSize=9 HTTP/1.1" 200 3521
+"GET /myapp/index/thing/section?page=1&pageSize=9 HTTP/1.1" 200 3521
+"GET /myapp/index/thing/section?page=1&pageSize=12&searchQuery= HTTP/1.1" 200 3937
+"GET /myapp/index/thing/detail?id=39 HTTP/1.1" 200 5504
+"GET /myapp/index/home/section HTTP/1.1" 200 4959
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771132809806&t=1771132809806 HTTP/1.1" 200 4662
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 498
+"GET /myapp/admin/overview/count?days=7 HTTP/1.1" 200 66
+"GET /myapp/admin/overview/dataCount HTTP/1.1" 200 135
+"GET /myapp/admin/captcha?key=1771132445538&t=1771132445538 HTTP/1.1" 200 4922
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771132934262&t=1771132934262 HTTP/1.1" 200 4867
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771132945841&t=1771132945841 HTTP/1.1" 200 4424
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771132965523&t=1771132965523 HTTP/1.1" 200 5176
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 498
+"OPTIONS /myapp/admin/overview/dataCount HTTP/1.1" 200 0
+"OPTIONS /myapp/admin/overview/count?days=7 HTTP/1.1" 200 0
+"GET /myapp/admin/overview/count?days=7 HTTP/1.1" 200 66
+"GET /myapp/admin/overview/dataCount HTTP/1.1" 200 135
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771133030093&t=1771133030093 HTTP/1.1" 200 4978
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771133030156&t=1771133030156 HTTP/1.1" 200 5122
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771133034552&t=1771133034552 HTTP/1.1" 200 5075
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771133036762&t=1771133036762 HTTP/1.1" 200 5334
+"GET /myapp/admin/captcha?key=1771133036759&t=1771133036759 HTTP/1.1" 200 4618
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771133044864&t=1771133044864 HTTP/1.1" 200 5040
+"GET /myapp/admin/captcha?key=1771133044882&t=1771133044882 HTTP/1.1" 200 5237
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771133059325&t=1771133059325 HTTP/1.1" 200 5525
+"GET /myapp/admin/captcha?key=1771133059325&t=1771133059325 HTTP/1.1" 200 4603
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 44
+"GET /myapp/admin/captcha?key=1771133063153&t=1771133063153 HTTP/1.1" 200 4886
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771133068089&t=1771133068089 HTTP/1.1" 200 4922
+"GET /myapp/admin/captcha?key=1771133068098&t=1771133068098 HTTP/1.1" 200 4766
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771133096503&t=1771133096503 HTTP/1.1" 200 4859
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771133145444&t=1771133145444 HTTP/1.1" 200 4805
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 498
+"GET /myapp/admin/overview/dataCount HTTP/1.1" 200 135
+"GET /myapp/admin/overview/count?days=7 HTTP/1.1" 200 66
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771133174830&t=1771133174830 HTTP/1.1" 200 5254
+"OPTIONS /myapp/admin/news/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 0
+"GET /myapp/admin/news/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 62770
+"OPTIONS /myapp/admin/case/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 0
+"GET /myapp/admin/case/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 23177
+"OPTIONS /myapp/admin/faq/list?page=1&pageSize=10 HTTP/1.1" 200 0
+"GET /myapp/admin/faq/list?page=1&pageSize=10 HTTP/1.1" 200 3627
+"OPTIONS /myapp/admin/inquiry/list?page=1&pageSize=10 HTTP/1.1" 200 0
+"GET /myapp/admin/inquiry/list?page=1&pageSize=10 HTTP/1.1" 200 1808
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771133183994&t=1771133183994 HTTP/1.1" 200 5113
+"OPTIONS /myapp/admin/basicSite/list HTTP/1.1" 200 0
+"GET /myapp/admin/basicSite/list HTTP/1.1" 200 428
+"GET /upload/img/favicon.ico HTTP/1.1" 200 16958
+"OPTIONS /myapp/admin/user/list HTTP/1.1" 200 0
+"GET /myapp/admin/user/list HTTP/1.1" 200 1179
+"OPTIONS /myapp/admin/opLog/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 0
+"GET /myapp/admin/opLog/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 1613
+"OPTIONS /myapp/admin/opLog/list?page=2&pageSize=10&keyword= HTTP/1.1" 200 0
+"GET /myapp/admin/opLog/list?page=2&pageSize=10&keyword= HTTP/1.1" 200 1615
+"OPTIONS /myapp/admin/opLog/list?page=3&pageSize=10&keyword= HTTP/1.1" 200 0
+"GET /myapp/admin/opLog/list?page=3&pageSize=10&keyword= HTTP/1.1" 200 1620
+"OPTIONS /myapp/admin/opLog/list?page=4&pageSize=10&keyword= HTTP/1.1" 200 0
+"GET /myapp/admin/opLog/list?page=4&pageSize=10&keyword= HTTP/1.1" 200 1611
+"GET /myapp/admin/opLog/list?page=3&pageSize=10&keyword= HTTP/1.1" 200 1620
+"GET /myapp/admin/opLog/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 1613
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771133228801&t=1771133228801 HTTP/1.1" 200 4653
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771133238302&t=1771133238302 HTTP/1.1" 200 4960
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771133246661&t=1771133246661 HTTP/1.1" 200 5273
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771133250286&t=1771133250286 HTTP/1.1" 200 5046
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771133376612&t=1771133376612 HTTP/1.1" 200 4802
+"GET /myapp/admin/captcha?key=1771133376618&t=1771133376618 HTTP/1.1" 200 5291
+"GET /myapp/admin/captcha?key=1771133376619&t=1771133376619 HTTP/1.1" 200 4869
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771133382214&t=1771133382214 HTTP/1.1" 200 4749
+"GET /myapp/admin/captcha?key=1771133382213&t=1771133382213 HTTP/1.1" 200 4781
+"GET /myapp/admin/captcha?key=1771133382222&t=1771133382222 HTTP/1.1" 200 4805
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771133388584&t=1771133388584 HTTP/1.1" 200 4884
+"GET /myapp/admin/captcha?key=1771133388590&t=1771133388590 HTTP/1.1" 200 5206
+"GET /myapp/admin/captcha?key=1771133388590&t=1771133388590 HTTP/1.1" 200 4907
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771133394410&t=1771133394410 HTTP/1.1" 200 5445
+"GET /myapp/admin/captcha?key=1771133394414&t=1771133394414 HTTP/1.1" 200 4779
+"GET /myapp/admin/captcha?key=1771133394423&t=1771133394423 HTTP/1.1" 200 5126
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771135237467&t=1771135237467 HTTP/1.1" 200 5069
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 498
+"GET /myapp/admin/overview/dataCount HTTP/1.1" 200 135
+"GET /myapp/admin/overview/count?days=7 HTTP/1.1" 200 66
+"GET /myapp/admin/case/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 23177
+"GET /upload/img/1747121224330.jpg HTTP/1.1" 200 187159
+"OPTIONS /myapp/admin/thing/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 0
+"GET /myapp/admin/thing/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 41325
+"OPTIONS /myapp/admin/category/list HTTP/1.1" 200 0
+"GET /myapp/admin/category/list HTTP/1.1" 200 1141
+"GET /myapp/admin/inquiry/list?page=1&pageSize=10 HTTP/1.1" 200 1808
+"GET /myapp/admin/basicSite/list HTTP/1.1" 200 428
+"GET /myapp/admin/inquiry/list?page=1&pageSize=10 HTTP/1.1" 200 1808
+"GET /myapp/admin/basicSite/list HTTP/1.1" 200 428
+"GET /myapp/admin/inquiry/list?page=1&pageSize=10 HTTP/1.1" 200 1808
+"GET /myapp/admin/overview/dataCount HTTP/1.1" 200 135
+"GET /myapp/admin/overview/count?days=7 HTTP/1.1" 200 66
+"OPTIONS /myapp/admin/overview/count?days=30 HTTP/1.1" 200 0
+"GET /myapp/admin/overview/count?days=30 HTTP/1.1" 200 66
+"GET /myapp/admin/user/list HTTP/1.1" 200 1179
+"GET /myapp/admin/basicSite/list HTTP/1.1" 200 428
+"OPTIONS /myapp/admin/advantage/list?page=1&pageSize=10 HTTP/1.1" 200 0
+"GET /myapp/admin/advantage/list?page=1&pageSize=10 HTTP/1.1" 200 1546
+"GET /upload/img/1747478386684.jpg HTTP/1.1" 200 39355
+"GET /upload/img/1747478281945.jpg HTTP/1.1" 200 28515
+"GET /upload/img/1747478238408.jpg HTTP/1.1" 200 20721
+"GET /upload/img/1747478339542.jpg HTTP/1.1" 200 36172
+"GET /upload/img/1747478254293.jpg HTTP/1.1" 200 21265
+"GET /upload/img/1747478349368.jpg HTTP/1.1" 200 15884
+"OPTIONS /myapp/admin/comment/list?page=1&pageSize=10 HTTP/1.1" 200 0
+"GET /myapp/admin/comment/list?page=1&pageSize=10 HTTP/1.1" 200 927
+"GET /upload/img/1745290377932.jpg HTTP/1.1" 200 37017
+"GET /upload/img/1745290367491.jpg HTTP/1.1" 200 36047
+"GET /upload/img/1745290373456.jpg HTTP/1.1" 200 34843
+"OPTIONS /myapp/admin/basicAdditional/list HTTP/1.1" 200 0
+"GET /myapp/admin/basicAdditional/list HTTP/1.1" 200 2510
+"GET /upload/img/1747119228932.jpg HTTP/1.1" 200 153622
+"GET /upload/img/1747119220756.jpg HTTP/1.1" 200 156344
+"GET /upload/img/1747119224816.jpg HTTP/1.1" 200 158761
+"GET /upload/img/1745548221305.jpg HTTP/1.1" 200 422867
+"GET /upload/img/1747118959809.jpg HTTP/1.1" 200 693380
+"GET /upload/img/1747119237581.jpg HTTP/1.1" 200 159551
+"GET /upload/img/1749284325689.jpg HTTP/1.1" 200 159551
+"GET /upload/img/1749284333480.jpg HTTP/1.1" 200 156344
+"GET /upload/img/1749284339181.jpg HTTP/1.1" 200 153622
+"GET /upload/img/1749285458687.jpg HTTP/1.1" 200 94457
+"GET /upload/img/1749284345883.jpg HTTP/1.1" 200 158761
+"GET /upload/img/1749285451165.jpg HTTP/1.1" 200 95123
+"GET /upload/img/1749285462478.jpg HTTP/1.1" 200 84188
+"GET /upload/img/1745053949716.png HTTP/1.1" 200 1645870
+"GET /upload/img/1749285465637.jpg HTTP/1.1" 200 188623
+"GET /upload/img/1749304055336.jpg HTTP/1.1" 200 278175
+"GET /upload/img/1749304060084.jpg HTTP/1.1" 200 334880
+"GET /myapp/admin/inquiry/list?page=1&pageSize=10 HTTP/1.1" 200 1808
+"GET /myapp/admin/faq/list?page=1&pageSize=10 HTTP/1.1" 200 3627
+"OPTIONS /myapp/admin/download/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 0
+"GET /myapp/admin/download/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 1273
+"GET /myapp/admin/faq/list?page=1&pageSize=10 HTTP/1.1" 200 3627
+"GET /myapp/admin/download/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 1273
+"OPTIONS /myapp/admin/cdn/uploadNormalFile HTTP/1.1" 200 0
+"POST /myapp/admin/cdn/uploadNormalFile HTTP/1.1" 200 40
+"OPTIONS /myapp/admin/download/create HTTP/1.1" 200 0
+"POST /myapp/admin/download/create HTTP/1.1" 200 185
+"GET /myapp/admin/download/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 1410
+"GET /myapp/admin/thing/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 41325
+"GET /myapp/admin/category/list HTTP/1.1" 200 1141
+"GET /myapp/admin/category/list HTTP/1.1" 200 1141
+"GET /upload/img/1748226242704.jpeg HTTP/1.1" 200 21482
+"OPTIONS /myapp/admin/thing/update HTTP/1.1" 200 0
+"POST /myapp/admin/thing/update HTTP/1.1" 200 3433
+"GET /myapp/admin/thing/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 41300
+"GET /myapp/admin/category/list HTTP/1.1" 200 1141
+"GET /myapp/admin/category/list HTTP/1.1" 200 1141
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 68
+"GET /myapp/admin/captcha?key=1771135632550&t=1771135632550 HTTP/1.1" 200 5160
+"POST /myapp/admin/adminLogin HTTP/1.1" 200 44
+"GET /myapp/admin/captcha?key=1771135633900&t=1771135633901 HTTP/1.1" 200 5253
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771135642066&t=1771135642066 HTTP/1.1" 200 4709
+"GET /myapp/admin/basicGlobal/listInfo HTTP/1.1" 200 611
+"GET /myapp/admin/captcha?key=1771135645891&t=1771135645891 HTTP/1.1" 200 4533
+"GET /myapp/admin/category/list HTTP/1.1" 200 1141
+"GET /upload/img/1745462532757.jpg HTTP/1.1" 200 79156
+"POST /myapp/admin/thing/update HTTP/1.1" 200 5254
+"GET /myapp/admin/thing/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 41328
+"GET /myapp/admin/category/list HTTP/1.1" 200 1141
+"OPTIONS /myapp/admin/thing/list?page=2&pageSize=10&keyword= HTTP/1.1" 200 0
+"GET /myapp/admin/thing/list?page=2&pageSize=10&keyword= HTTP/1.1" 200 12417
+"GET /myapp/admin/news/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 62770
+"GET /myapp/admin/thing/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 41328
+"GET /myapp/admin/category/list HTTP/1.1" 200 1141
+"GET /myapp/admin/category/list HTTP/1.1" 200 1141
+"OPTIONS /myapp/admin/category/delete HTTP/1.1" 200 0
+"POST /myapp/admin/category/delete HTTP/1.1" 200 41
+"GET /myapp/admin/category/list HTTP/1.1" 200 1040
+"POST /myapp/admin/category/delete HTTP/1.1" 200 41
+"GET /myapp/admin/category/list HTTP/1.1" 200 941
+"POST /myapp/admin/category/delete HTTP/1.1" 200 41
+"GET /myapp/admin/category/list HTTP/1.1" 200 836
+"GET /myapp/admin/news/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 62770
+"GET /myapp/admin/thing/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 41328
+"GET /myapp/admin/category/list HTTP/1.1" 200 836
+"GET /myapp/admin/category/list HTTP/1.1" 200 836
+"GET /upload/img/1745462508547.jpg HTTP/1.1" 200 67214
+"POST /myapp/admin/thing/update HTTP/1.1" 200 3685
+"GET /myapp/admin/thing/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 41353
+"GET /myapp/admin/category/list HTTP/1.1" 200 836
+"GET /myapp/admin/category/list HTTP/1.1" 200 836
+"GET /upload/img/1745462491685.jpg HTTP/1.1" 200 85049
+"POST /myapp/admin/thing/update HTTP/1.1" 200 3652
+"GET /myapp/admin/thing/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 41360
+"GET /myapp/admin/category/list HTTP/1.1" 200 836
+"GET /myapp/admin/category/list HTTP/1.1" 200 836
+"GET /upload/img/1745462405276.jpg HTTP/1.1" 200 84482
+"POST /myapp/admin/thing/update HTTP/1.1" 200 3653
+"GET /myapp/admin/thing/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 41374
+"GET /myapp/admin/category/list HTTP/1.1" 200 836
+"GET /myapp/admin/thing/list?page=2&pageSize=10&keyword= HTTP/1.1" 200 12417
+"GET /myapp/admin/category/list HTTP/1.1" 200 836
+"GET /upload/img/1745462437068.jpg HTTP/1.1" 200 81828
+"POST /myapp/admin/thing/update HTTP/1.1" 200 5177
+"GET /myapp/admin/thing/list?page=2&pageSize=10&keyword= HTTP/1.1" 200 12415
+"GET /myapp/admin/category/list HTTP/1.1" 200 836
+"GET /myapp/admin/category/list HTTP/1.1" 200 836
+"GET /myapp/admin/category/list HTTP/1.1" 200 836
+"GET /myapp/admin/case/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 23177
+"GET /myapp/admin/news/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 62770
+"GET /myapp/admin/opLog/list?page=1&pageSize=10&keyword= HTTP/1.1" 200 1613
+"GET /myapp/admin/opLog/list?page=2&pageSize=10&keyword= HTTP/1.1" 200 1615

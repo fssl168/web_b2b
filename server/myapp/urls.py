@@ -1,10 +1,15 @@
 from django.urls import path
 
 from myapp import views
+from myapp.views.admin import verify_token
+from myapp.views.admin.captcha import CaptchaView, get_captcha_key
 
 app_name = 'myapp'
 urlpatterns = [
     # 后台管理api
+    # 验证码
+    path('admin/captcha', CaptchaView.as_view()),
+    path('admin/captcha/key', get_captcha_key),
     path('admin/overview/count', views.admin.overview.count),
     path('admin/overview/dataCount', views.admin.overview.dataCount),
     path('admin/thing/list', views.admin.thing.list_api),
@@ -70,12 +75,15 @@ urlpatterns = [
     path('admin/user/delete', views.admin.user.delete),
     path('admin/user/updatePwd', views.admin.user.updatePwd),
     path('admin/adminLogin', views.admin.user.admin_login),
+    path('admin/verify-token', verify_token.VerifyTokenView.as_view()),
 
 
     # 前台管理api
     path('index/thing/section', views.index.thing.section),
     path('index/thing/detail', views.index.thing.detail),
     path('index/common/section', views.index.common.section),
+    path('index/common/test', views.index.common.test),
+    path('index/common/simple_test', views.index.common.simple_test),
     path('index/inquiry/create', views.index.inquiry.create),
     path('index/contact/section', views.index.contact.section),
     path('index/about/section', views.index.about.section),

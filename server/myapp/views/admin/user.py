@@ -1,8 +1,11 @@
 # Create your views here.
 import datetime
+from datetime import timedelta
 
 from rest_framework.decorators import api_view, authentication_classes, throttle_classes
 from rest_framework.throttling import AnonRateThrottle
+from django.core.cache import cache
+from django.utils import timezone
 
 from myapp import utils
 from myapp.auth.authentication import AdminTokenAuthtication
@@ -11,11 +14,12 @@ from myapp.models import User
 from myapp.permission.permission import isDemoAdminUser, check_if_demo
 from myapp.serializers import UserSerializer, NormalUserSerializer
 from myapp.utils import md5value, after_call, clear_cache
+from myapp.password_utils import hash_password, verify_password, is_bcrypt_hash
 
 
 class UserRateThrottle(AnonRateThrottle):
-    # 限流 每小时10次
-    THROTTLE_RATES = {"anon": "10/h"}
+    # 限流 每小时50次
+    THROTTLE_RATES = {"anon": "50/h"}
 
 
 @api_view(['POST'])
@@ -24,9 +28,32 @@ def admin_login(request):
     try:
         username = request.data.get('username')
         password = request.data.get('password')
+        captcha_code = request.data.get('captcha_code')  # 验证码
+        captcha_key = request.data.get('captcha_key')  # 验证码key
 
+        # 验证必填字段
         if not username or not password:
             return APIResponse(code=1, msg='用户名或密码不能为空')
+
+        # 验证验证码
+        if not captcha_code or not captcha_key:
+            return APIResponse(code=1, msg='验证码不能为空')
+
+        # 从缓存中获取正确的验证码
+        stored_captcha = cache.get(captcha_key)
+
+        # 验证码不存在或已过期
+        if not stored_captcha:
+            return APIResponse(code=1, msg='验证码已过期，请刷新后重试')
+
+        # 验证码不匹配（不区分大小写）
+        if captcha_code.upper() != stored_captcha.upper():
+            # 清除错误的验证码缓存，防止暴力破解
+            cache.delete(captcha_key)
+            return APIResponse(code=1, msg='验证码错误')
+
+        # 验证通过，清除验证码缓存
+        cache.delete(captcha_key)
 
         try:
             user = User.objects.get(username=username)
@@ -36,15 +63,51 @@ def admin_login(request):
 
         # 检查账号状态
         if user.status == '1':
-            return APIResponse(code=1, msg='用户名或密码错误')
+            return APIResponse(code=1, msg='账号已被禁用')
 
         # 检查用户角色
         if user.role == '2':
             return APIResponse(code=1, msg='用户名或密码错误')
 
+        # 检查账户是否被锁定
+        if user.lock_time:
+            # 检查锁定是否过期
+            if user.lock_time > timezone.now():
+                remaining_time = (user.lock_time - timezone.now()).total_seconds()
+                minutes = int(remaining_time / 60) + 1
+                return APIResponse(code=1, msg=f'账户已被锁定，请在{minutes}分钟后重试')
+            else:
+                # 锁定已过期，重置登录失败次数
+                user.login_attempts = 0
+                user.lock_time = None
+                user.save()
+
         # 验证密码
-        if user.password != utils.md5value(password):
-            return APIResponse(code=1, msg='用户名或密码错误')
+        if not verify_password(password, user.password):
+            # 登录失败，增加失败次数
+            user.login_attempts = (user.login_attempts or 0) + 1
+
+            # 如果失败次数达到5次，锁定账户30分钟
+            if user.login_attempts >= 5:
+                user.lock_time = timezone.now() + timedelta(minutes=30)
+                user.save()
+                return APIResponse(code=1, msg='登录失败次数过多，账户已被锁定30分钟')
+
+            user.save()
+
+            # 返回剩余尝试次数
+            remaining_attempts = 5 - user.login_attempts
+            return APIResponse(code=1, msg=f'用户名或密码错误，剩余尝试次数：{remaining_attempts}')
+
+        # 登录成功，重置登录失败次数
+        user.login_attempts = 0
+        user.lock_time = None
+        user.last_login_time = timezone.now()
+        user.last_login_ip = utils.get_ip(request)
+
+        # 更新密码为bcrypt格式（如果是旧密码）
+        if not is_bcrypt_hash(user.password):
+            user.password = hash_password(password)
 
         # 生成新的token和过期时间
         ts = utils.get_timestamp()
@@ -61,6 +124,7 @@ def admin_login(request):
             return APIResponse(code=1, msg='登录失败')
 
     except Exception as e:
+        print(f"登录异常: {e}")
         return APIResponse(code=1, msg='登录失败')
 
 
@@ -96,7 +160,8 @@ def create(request):
 
         # 准备用户数据
         data = request.data.copy()
-        data['password'] = utils.md5value(password)
+        data['password'] = hash_password(password)  # 使用 bcrypt 加密
+        data['password_hash_type'] = 'bcrypt'  # 标记密码加密类型
         # 设置默认值
         data.setdefault('role', '1')  # 默认为管理员
         data.setdefault('status', '0')  # 默认为启用
@@ -166,7 +231,7 @@ def updatePwd(request):
             return APIResponse(code=1, msg='所有字段不能为空')
 
         # 验证原密码
-        if user.password != utils.md5value(password):
+        if not verify_password(password, user.password):
             return APIResponse(code=1, msg='原密码不正确')
 
         # 验证两次新密码是否一致
@@ -178,7 +243,8 @@ def updatePwd(request):
             return APIResponse(code=1, msg='新密码长度不能少于6位')
 
         # 更新密码
-        user.password = utils.md5value(newPassword1)
+        user.password = hash_password(newPassword1)
+        user.password_hash_type = 'bcrypt'
         # 重置token和过期时间
         ts = utils.get_timestamp()
         user.admin_token = utils.md5value(user.username + str(ts))

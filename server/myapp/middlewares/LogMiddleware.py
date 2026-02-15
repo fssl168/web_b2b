@@ -43,7 +43,7 @@ class OpLogs(MiddlewareMixin):
         # 耗时毫秒/ms
         self.end_time = time.time()  # 响应时间
         access_time = self.end_time - self.start_time
-        self.data['access_time'] = round(access_time * 1000)
+        self.data['access_time'] = str(round(access_time * 1000))
         self.data['re_url'] = request.path
 
         # 入库

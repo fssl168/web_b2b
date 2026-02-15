@@ -37,6 +37,9 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = env('DEBUG')
+
 # SECURITY WARNING: keep the secret key used in production secret!
 # 在生产环境强制要求设置自定义密钥
 if not DEBUG:
@@ -44,9 +47,6 @@ if not DEBUG:
 else:
     # 仅在开发环境使用默认密钥
     SECRET_KEY = env('SECRET_KEY', default='django-insecure-sz@madp0ifx!b)^lg_g!f+5s*w7w_=sjgq-k+erzb%x42$^r!d')
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
 
 LOGGING = {
     'version': 1,
@@ -68,7 +68,8 @@ LOGGING = {
 }
 
 
-ALLOWED_HOSTS = env('ALLOWED_HOSTS')
+# 直接设置ALLOWED_HOSTS以确保正确解析
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -89,11 +90,11 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',  # 跨域配置
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'myapp.middlewares.LogMiddleware.OpLogs'
+    # 'myapp.middlewares.LogMiddleware.OpLogs'
 ]
 
 ROOT_URLCONF = 'server.urls'
@@ -131,7 +132,7 @@ DATABASES = {
         'OPTIONS': {
             'charset': 'utf8mb4',
             'init_command': "SET NAMES 'utf8mb4' COLLATE 'utf8mb4_unicode_ci'",
-            'sql_mode': 'STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION',
+            'sql_mode': 'STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION',
         }
     }
 }
@@ -189,10 +190,39 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # 跨域配置
-CORS_ALLOW_CREDENTIALS = False
+CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = False  # 3.x之前写法
 CORS_ALLOW_ALL_ORIGINS = False  # 3.3以上写法
-CORS_ALLOWED_ORIGINS = []
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'http://mytest.com'
+]
+
+# 允许的请求头
+CORS_ALLOW_HEADERS = [
+    'Content-Type',
+    'Authorization',
+    'ADMINTOKEN',
+    'admintoken',
+    'X-Requested-With',
+]
+
+# 允许的HTTP方法
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'DELETE',
+    'OPTIONS',
+]
+
+# 缓存配置
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    }
+}
 
 
 # django上传文件限制 (内存阈值)

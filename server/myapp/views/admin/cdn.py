@@ -22,29 +22,21 @@ def upload_logo_img(request):
         # 确保存在文件
         myfile = request.FILES.get('my-file')
         if not myfile:
-            return JsonResponse({"code": 1, "message": "No file uploaded."}, status=400)
-
-        # 打印文件大小
-        file_size = myfile.size
-        print('Uploaded file size:', file_size)
+            return JsonResponse({"code": 1, "message": "请选择要上传的文件"}, status=400)
 
         # 文件类型和大小验证
         max_size = CDN_IMAGE_UPLOAD_SIZE
         valid_extensions = ['.png']  # 允许的文件扩展名
 
-        if file_size > max_size:
-            return JsonResponse({"code": 1, "message": "图片太大，需小于5MB"})
+        if myfile.size > max_size:
+            return JsonResponse({"code": 1, "message": f"文件太大，需小于{max_size/(1024*1024):.1f}MB"})
 
-        file_extension = Path(myfile.name).suffix
+        file_extension = Path(myfile.name).suffix.lower()
         if file_extension not in valid_extensions:
-            return JsonResponse({"code": 1, "message": "非法文件格式"})
+            return JsonResponse({"code": 1, "message": f"仅支持{', '.join(valid_extensions)}格式的文件"})
 
         # 生成新文件名
         new_name = "logo.png"
-
-        # 拼接保存路径
-        save_path = os.path.join(MEDIA_ROOT, 'img', new_name)
-        print('save_path------------', save_path)
 
         # 保存文件
         try:
@@ -54,20 +46,14 @@ def upload_logo_img(request):
             if default_storage.exists(relative_path):
                 default_storage.delete(relative_path)
             # 执行保存
-            full_path = default_storage.save(relative_path, myfile)
-            print('File saved at:', full_path)
+            default_storage.save(relative_path, myfile)
 
-            resp_json = {
-                "code": 0,
-                "data": new_name
-            }
-            return JsonResponse(resp_json)
+            return JsonResponse({"code": 0, "data": new_name})
 
         except Exception as e:
-            print('Error saving file:', e)
-            return JsonResponse({"code": 1, "message": "Error saving file."})
+            return JsonResponse({"code": 1, "message": f"文件保存失败: {str(e)}"})
 
-    return JsonResponse({"code": 1, "message": "Invalid request method."})
+    return JsonResponse({"code": 1, "message": "请求方法错误"})
 
 
 # 用于上传Ico图片
@@ -79,29 +65,21 @@ def upload_ico_img(request):
         # 确保存在文件
         myfile = request.FILES.get('my-file')
         if not myfile:
-            return JsonResponse({"code": 1, "message": "No file uploaded."}, status=400)
-
-        # 打印文件大小
-        file_size = myfile.size
-        print('Uploaded file size:', file_size)
+            return JsonResponse({"code": 1, "message": "请选择要上传的文件"}, status=400)
 
         # 文件类型和大小验证
         max_size = CDN_IMAGE_UPLOAD_SIZE
         valid_extensions = ['.ico']  # 允许的文件扩展名
 
-        if file_size > max_size:
-            return JsonResponse({"code": 1, "message": "图片太大，需小于5MB"})
+        if myfile.size > max_size:
+            return JsonResponse({"code": 1, "message": f"文件太大，需小于{max_size/(1024*1024):.1f}MB"})
 
-        file_extension = Path(myfile.name).suffix
+        file_extension = Path(myfile.name).suffix.lower()
         if file_extension not in valid_extensions:
-            return JsonResponse({"code": 1, "message": "非法文件格式"})
+            return JsonResponse({"code": 1, "message": f"仅支持{', '.join(valid_extensions)}格式的文件"})
 
         # 生成新文件名
         new_name = "favicon.ico"
-
-        # 拼接保存路径
-        save_path = os.path.join(MEDIA_ROOT, 'img', new_name)
-        print('save_path------------', save_path)
 
         # 保存文件
         try:
@@ -111,20 +89,14 @@ def upload_ico_img(request):
             if default_storage.exists(relative_path):
                 default_storage.delete(relative_path)
             # 执行保存
-            full_path = default_storage.save(relative_path, myfile)
-            print('File saved at:', full_path)
+            default_storage.save(relative_path, myfile)
 
-            resp_json = {
-                "code": 0,
-                "data": new_name
-            }
-            return JsonResponse(resp_json)
+            return JsonResponse({"code": 0, "data": new_name})
 
         except Exception as e:
-            print('Error saving file:', e)
-            return JsonResponse({"code": 1, "message": "Error saving file."})
+            return JsonResponse({"code": 1, "message": f"文件保存失败: {str(e)}"})
 
-    return JsonResponse({"code": 1, "message": "Invalid request method."})
+    return JsonResponse({"code": 1, "message": "请求方法错误"})
 
 
 # 用于普通上传图片
@@ -136,47 +108,33 @@ def upload_img(request):
         # 确保存在文件
         myfile = request.FILES.get('my-file')
         if not myfile:
-            return JsonResponse({"code": 1, "message": "No file uploaded."}, status=400)
-
-        # 打印文件大小
-        file_size = myfile.size
-        print('Uploaded file size:', file_size)
+            return JsonResponse({"code": 1, "message": "请选择要上传的文件"}, status=400)
 
         # 文件类型和大小验证
         max_size = CDN_IMAGE_UPLOAD_SIZE
         valid_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.ico']  # 允许的文件扩展名
 
-        if file_size > max_size:
-            return JsonResponse({"code": 1, "message": "图片太大，需小于5MB"})
+        if myfile.size > max_size:
+            return JsonResponse({"code": 1, "message": f"文件太大，需小于{max_size/(1024*1024):.1f}MB"})
 
-        file_extension = Path(myfile.name).suffix
+        file_extension = Path(myfile.name).suffix.lower()
         if file_extension not in valid_extensions:
-            return JsonResponse({"code": 1, "message": "非法文件格式"})
+            return JsonResponse({"code": 1, "message": f"仅支持{', '.join(valid_extensions)}格式的文件"})
 
         # 生成新文件名
         new_name = f"{utils.get_timestamp()}{file_extension}"
 
-        # 拼接保存路径
-        save_path = os.path.join(MEDIA_ROOT, 'img', new_name)
-        print('save_path------------', save_path)
-
         # 保存文件
         try:
             # 使用 Django 的默认存储来保存文件
-            full_path = default_storage.save(os.path.join('img', new_name), myfile)
-            print('File saved at:', full_path)
+            default_storage.save(os.path.join('img', new_name), myfile)
 
-            resp_json = {
-                "code": 0,
-                "data": new_name
-            }
-            return JsonResponse(resp_json)
+            return JsonResponse({"code": 0, "data": new_name})
 
         except Exception as e:
-            print('Error saving file:', e)
-            return JsonResponse({"code": 1, "message": "Error saving file."})
+            return JsonResponse({"code": 1, "message": f"文件保存失败: {str(e)}"})
 
-    return JsonResponse({"code": 1, "message": "Invalid request method."})
+    return JsonResponse({"code": 1, "message": "请求方法错误"})
 
 
 # 用于普通上传文件（下载管理）
@@ -188,47 +146,33 @@ def upload_normal_file(request):
         # 确保存在文件
         myfile = request.FILES.get('my-file')
         if not myfile:
-            return JsonResponse({"code": 1, "message": "No file uploaded."}, status=400)
-
-        # 打印文件大小
-        file_size = myfile.size
-        print('Uploaded file size:', file_size)
+            return JsonResponse({"code": 1, "message": "请选择要上传的文件"}, status=400)
 
         # 文件类型和大小验证
         max_size = CDN_FILE_UPLOAD_SIZE
         valid_extensions = ['.jpg', '.jpeg', '.png', '.docx', '.pdf', '.zip', '.rar']  # 允许的文件扩展名
 
-        if file_size > max_size:
-            return JsonResponse({"code": 1, "message": "图片太大，需小于500MB"})
+        if myfile.size > max_size:
+            return JsonResponse({"code": 1, "message": f"文件太大，需小于{max_size/(1024*1024):.1f}MB"})
 
-        file_extension = Path(myfile.name).suffix
+        file_extension = Path(myfile.name).suffix.lower()
         if file_extension not in valid_extensions:
-            return JsonResponse({"code": 1, "message": "非法文件格式"})
+            return JsonResponse({"code": 1, "message": f"仅支持{', '.join(valid_extensions)}格式的文件"})
 
         # 生成新文件名
         new_name = f"{utils.get_timestamp()}{file_extension}"
 
-        # 拼接保存路径
-        save_path = os.path.join(MEDIA_ROOT, 'file', new_name)
-        print('save_path------------', save_path)
-
         # 保存文件
         try:
             # 使用 Django 的默认存储来保存文件
-            full_path = default_storage.save(os.path.join('file', new_name), myfile)
-            print('File saved at:', full_path)
+            default_storage.save(os.path.join('file', new_name), myfile)
 
-            resp_json = {
-                "code": 0,
-                "data": new_name
-            }
-            return JsonResponse(resp_json)
+            return JsonResponse({"code": 0, "data": new_name})
 
         except Exception as e:
-            print('Error saving file:', e)
-            return JsonResponse({"code": 1, "message": "Error saving file."})
+            return JsonResponse({"code": 1, "message": f"文件保存失败: {str(e)}"})
 
-    return JsonResponse({"code": 1, "message": "Invalid request method."})
+    return JsonResponse({"code": 1, "message": "请求方法错误"})
 
 
 # 用于富文本上传文件
@@ -236,7 +180,6 @@ def upload_normal_file(request):
 @authentication_classes([AdminTokenAuthtication])
 def upload_file(request):
     if request.method == 'POST':
-
         # 特殊情况 (需返回特殊json)
         if isDemoAdminUser(request):
             return JsonResponse({"errno": 1, "message": "演示账号无法操作"})
@@ -244,13 +187,9 @@ def upload_file(request):
         # 确保存在文件
         myfile = request.FILES.get('my-file')
         if not myfile:
-            return JsonResponse({"errno": 1, "message": "No file uploaded."}, status=400)
+            return JsonResponse({"errno": 1, "message": "请选择要上传的文件"}, status=400)
 
-        # 打印文件大小
-        file_size = myfile.size
-        print('Uploaded file size:', file_size)
-
-        file_extension = Path(myfile.name).suffix
+        file_extension = Path(myfile.name).suffix.lower()
 
         # 定义文件类型和大小限制
         video_extensions = ['.mp4']
@@ -258,29 +197,24 @@ def upload_file(request):
 
         if file_extension in image_extensions:
             max_size = CDN_IMAGE_UPLOAD_SIZE
-            if file_size > max_size:
-                return JsonResponse({"errno": 1, "message": "图片太大"})
+            if myfile.size > max_size:
+                return JsonResponse({"errno": 1, "message": f"图片太大，需小于{max_size/(1024*1024):.1f}MB"})
 
         elif file_extension in video_extensions:
             max_size = CDN_VIDEO_UPLOAD_SIZE
-            if file_size > max_size:
-                return JsonResponse({"errno": 1, "message": "视频太大"})
+            if myfile.size > max_size:
+                return JsonResponse({"errno": 1, "message": f"视频太大，需小于{max_size/(1024*1024):.1f}MB"})
 
         if file_extension not in image_extensions and file_extension not in video_extensions:
-            return JsonResponse({"errno": 1, "message": "非法文件格式"})
+            return JsonResponse({"errno": 1, "message": f"仅支持{', '.join(image_extensions + video_extensions)}格式的文件"})
 
         # 生成新文件名
         new_name = f"{utils.get_timestamp()}{file_extension}"
 
-        # 拼接保存路径
-        save_path = os.path.join(MEDIA_ROOT, 'file', new_name)
-        print('save_path------------', save_path)
-
         # 保存文件
         try:
             # 使用 Django 的默认存储来保存文件
-            full_path = default_storage.save(os.path.join('file', new_name), myfile)
-            print('File saved at:', full_path)
+            default_storage.save(os.path.join('file', new_name), myfile)
 
             resp_json = {
                 "errno": 0,
@@ -291,7 +225,6 @@ def upload_file(request):
             return JsonResponse(resp_json)
 
         except Exception as e:
-            print('Error saving file:', e)
-            return JsonResponse({"errno": 1, "message": "Error saving file."})
+            return JsonResponse({"errno": 1, "message": f"文件保存失败: {str(e)}"})
 
-    return JsonResponse({"errno": 1, "message": "Invalid request method."})
+    return JsonResponse({"errno": 1, "message": "请求方法错误"})

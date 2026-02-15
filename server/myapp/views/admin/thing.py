@@ -19,6 +19,7 @@ class MyPageNumberPagination(PageNumberPagination):
 
 
 @api_view(['GET'])
+@authentication_classes([AdminTokenAuthtication])
 def list_api(request):
     if request.method == 'GET':
         keyword = request.GET.get("keyword", None)
@@ -41,13 +42,14 @@ def list_api(request):
 
 
 @api_view(['GET'])
+@authentication_classes([AdminTokenAuthtication])
 def detail(request):
     try:
         pk = request.GET.get('id', -1)
         thing = Thing.objects.get(pk=pk)
     except Thing.DoesNotExist:
         utils.log_error(request, '对象不存在')
-        return APIResponse(code=1, msg='对象不存在')
+        return APIResponse(code=0, msg='对象不存在')
 
     if request.method == 'GET':
         serializer = ThingSerializer(thing)
