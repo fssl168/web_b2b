@@ -112,7 +112,7 @@ def admin_login(request):
         # 生成新的token和过期时间
         ts = utils.get_timestamp()
         data = {
-            'admin_token': utils.md5value(username + str(ts)),  # 使用单一时间戳确保一致性
+            'admin_token': utils.generate_secure_token(username),  # 使用安全的token生成函数
             'exp': ts + (24 * 60 * 60 * 1000)  # 24小时过期
         }
 
@@ -155,8 +155,8 @@ def create(request):
             return APIResponse(code=1, msg='该用户名已存在')
 
         # 密码强度验证
-        if len(password) < 6:
-            return APIResponse(code=1, msg='密码长度不能少于6位')
+        if len(password) < 8:
+            return APIResponse(code=1, msg='密码长度不能少于8位')
 
         # 准备用户数据
         data = request.data.copy()
@@ -171,7 +171,7 @@ def create(request):
             user = serializer.save()
             # 生成初始token和过期时间
             ts = utils.get_timestamp()
-            user.admin_token = utils.md5value(username + str(ts))
+            user.admin_token = utils.generate_secure_token(username)
             user.exp = ts + (24 * 60 * 60 * 1000)
             user.save()
             return APIResponse(code=0, msg='创建成功', data=UserSerializer(user).data)
@@ -239,15 +239,15 @@ def updatePwd(request):
             return APIResponse(code=1, msg='两次密码不一致')
 
         # 密码强度验证
-        if len(newPassword1) < 6:
-            return APIResponse(code=1, msg='新密码长度不能少于6位')
+        if len(newPassword1) < 8:
+            return APIResponse(code=1, msg='新密码长度不能少于8位')
 
         # 更新密码
         user.password = hash_password(newPassword1)
         user.password_hash_type = 'bcrypt'
         # 重置token和过期时间
         ts = utils.get_timestamp()
-        user.admin_token = utils.md5value(user.username + str(ts))
+        user.admin_token = utils.generate_secure_token(user.username)
         user.exp = ts + (24 * 60 * 60 * 1000)
         user.save()
 

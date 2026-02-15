@@ -1,7 +1,8 @@
 # Create your views here.
 
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.permissions import AllowAny
 from django.core.cache import cache
 
 from myapp import utils
@@ -26,6 +27,7 @@ class MyPageNumberPagination(PageNumberPagination):
 
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def section(request):
     if request.method == 'GET':
         print(f"Received request: {request.GET}")
@@ -100,6 +102,7 @@ def section(request):
 
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def detail(request):
     data = {}
     try:

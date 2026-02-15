@@ -78,6 +78,10 @@ urlpatterns = [
     path('admin/adminLogin', views.admin.user.admin_login),
     path('admin/verify-token', verify_token.VerifyTokenView.as_view()),
     path('admin/verify-access', verify_access),
+    # 安全事件
+    path('admin/security/list', views.admin.security.list_security_events),
+    path('admin/security/stats', views.admin.security.get_security_stats),
+    path('admin/security/report', views.admin.security.get_security_report),
 
 
     # 前台管理api

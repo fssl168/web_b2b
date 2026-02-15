@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost_3306
+ Source Server         : 本机Mysql
  Source Server Type    : MySQL
- Source Server Version : 50744
- Source Host           : localhost:3306
- Source Schema         : python_my
+ Source Server Version : 80037
+ Source Host           : 127.0.0.1:3306
+ Source Schema         : web_b2b
 
  Target Server Type    : MySQL
- Target Server Version : 50744
+ Target Server Version : 80037
  File Encoding         : 65001
 
- Date: 14/07/2025 10:45:45
+ Date: 15/02/2026 18:30:27
 */
 
 SET NAMES utf8mb4;
@@ -22,11 +22,11 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `auth_group`;
 CREATE TABLE `auth_group`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `name`(`name`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of auth_group
@@ -37,15 +37,15 @@ CREATE TABLE `auth_group`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `auth_group_permissions`;
 CREATE TABLE `auth_group_permissions`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `group_id` int(11) NOT NULL,
-  `permission_id` int(11) NOT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `group_id` int NOT NULL,
+  `permission_id` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `auth_group_permissions_group_id_permission_id_0cd325b0_uniq`(`group_id`, `permission_id`) USING BTREE,
   INDEX `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm`(`permission_id`) USING BTREE,
   CONSTRAINT `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `auth_group_permissions_group_id_b120cbf9_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of auth_group_permissions
@@ -56,14 +56,14 @@ CREATE TABLE `auth_group_permissions`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `auth_permission`;
 CREATE TABLE `auth_permission`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `content_type_id` int(11) NOT NULL,
-  `codename` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `content_type_id` int NOT NULL,
+  `codename` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `auth_permission_content_type_id_codename_01ab375a_uniq`(`content_type_id`, `codename`) USING BTREE,
   CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 97 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 97 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of auth_permission
@@ -170,20 +170,20 @@ INSERT INTO `auth_permission` VALUES (96, 'Can view advantage', 24, 'view_advant
 -- ----------------------------
 DROP TABLE IF EXISTS `auth_user`;
 CREATE TABLE `auth_user`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `password` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `password` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `last_login` datetime(6) NULL DEFAULT NULL,
   `is_superuser` tinyint(1) NOT NULL,
-  `username` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `first_name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `last_name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `username` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `first_name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `last_name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `email` varchar(254) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `is_staff` tinyint(1) NOT NULL,
   `is_active` tinyint(1) NOT NULL,
   `date_joined` datetime(6) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `username`(`username`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of auth_user
@@ -194,15 +194,15 @@ CREATE TABLE `auth_user`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `auth_user_groups`;
 CREATE TABLE `auth_user_groups`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `group_id` int(11) NOT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `group_id` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `auth_user_groups_user_id_group_id_94350c0c_uniq`(`user_id`, `group_id`) USING BTREE,
   INDEX `auth_user_groups_group_id_97559544_fk_auth_group_id`(`group_id`) USING BTREE,
   CONSTRAINT `auth_user_groups_group_id_97559544_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `auth_user_groups_user_id_6a12ed8b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of auth_user_groups
@@ -213,15 +213,15 @@ CREATE TABLE `auth_user_groups`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `auth_user_user_permissions`;
 CREATE TABLE `auth_user_user_permissions`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `permission_id` int(11) NOT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `permission_id` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `auth_user_user_permissions_user_id_permission_id_14a6b632_uniq`(`user_id`, `permission_id`) USING BTREE,
   INDEX `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm`(`permission_id`) USING BTREE,
   CONSTRAINT `auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of auth_user_user_permissions
@@ -232,11 +232,11 @@ CREATE TABLE `auth_user_user_permissions`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `b_about`;
 CREATE TABLE `b_about`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `about_introduction` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `about_cover` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `about_introduction` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `about_cover` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of b_about
@@ -248,12 +248,12 @@ INSERT INTO `b_about` VALUES (1, 'At the heart of [Your Company Name] is an exce
 -- ----------------------------
 DROP TABLE IF EXISTS `b_advantage`;
 CREATE TABLE `b_advantage`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `advantage_image` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `advantage_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `advantage_description` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `advantage_image` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `advantage_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `advantage_description` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of b_advantage
@@ -270,29 +270,29 @@ INSERT INTO `b_advantage` VALUES (7, '1747478349368.jpg', 'One-Stop Services', '
 -- ----------------------------
 DROP TABLE IF EXISTS `b_basic_additional`;
 CREATE TABLE `b_basic_additional`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `additional_mission` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `global_addition_about_image` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `global_addition_company_image` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `param_one_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `param_one_value` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `param_two_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `param_two_value` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `param_three_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `param_three_value` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `param_four_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `param_four_value` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `additional_about` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `global_addition_mission_image` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `global_addition_contact_image` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `ext01` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `ext02` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `ext03` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `ext04` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `ext05` varchar(800) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `ext06` varchar(800) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `additional_mission` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `global_addition_about_image` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `global_addition_company_image` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `param_one_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `param_one_value` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `param_two_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `param_two_value` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `param_three_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `param_three_value` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `param_four_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `param_four_value` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `additional_about` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `global_addition_mission_image` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `global_addition_contact_image` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `ext01` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `ext02` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `ext03` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `ext04` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `ext05` varchar(800) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `ext06` varchar(800) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of b_basic_additional
@@ -304,17 +304,17 @@ INSERT INTO `b_basic_additional` VALUES (1, 'Our mission is to revolutionize the
 -- ----------------------------
 DROP TABLE IF EXISTS `b_basic_banner`;
 CREATE TABLE `b_basic_banner`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `banner_home` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `banner_product` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `banner_about` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `banner_contact` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `banner_news` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `banner_case` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `banner_download` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `banner_faq` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `banner_home` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `banner_product` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `banner_about` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `banner_contact` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `banner_news` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `banner_case` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `banner_download` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `banner_faq` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of b_basic_banner
@@ -326,21 +326,21 @@ INSERT INTO `b_basic_banner` VALUES (1, '1745460011834.jpg#1745460019136.jpg', '
 -- ----------------------------
 DROP TABLE IF EXISTS `b_basic_global`;
 CREATE TABLE `b_basic_global`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `global_phone` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `global_email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `global_company_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `global_address` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `global_wechat` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `global_facebook` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `global_twitter` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `global_linkedin` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `global_whatsapp` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `global_youtube` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `global_instagram` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `global_wechat_qrcode` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `global_phone` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `global_email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `global_company_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `global_address` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `global_wechat` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `global_facebook` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `global_twitter` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `global_linkedin` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `global_whatsapp` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `global_youtube` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `global_instagram` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `global_wechat_qrcode` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of b_basic_global
@@ -352,25 +352,25 @@ INSERT INTO `b_basic_global` VALUES (1, '+86-17801460534', 'kefu308@gmail.com', 
 -- ----------------------------
 DROP TABLE IF EXISTS `b_basic_site`;
 CREATE TABLE `b_basic_site`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `status` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `site_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `site_nickname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `site_logo` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `site_ico` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `site_address` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `site_copyright` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `site_code` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `site_switch_about` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `site_switch_case` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `site_switch_contact` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `site_switch_download` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `site_switch_faq` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `site_switch_news` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `site_switch_product` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `site_gaid` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `status` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `site_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `site_nickname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `site_logo` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `site_ico` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `site_address` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `site_copyright` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `site_code` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `site_switch_about` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `site_switch_case` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `site_switch_contact` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `site_switch_download` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `site_switch_faq` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `site_switch_news` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `site_switch_product` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `site_gaid` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of b_basic_site
@@ -382,33 +382,33 @@ INSERT INTO `b_basic_site` VALUES (2, '1', 'B2B外贸演示站', 'BlueTech', 'lo
 -- ----------------------------
 DROP TABLE IF EXISTS `b_basic_tdk`;
 CREATE TABLE `b_basic_tdk`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `tdk_home_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tdk_home_keywords` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tdk_home_description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tdk_product_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tdk_product_keywords` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tdk_product_description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tdk_about_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tdk_about_keywords` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tdk_about_description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tdk_contact_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tdk_contact_keywords` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tdk_contact_description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tdk_news_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tdk_news_keywords` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tdk_news_description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tdk_case_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tdk_case_keywords` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tdk_case_description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tdk_download_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tdk_download_keywords` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tdk_download_description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tdk_faq_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tdk_faq_keywords` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tdk_faq_description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `tdk_home_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tdk_home_keywords` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tdk_home_description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tdk_product_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tdk_product_keywords` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tdk_product_description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tdk_about_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tdk_about_keywords` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tdk_about_description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tdk_contact_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tdk_contact_keywords` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tdk_contact_description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tdk_news_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tdk_news_keywords` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tdk_news_description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tdk_case_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tdk_case_keywords` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tdk_case_description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tdk_download_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tdk_download_keywords` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tdk_download_description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tdk_faq_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tdk_faq_keywords` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tdk_faq_description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of b_basic_tdk
@@ -420,19 +420,19 @@ INSERT INTO `b_basic_tdk` VALUES (1, '', '', 'Explore our international e-commer
 -- ----------------------------
 DROP TABLE IF EXISTS `b_case`;
 CREATE TABLE `b_case`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `cover` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `seo_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `seo_description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `seo_keywords` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `status` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `cover` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `seo_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `seo_description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `seo_keywords` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `status` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `create_time` datetime(6) NULL DEFAULT NULL,
-  `pv` int(11) NOT NULL,
-  `client` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `pv` int NOT NULL,
+  `client` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of b_case
@@ -458,14 +458,14 @@ INSERT INTO `b_case` VALUES (18, 'Customer Success Story Highlight', '1747121224
 -- ----------------------------
 DROP TABLE IF EXISTS `b_category`;
 CREATE TABLE `b_category`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `cover` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `pid` bigint(20) NOT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `cover` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `pid` bigint NOT NULL,
   `create_time` datetime(6) NULL DEFAULT NULL,
-  `sort` int(11) NOT NULL,
+  `sort` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 49 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 49 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of b_category
@@ -487,13 +487,13 @@ INSERT INTO `b_category` VALUES (48, 'cccccccccc cccccccccc', '1749280975639.jpe
 -- ----------------------------
 DROP TABLE IF EXISTS `b_comment`;
 CREATE TABLE `b_comment`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `comment_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `comment_location` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `comment_content` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `comment_cover` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `comment_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `comment_location` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `comment_content` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `comment_cover` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of b_comment
@@ -507,16 +507,16 @@ INSERT INTO `b_comment` VALUES (4, 'Robort Green', 'USA', 'This B2B website made
 -- ----------------------------
 DROP TABLE IF EXISTS `b_download`;
 CREATE TABLE `b_download`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `summary` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `raw` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `status` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `summary` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `raw` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `status` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `create_time` datetime(6) NULL DEFAULT NULL,
-  `pv` int(11) NOT NULL,
-  `link` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `pv` int NOT NULL,
+  `link` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of b_download
@@ -532,14 +532,14 @@ INSERT INTO `b_download` VALUES (8, 'Product Specification Manual', 'This manual
 -- ----------------------------
 DROP TABLE IF EXISTS `b_error_log`;
 CREATE TABLE `b_error_log`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `ip` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `url` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `method` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `content` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `ip` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `url` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `method` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `content` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `log_time` datetime(6) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of b_error_log
@@ -550,14 +550,14 @@ CREATE TABLE `b_error_log`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `b_faq`;
 CREATE TABLE `b_faq`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `question` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `reply` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `status` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `question` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `reply` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `status` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `create_time` datetime(6) NULL DEFAULT NULL,
-  `pv` int(11) NOT NULL,
+  `pv` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of b_faq
@@ -576,18 +576,18 @@ INSERT INTO `b_faq` VALUES (14, 'How do I return or exchange an item if I am not
 -- ----------------------------
 DROP TABLE IF EXISTS `b_inquiry`;
 CREATE TABLE `b_inquiry`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `tel` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `email` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `company` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `message` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `status` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `tel` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `email` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `company` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `message` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `status` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `create_time` datetime(6) NULL DEFAULT NULL,
-  `pv` int(11) NOT NULL,
-  `ip` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `pv` int NOT NULL,
+  `ip` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 47 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 47 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of b_inquiry
@@ -613,20 +613,20 @@ INSERT INTO `b_inquiry` VALUES (46, 'json tim', '333351534', '3333w2011@gmail.co
 -- ----------------------------
 DROP TABLE IF EXISTS `b_news`;
 CREATE TABLE `b_news`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `summary` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `source` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `cover` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `seo_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `seo_description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `seo_keywords` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `status` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `summary` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `source` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `cover` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `seo_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `seo_description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `seo_keywords` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `status` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `create_time` datetime(6) NULL DEFAULT NULL,
-  `pv` int(11) NOT NULL,
+  `pv` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of b_news
@@ -641,7 +641,7 @@ INSERT INTO `b_news` VALUES (11, 'Logistics Solutions Aid Exporters', 'ShopEase,
 INSERT INTO `b_news` VALUES (12, 'Mobile Shopping Grows Worldwide', 'ShopEase, a leading e-commerce platform, has launched a new AI-powered shopping experience to provide personalized recommendations and improve convenience for customers. The upgrade includes expanded product categories, express delivery, enhanced seller tools, and stronger security. Additionally, ShopEase is promoting sustainable practices with green initiatives and recycling programs, reinforcing its commitment to innovation, customer satisfaction, and environmental responsibility.', 'Yahoo', '1747118718622.jpg', '<p style=\"text-align: start;\"> In an era where digital commerce is becoming increasingly personalized and convenient, ShopEase, a leading e-commerce platform renowned for its commitment to customer satisfaction, is thrilled to announce the launch of its new AI-powered shopping experience. This strategic step reflects ShopEase’s dedication to staying at the forefront of digital innovation and to meeting the ever-evolving needs of modern consumers.</p><p style=\"text-align: start;\"><strong>Reinventing Online Shopping with Artificial Intelligence</strong></p><p style=\"text-align: start;\">Innovation has always driven ShopEase’s growth, and this year marks a significant milestone as the company integrates advanced artificial intelligence (AI) technologies into its platform. The new system analyzes customer preferences, shopping behaviors, and market trends to provide highly accurate product recommendations and tailored promotions. As a result, shoppers can now enjoy an intuitive browsing experience that saves time and makes discovering new products effortless.</p><p style=\"text-align: start;\">\"Our mission at ShopEase is to create a shopping experience that feels personal, convenient, and enjoyable for everyone,\" explains Emily Carter, CEO of ShopEase. \"AI allows us to better understand our customers’ unique tastes and needs, ensuring that every visit to our platform is engaging and truly relevant.\"</p><p style=\"text-align: start;\">Smart features such as predictive search, visual search, and voice-assisted navigation will empower customers to find what they\'re looking for with ease. For instance, users can now take a picture of an item they like, upload it to ShopEase, and instantly receive product suggestions that match or closely resemble the desired item. This level of personalization extends beyond product searches, impacting promotions, discounts, and even curated homepage layouts.</p><p style=\"text-align: start;\"><strong>Boosting Seller Success with Data-Driven Tools</strong></p><p style=\"text-align: start;\">While customers benefit from a richer shopping experience, ShopEase’s new AI suite also brings powerful tools to its community of sellers. Merchants can access real-time analytics about their products, gain insights into shifting consumer demand, and receive actionable recommendations for improving sales performance. Automated inventory management and dynamic pricing tools help sellers respond efficiently to market changes, ensuring competitive prices and product availability without manual intervention.</p><p style=\"text-align: start;\">\"We believe in empowering our sellers because their success is the backbone of our platform,\" says Raj Patel, Vice President of Marketplace Operations. \"By harnessing AI, we’re helping merchants optimize their business strategies and enhance customer engagement at every touchpoint.\"</p><p style=\"text-align: start;\"><strong>Expanding Product Categories and Delivery Options</strong></p><p style=\"text-align: start;\">To further meet customers’ needs, ShopEase is also expanding its product categories and delivery services. The website now offers an extended range of home essentials, electronics, fashion, and groceries, making it a true one-stop shop for everyday living. Newly introduced express and same-day delivery options in select cities ensure that customers receive their orders quickly and reliably, further strengthening ShopEase’s reputation for convenience and dependability.</p><p style=\"text-align: start;\">Additionally, the “ShopEase Fresh” initiative brings farm-to-table groceries and organic produce to urban consumers, promoting healthier lifestyles and supporting local agriculture.</p><p style=\"text-align: start;\"><strong>Enhancing Customer Care and Secure Payments</strong></p><p style=\"text-align: start;\">Recognizing that excellent service and security are pillars of consumer trust, ShopEase has ramped up customer support and payment authentication measures. The newly introduced AI-powered chatbot is available 24/7 to answer questions, resolve issues, and guide shoppers through the buying process. Enhanced encryption and multi-factor authentication safeguard every transaction, giving customers peace of mind while shopping online.</p><p style=\"text-align: start;\">\"Our shoppers’ safety is our top priority,\" notes CIO Hannah Lee. \"By combining advanced technology with friendly, responsive support, we’re building a platform that people can trust for all their shopping needs.\"</p><p style=\"text-align: start;\"><strong>Community Initiatives and Sustainability Efforts</strong></p><p style=\"text-align: start;\">Beyond technology and commerce, ShopEase remains committed to making a positive impact. The company has launched several initiatives aimed at supporting local businesses and promoting sustainability. Through its “Green Shopping” program, ShopEase encourages the sale of eco-friendly products and partners with suppliers that adopt environmentally responsible practices.</p><p style=\"text-align: start;\">In the coming months, the company plans to introduce a trade-in program, allowing customers to recycle used electronics and apparel for store credit, reducing waste and minimizing environmental impact.</p><p style=\"text-align: start;\"><strong>Looking Forward: ShopEase’s Vision for the Future</strong></p><p style=\"text-align: start;\">ShopEase’s recent upgrades underscore its vision for the future: a seamless ecosystem where advanced technology, customer-centric values, and sustainable practices come together to redefine online shopping.</p><p style=\"text-align: start;\">\"We are only at the beginning of what we can do with data and artificial intelligence to make lives easier,\" says CEO Emily Carter. \"The future of e-commerce is not just about selling products – it\'s about forging connections, building trust, and creating value for every member of our community.\"</p><p style=\"text-align: start;\">With continuous innovation, expanded services, and a steadfast focus on quality, ShopEase is positioning itself for further growth and leadership in the e-commerce industry. Both new and long-time users can look forward to an even more engaging and secure shopping experience in the months to come.</p>', '', '', '', '0', '2025-04-19 11:05:11.733774', 0);
 INSERT INTO `b_news` VALUES (13, 'New Markets Attract Foreign Sellers', 'ShopEase, a leading e-commerce platform, has launched a new AI-powered shopping experience to provide personalized recommendations and improve convenience for customers. The upgrade includes expanded product categories, express delivery, enhanced seller tools, and stronger security. Additionally, ShopEase is promoting sustainable practices with green initiatives and recycling programs, reinforcing its commitment to innovation, customer satisfaction, and environmental responsibility.', 'Yahoo', '1747118704917.jpg', '<p style=\"text-align: start;\"> In an era where digital commerce is becoming increasingly personalized and convenient, ShopEase, a leading e-commerce platform renowned for its commitment to customer satisfaction, is thrilled to announce the launch of its new AI-powered shopping experience. This strategic step reflects ShopEase’s dedication to staying at the forefront of digital innovation and to meeting the ever-evolving needs of modern consumers.</p><p style=\"text-align: start;\"><strong>Reinventing Online Shopping with Artificial Intelligence</strong></p><p style=\"text-align: start;\">Innovation has always driven ShopEase’s growth, and this year marks a significant milestone as the company integrates advanced artificial intelligence (AI) technologies into its platform. The new system analyzes customer preferences, shopping behaviors, and market trends to provide highly accurate product recommendations and tailored promotions. As a result, shoppers can now enjoy an intuitive browsing experience that saves time and makes discovering new products effortless.</p><p style=\"text-align: start;\">\"Our mission at ShopEase is to create a shopping experience that feels personal, convenient, and enjoyable for everyone,\" explains Emily Carter, CEO of ShopEase. \"AI allows us to better understand our customers’ unique tastes and needs, ensuring that every visit to our platform is engaging and truly relevant.\"</p><p style=\"text-align: start;\">Smart features such as predictive search, visual search, and voice-assisted navigation will empower customers to find what they\'re looking for with ease. For instance, users can now take a picture of an item they like, upload it to ShopEase, and instantly receive product suggestions that match or closely resemble the desired item. This level of personalization extends beyond product searches, impacting promotions, discounts, and even curated homepage layouts.</p><p style=\"text-align: start;\"><strong>Boosting Seller Success with Data-Driven Tools</strong></p><p style=\"text-align: start;\">While customers benefit from a richer shopping experience, ShopEase’s new AI suite also brings powerful tools to its community of sellers. Merchants can access real-time analytics about their products, gain insights into shifting consumer demand, and receive actionable recommendations for improving sales performance. Automated inventory management and dynamic pricing tools help sellers respond efficiently to market changes, ensuring competitive prices and product availability without manual intervention.</p><p style=\"text-align: start;\">\"We believe in empowering our sellers because their success is the backbone of our platform,\" says Raj Patel, Vice President of Marketplace Operations. \"By harnessing AI, we’re helping merchants optimize their business strategies and enhance customer engagement at every touchpoint.\"</p><p style=\"text-align: start;\"><strong>Expanding Product Categories and Delivery Options</strong></p><p style=\"text-align: start;\">To further meet customers’ needs, ShopEase is also expanding its product categories and delivery services. The website now offers an extended range of home essentials, electronics, fashion, and groceries, making it a true one-stop shop for everyday living. Newly introduced express and same-day delivery options in select cities ensure that customers receive their orders quickly and reliably, further strengthening ShopEase’s reputation for convenience and dependability.</p><p style=\"text-align: start;\">Additionally, the “ShopEase Fresh” initiative brings farm-to-table groceries and organic produce to urban consumers, promoting healthier lifestyles and supporting local agriculture.</p><p style=\"text-align: start;\"><strong>Enhancing Customer Care and Secure Payments</strong></p><p style=\"text-align: start;\">Recognizing that excellent service and security are pillars of consumer trust, ShopEase has ramped up customer support and payment authentication measures. The newly introduced AI-powered chatbot is available 24/7 to answer questions, resolve issues, and guide shoppers through the buying process. Enhanced encryption and multi-factor authentication safeguard every transaction, giving customers peace of mind while shopping online.</p><p style=\"text-align: start;\">\"Our shoppers’ safety is our top priority,\" notes CIO Hannah Lee. \"By combining advanced technology with friendly, responsive support, we’re building a platform that people can trust for all their shopping needs.\"</p><p style=\"text-align: start;\"><strong>Community Initiatives and Sustainability Efforts</strong></p><p style=\"text-align: start;\">Beyond technology and commerce, ShopEase remains committed to making a positive impact. The company has launched several initiatives aimed at supporting local businesses and promoting sustainability. Through its “Green Shopping” program, ShopEase encourages the sale of eco-friendly products and partners with suppliers that adopt environmentally responsible practices.</p><p style=\"text-align: start;\">In the coming months, the company plans to introduce a trade-in program, allowing customers to recycle used electronics and apparel for store credit, reducing waste and minimizing environmental impact.</p><p style=\"text-align: start;\"><strong>Looking Forward: ShopEase’s Vision for the Future</strong></p><p style=\"text-align: start;\">ShopEase’s recent upgrades underscore its vision for the future: a seamless ecosystem where advanced technology, customer-centric values, and sustainable practices come together to redefine online shopping.</p><p style=\"text-align: start;\">\"We are only at the beginning of what we can do with data and artificial intelligence to make lives easier,\" says CEO Emily Carter. \"The future of e-commerce is not just about selling products – it\'s about forging connections, building trust, and creating value for every member of our community.\"</p><p style=\"text-align: start;\">With continuous innovation, expanded services, and a steadfast focus on quality, ShopEase is positioning itself for further growth and leadership in the e-commerce industry. Both new and long-time users can look forward to an even more engaging and secure shopping experience in the months to come.</p>', '', '', '', '0', '2025-04-19 11:05:18.237498', 0);
 INSERT INTO `b_news` VALUES (14, 'Cross-Border Sales Surge Ahead', 'ShopEase, a leading e-commerce platform, has launched a new AI-powered shopping experience to provide personalized recommendations and improve convenience for customers. The upgrade includes expanded product categories, express delivery, enhanced seller tools, and stronger security. Additionally, ShopEase is promoting sustainable practices with green initiatives and recycling programs, reinforcing its commitment to innovation, customer satisfaction, and environmental responsibility.', 'Yahoo', '1747118695771.jpg', '<p style=\"text-align: start;\">Artificial Intelligence (AI) has become one of the most transformative technologies of our time, affecting various sectors from healthcare to finance to transportation. Understanding the history of AI provides valuable insights into its current capabilities and future potential. This article explores the significant developments in AI from its inception to the present day.</p><p style=\"text-align: start;\"><strong>The Early Years: 1950s to 1970s</strong></p><p style=\"text-align: start;\">The concept of artificial intelligence dates back to ancient times, but the term \"Artificial Intelligence\" was first coined by John McCarthy in 1956 during the Dartmouth Conference, which is considered the birthplace of AI as a formal field of study. Early pioneers, including Alan Turing, proposed theories and models for machine intelligence. Turing\'s famous test, introduced in his 1950 paper \"Computing Machinery and Intelligence,” set a benchmark for evaluating a machine\'s ability to exhibit intelligent behavior indistinguishable from a human.</p><p style=\"text-align: start;\">In the 1960s, AI research gained momentum with the development of early algorithms. The LISP programming language, created by McCarthy for AI applications, allowed researchers to create complex programs that could solve problems. However, despite initial enthusiasm, progress was slow, leading to the first \"AI winter\" in the 1970s, a period marked by reduced funding and interest in AI research due to unmet expectations.</p><p style=\"text-align: start;\"><strong>Revival and Growth: 1980s to 1990s</strong></p><p style=\"text-align: start;\">The 1980s witnessed a revival of interest in AI, primarily driven by the emergence of expert systems. These computer programs mimicked the decision-making abilities of human experts and found applications in fields such as medicine and finance. Systems like MYCIN and XCON showcased the potential of AI and garnered commercial interest, leading to significant investments in the technology.</p><p style=\"text-align: start;\">Moreover, advancements in hardware made it possible to execute more complex algorithms. The introduction of parallel processing and increased computing power opened new avenues for AI research. However, by the late 1980s, expert systems experienced another decline, leading to a second AI winter. Critics argued that the limitations of these systems and their inability to adapt to new situations inhibited their growth.</p><p style=\"text-align: start;\"><strong>The Rise of Machine Learning: 1990s to 2010s</strong></p><p style=\"text-align: start;\">The 1990s marked a paradigm shift in AI research with the focus moving from rule-based systems to machine learning (ML). Researchers began to develop algorithms that allowed computers to learn from data rather than relying solely on predefined rules.</p><p style=\"text-align: start;\">One landmark event was IBM\'s Deep Blue defeating world chess champion Garry Kasparov in 1997, showcasing the potential of AI in strategic thinking and problem-solving. This victory generated significant media attention and spurred public interest in AI technologies.</p><p style=\"text-align: start;\">The advent of the internet and the boom of big data in the 2000s provided fertile ground for machine learning algorithms. Techniques such as support vector machines, decision trees, and neural networks started to gain traction. The introduction of deep learning, a subset of ML utilizing artificial neural networks, revolutionized the field, allowing machines to process vast amounts of unstructured data like images and audio.</p><p style=\"text-align: start;\"><strong>The Current Era: 2010s to Present</strong></p><p style=\"text-align: start;\">The past decade has witnessed unprecedented advances in AI technology. Breakthroughs in deep learning have enabled significant improvements in natural language processing (NLP), computer vision, and speech recognition. Technologies such as Google’s AlphaGo defeating the world Go champion in 2016 demonstrated that AI could tackle highly complex and abstract games, further validating its potential.</p><p style=\"text-align: start;\">In addition, companies like OpenAI, Google, and Facebook have developed powerful AI models—like the GPT series and Google\'s BERT—capable of generating human-like text and understanding context, thus transforming how we interact with machines.</p><p style=\"text-align: start;\">Concerns surrounding ethics, privacy, and the societal impact of AI have also become more pronounced. The role of AI in automation, biases in algorithms, and the implications of AI in surveillance raise significant questions that researchers, policymakers, and businesses must address.</p><p style=\"text-align: start;\"><strong>Future Perspectives</strong></p><p style=\"text-align: start;\">As we look to the future, the potential for AI seems limitless. Emerging technologies such as quantum computing could exponentially increase processing power, allowing more complex AI models to flourish. Moreover, advancements in robotics and automation are likely to reshape industries, creating new job opportunities while rendering some roles obsolete.</p><p style=\"text-align: start;\">However, the path forward will require careful consideration of ethical frameworks, regulations, and collaborative efforts among governments, businesses, and researchers. Promoting transparency, fairness, and accountability in AI systems will be crucial to harnessing the technology for the greater good.</p><p style=\"text-align: start;\"><strong>Conclusion</strong></p><p style=\"text-align: start;\">The history of artificial intelligence is a tale of ambition, innovation, and adaptation over several decades. From its humble beginnings in the mid-20th century to its current applications in diverse fields, AI has continually evolved, driven by human curiosity and technological advancements. As we stand on the brink of a new era in AI, understanding its past will help guide efforts to create a future where artificial intelligence serves humanity responsibly and ethically.</p>', '', '', '', '0', '2025-04-19 11:05:27.965356', 0);
-INSERT INTO `b_news` VALUES (15, 'Exporters Boost Online Presence', 'ShopEase, a leading e-commerce platform, has launched a new AI-powered shopping experience to provide personalized recommendations and improve convenience for customers. The upgrade includes expanded product categories, express delivery, enhanced seller tools, and stronger security. Additionally, ShopEase is promoting sustainable practices with green initiatives and recycling programs, reinforcing its commitment to innovation, customer satisfaction, and environmental responsibility.', 'Google', '1747118686146.jpg', '<p style=\"text-align: start;\"><span style=\"font-size: 16px;\">测试文本 The gunman, identified as the stepson of a sheriff’s deputy, arrived on campus an hour before the shooting Thursday and stayed near a parking garage before he walked in and out of buildings and green spaces while firing a handgun just before lunchtime, police said.</span></p><blockquote style=\"text-align: start;\"><span style=\"font-size: 16px;\">In roughly four minutes, officers confronted 20-year-old Phoenix Ikner, a Florida State student, and shot and wounded him, Tallahassee police said.</span></blockquote><p style=\"text-align: start;\"><span style=\"font-size: 16px;\"><strong>Officials have not identified the two men who died, but family members said Robert Morales, a university dining coordinator, was one of them. He worked at Florida State since 2015 and studied criminology there in the early 1990s, according to his LinkedIn profile.😀🙂</strong></span></p><p style=\"text-align: start;\"><span style=\"font-size: 16px;\"><em>The other was Tiru Chabba, 45, a married father of two from Greenville, South Carolina, who was working for food service vendor Aramark, said Michael Wukela, a spokesperson for attorneys hired by the family.</em></span></p><p style=\"text-align: start;\"><span style=\"font-size: 16px;\"><code>The gunman, identified as the stepson of a sheriff’s deputy, arrived on campus an hour before the shooting Thursday and stayed near a parking garage before he walked in and out of buildings and green spaces while firing a handgun just before lunchtime, police said.</code></span></p><ol><li style=\"text-align: start;\"><span style=\"font-size: 16px;\">bbb</span></li><li style=\"text-align: start;\"><span style=\"font-size: 16px;\">aaa</span></li><li style=\"text-align: start;\"><span style=\"font-size: 16px;\">eee</span></li></ol><ul><li style=\"text-align: start;\"><span style=\"font-size: 16px;\">aaa</span></li><li style=\"text-align: start;\"><span style=\"font-size: 16px;\">bbb</span></li><li style=\"text-align: start;\"><span style=\"font-size: 16px;\">ccc</span></li></ul><p style=\"text-align: start;\"><span style=\"font-size: 16px;\"><strong>In roughly four minutes, officers confronted 20-year-old Phoenix Ikner, a Florida State student, and shot and wounded him, Tallahassee police said.</strong></span></p><p style=\"text-align: start;\"><span style=\"font-size: 16px;\"><em>Officials have not identified the two men who died, but family members said Robert Morales, a university dining coordinator, was one of them. He worked at Florida State since 2015 and studied criminology there in the early 1990s, according to his LinkedIn profile.</em></span></p><p style=\"text-align: start;\"><br></p><p style=\"text-align: start;\"><br></p><p style=\"text-align: start;\"><br></p><p style=\"text-align: start;\"><br></p>', '', '', '', '0', '2025-04-19 11:05:34.329587', 0);
+INSERT INTO `b_news` VALUES (15, 'Exporters Boost Online Presence', 'ShopEase, a leading e-commerce platform, has launched a new AI-powered shopping experience to provide personalized recommendations and improve convenience for customers. The upgrade includes expanded product categories, express delivery, enhanced seller tools, and stronger security. Additionally, ShopEase is promoting sustainable practices with green initiatives and recycling programs, reinforcing its commitment to innovation, customer satisfaction, and environmental responsibility.', 'Google', '1747118686146.jpg', '<p style=\"text-align: start;\"><span style=\"font-size: 16px;\">测试文本 The gunman, identified as the stepson of a sheriff’s deputy, arrived on campus an hour before the shooting Thursday and stayed near a parking garage before he walked in and out of buildings and green spaces while firing a handgun just before lunchtime, police said.</span></p><blockquote style=\"text-align: start;\"><span style=\"font-size: 16px;\">In roughly four minutes, officers confronted 20-year-old Phoenix Ikner, a Florida State student, and shot and wounded him, Tallahassee police said.</span></blockquote><p style=\"text-align: start;\"><span style=\"font-size: 16px;\"><strong>Officials have not identified the two men who died, but family members said Robert Morales, a university dining coordinator, was one of them. He worked at Florida State since 2015 and studied criminology there in the early 1990s, according to his LinkedIn profile.??</strong></span></p><p style=\"text-align: start;\"><span style=\"font-size: 16px;\"><em>The other was Tiru Chabba, 45, a married father of two from Greenville, South Carolina, who was working for food service vendor Aramark, said Michael Wukela, a spokesperson for attorneys hired by the family.</em></span></p><p style=\"text-align: start;\"><span style=\"font-size: 16px;\"><code>The gunman, identified as the stepson of a sheriff’s deputy, arrived on campus an hour before the shooting Thursday and stayed near a parking garage before he walked in and out of buildings and green spaces while firing a handgun just before lunchtime, police said.</code></span></p><ol><li style=\"text-align: start;\"><span style=\"font-size: 16px;\">bbb</span></li><li style=\"text-align: start;\"><span style=\"font-size: 16px;\">aaa</span></li><li style=\"text-align: start;\"><span style=\"font-size: 16px;\">eee</span></li></ol><ul><li style=\"text-align: start;\"><span style=\"font-size: 16px;\">aaa</span></li><li style=\"text-align: start;\"><span style=\"font-size: 16px;\">bbb</span></li><li style=\"text-align: start;\"><span style=\"font-size: 16px;\">ccc</span></li></ul><p style=\"text-align: start;\"><span style=\"font-size: 16px;\"><strong>In roughly four minutes, officers confronted 20-year-old Phoenix Ikner, a Florida State student, and shot and wounded him, Tallahassee police said.</strong></span></p><p style=\"text-align: start;\"><span style=\"font-size: 16px;\"><em>Officials have not identified the two men who died, but family members said Robert Morales, a university dining coordinator, was one of them. He worked at Florida State since 2015 and studied criminology there in the early 1990s, according to his LinkedIn profile.</em></span></p><p style=\"text-align: start;\"><br></p><p style=\"text-align: start;\"><br></p><p style=\"text-align: start;\"><br></p><p style=\"text-align: start;\"><br></p>', '', '', '', '0', '2025-04-19 11:05:34.329587', 0);
 INSERT INTO `b_news` VALUES (16, 'Global E-Commerce Sales Reach Record High', 'ShopEase, a leading e-commerce platform, has launched a new AI-powered shopping experience to provide personalized recommendations and improve convenience for customers. The upgrade includes expanded product categories, express delivery, enhanced seller tools, and stronger security. Additionally, ShopEase is promoting sustainable practices with green initiatives and recycling programs, reinforcing its commitment to innovation, customer satisfaction, and environmental responsibility.', 'Google', '1747118675095.jpg', '<p style=\"text-align: start;\">测试文本 The gunman, identified as the stepson of a sheriff’s deputy, <span style=\"font-size: 14px;\">arrived </span>on campus an hour before the shooting Thursday and stayed near a parking garage before he walked in and out of buildings and green spaces while firing a handgun just before lunchtime, police said.</p><p style=\"text-align: start;\">In roughly four minutes, officers confronted 20-year-old Phoenix Ikner, a Florida State student, and shot and wounded him, Tallahassee police said.</p><p style=\"text-align: start;\">Officials have not identified the two men who died, but family members said Robert Morales, a university dining coordinator, was one of them. He worked at Florida State since 2015 and studied criminology there in the early 1990s, according to his LinkedIn profile.</p><p style=\"text-align: start;\">The other was Tiru Chabba, 45, a married father of two from Greenville, South Carolina, who was working for food service vendor Aramark, said Michael Wukela, a spokesperson for attorneys hired by the family.</p><p style=\"text-align: start;\">The gunman, identified as the stepson of a sheriff’s deputy, arrived on campus an hour before the shooting Thursday and stayed near a parking garage before he walked in and out of buildings and green spaces while firing a handgun just before lunchtime, police said.</p><p style=\"text-align: start;\">In roughly four minutes, officers confronted 20-year-old Phoenix Ikner, a Florida State student, and shot and wounded him, Tallahassee police said.</p><p style=\"text-align: start;\">Officials have not identified the two men who died, but family members said Robert Morales, a university dining coordinator, was one of them. He worked at Florida State since 2015 and studied criminology there in the early 1990s, according to his LinkedIn profile.</p><p style=\"text-align: start;\">The other was Tiru Chabba, 45, a married father of two from Greenville, South Carolina, who was working for food service vendor Aramark, said Michael Wukela, a spokesperson for attorneys hired by the family.</p>', 'Test', 'Test', '', '0', '2025-04-24 16:34:00.952110', 0);
 
 -- ----------------------------
@@ -649,16 +649,16 @@ INSERT INTO `b_news` VALUES (16, 'Global E-Commerce Sales Reach Record High', 'S
 -- ----------------------------
 DROP TABLE IF EXISTS `b_op_log`;
 CREATE TABLE `b_op_log`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `re_ip` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `re_ip` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `re_time` datetime(6) NULL DEFAULT NULL,
-  `re_url` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `re_method` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `re_content` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `access_time` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `re_url` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `re_method` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `re_content` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `access_time` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `re_time`(`re_time`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3517 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 3517 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of b_op_log
@@ -719,26 +719,26 @@ INSERT INTO `b_op_log` VALUES (3516, '127.0.0.1', '2025-06-18 09:58:50.441036', 
 -- ----------------------------
 DROP TABLE IF EXISTS `b_thing`;
 CREATE TABLE `b_thing`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `title` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `cover` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `price` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `status` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `cover` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `price` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `status` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `create_time` datetime(6) NULL DEFAULT NULL,
-  `pv` int(11) NOT NULL,
-  `rate` int(11) NOT NULL,
-  `category_id` bigint(20) NULL DEFAULT NULL,
-  `summary` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `seo_description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `seo_keywords` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `seo_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `properties` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `dimension` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `pv` int NOT NULL,
+  `rate` int NOT NULL,
+  `category_id` bigint NULL DEFAULT NULL,
+  `summary` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `seo_description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `seo_keywords` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `seo_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `properties` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `dimension` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `b_thing_category_id_d2a29cf0_fk_b_category_id`(`category_id`) USING BTREE,
   CONSTRAINT `b_thing_category_id_d2a29cf0_fk_b_category_id` FOREIGN KEY (`category_id`) REFERENCES `b_category` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 42 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 42 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of b_thing
@@ -762,49 +762,54 @@ INSERT INTO `b_thing` VALUES (41, '测试商品测试商品测试商品测试商
 -- ----------------------------
 DROP TABLE IF EXISTS `b_user`;
 CREATE TABLE `b_user`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `role` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `status` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `nickname` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `mobile` varchar(13) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `role` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `status` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `nickname` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `mobile` varchar(13) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
   `create_time` datetime(6) NULL DEFAULT NULL,
-  `admin_token` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `token` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `exp` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `admin_token` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `token` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `exp` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `last_login_ip` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `last_login_time` datetime(6) NULL DEFAULT NULL,
+  `lock_time` datetime(6) NULL DEFAULT NULL,
+  `login_attempts` int NOT NULL,
+  `password_hash_type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of b_user
 -- ----------------------------
-INSERT INTO `b_user` VALUES (15, 'admin111', 'c0ce70cfec1aacd2837c491aea1f5e72', '1', '0', NULL, NULL, NULL, NULL, '2025-03-27 10:41:47.208154', 'be73dc828dd0a29015f46826be353de4', NULL, '1750210254545');
-INSERT INTO `b_user` VALUES (17, 'test', 'd1b7fa61d8078d10dd59f70bb526c04c', '3', '0', NULL, NULL, NULL, NULL, '2025-04-30 10:00:48.252369', 'c85d5dc35ea03d20ebfcf50ff08d8ed3', NULL, '1747230024341');
-INSERT INTO `b_user` VALUES (19, 'test2', 'af9a925e89c33993213aa983af348a7b', '3', '0', NULL, NULL, NULL, NULL, '2025-06-10 10:04:58.603713', NULL, NULL, NULL);
-INSERT INTO `b_user` VALUES (20, 'admin', 'bbe926801b93618cbe1548684a3de3f9', '1', '0', NULL, NULL, NULL, NULL, '2025-06-10 10:05:30.228003', NULL, NULL, NULL);
+INSERT INTO `b_user` VALUES (15, 'admin111', 'c0ce70cfec1aacd2837c491aea1f5e72', '1', '0', NULL, NULL, NULL, NULL, '2025-03-27 10:41:47.208154', 'be73dc828dd0a29015f46826be353de4', NULL, '1750210254545', NULL, NULL, NULL, 0, 'bcrypt');
+INSERT INTO `b_user` VALUES (17, 'test', 'd1b7fa61d8078d10dd59f70bb526c04c', '3', '0', NULL, NULL, NULL, NULL, '2025-04-30 10:00:48.252369', 'c85d5dc35ea03d20ebfcf50ff08d8ed3', NULL, '1747230024341', NULL, NULL, NULL, 0, 'bcrypt');
+INSERT INTO `b_user` VALUES (19, 'test2', 'af9a925e89c33993213aa983af348a7b', '3', '0', NULL, NULL, NULL, NULL, '2025-06-10 10:04:58.603713', NULL, NULL, NULL, NULL, NULL, NULL, 0, 'bcrypt');
+INSERT INTO `b_user` VALUES (20, 'admin', 'bbe926801b93618cbe1548684a3de3f9', '1', '0', NULL, NULL, NULL, NULL, '2025-06-10 10:05:30.228003', NULL, NULL, NULL, NULL, NULL, NULL, 0, 'bcrypt');
 
 -- ----------------------------
 -- Table structure for django_admin_log
 -- ----------------------------
 DROP TABLE IF EXISTS `django_admin_log`;
 CREATE TABLE `django_admin_log`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `action_time` datetime(6) NOT NULL,
-  `object_id` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `object_repr` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `action_flag` smallint(5) UNSIGNED NOT NULL,
-  `change_message` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `content_type_id` int(11) NULL DEFAULT NULL,
-  `user_id` int(11) NOT NULL,
+  `object_id` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `object_repr` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `action_flag` smallint UNSIGNED NOT NULL,
+  `change_message` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `content_type_id` int NULL DEFAULT NULL,
+  `user_id` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `django_admin_log_content_type_id_c4bce8eb_fk_django_co`(`content_type_id`) USING BTREE,
   INDEX `django_admin_log_user_id_c564eba6_fk_auth_user_id`(`user_id`) USING BTREE,
   CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of django_admin_log
@@ -815,12 +820,12 @@ CREATE TABLE `django_admin_log`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `django_content_type`;
 CREATE TABLE `django_content_type`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `app_label` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `app_label` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `model` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `django_content_type_app_label_model_76bd3d3b_uniq`(`app_label`, `model`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of django_content_type
@@ -855,12 +860,12 @@ INSERT INTO `django_content_type` VALUES (6, 'sessions', 'session');
 -- ----------------------------
 DROP TABLE IF EXISTS `django_migrations`;
 CREATE TABLE `django_migrations`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `app` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `app` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 61 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 62 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of django_migrations
@@ -925,18 +930,19 @@ INSERT INTO `django_migrations` VALUES (57, 'myapp', '0040_auto_20250430_0957', 
 INSERT INTO `django_migrations` VALUES (58, 'sessions', '0001_initial', '2025-04-30 22:14:05.876252');
 INSERT INTO `django_migrations` VALUES (59, 'myapp', '0041_auto_20250606_1449', '2025-06-06 14:49:35.008844');
 INSERT INTO `django_migrations` VALUES (60, 'myapp', '0042_alter_basicadditional_ext02', '2025-06-07 16:06:21.909162');
+INSERT INTO `django_migrations` VALUES (61, 'myapp', '0043_user_last_login_ip_user_last_login_time_and_more', '2026-02-15 16:23:35.467349');
 
 -- ----------------------------
 -- Table structure for django_session
 -- ----------------------------
 DROP TABLE IF EXISTS `django_session`;
 CREATE TABLE `django_session`  (
-  `session_key` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `session_data` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `session_key` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `session_data` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `expire_date` datetime(6) NOT NULL,
   PRIMARY KEY (`session_key`) USING BTREE,
   INDEX `django_session_expire_date_a5c62663`(`expire_date`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of django_session

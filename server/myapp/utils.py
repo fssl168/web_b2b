@@ -167,3 +167,18 @@ def send_email(
         print("邮件发送成功")
     except smtplib.SMTPException as e:
         print("邮件发送失败, 错误信息:", e)
+
+
+def generate_secure_token(username, secret_key=None):
+    """
+    生成安全的token
+    """
+    from django.conf import settings
+    import secrets
+    
+    secret = secret_key or settings.SECRET_KEY
+    timestamp = get_timestamp()
+    random_string = secrets.token_hex(32)
+    
+    data = f"{username}:{timestamp}:{random_string}:{secret}"
+    return hashlib.sha256(data.encode('utf-8')).hexdigest()

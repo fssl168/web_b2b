@@ -1,5 +1,6 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.permissions import AllowAny
 
 from myapp import utils
 from myapp.handler import APIResponse
@@ -15,6 +16,7 @@ class MyPageNumberPagination(PageNumberPagination):
 
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def section(request):
     if request.method == 'GET':
         sectionData = {}
@@ -55,6 +57,7 @@ def section(request):
 
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def detail(request):
     data = {}
     try:

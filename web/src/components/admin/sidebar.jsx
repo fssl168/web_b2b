@@ -5,7 +5,8 @@ import {
   MailOutlined,
   ProductOutlined,
   SettingOutlined, TableOutlined,
-  UserOutlined
+  UserOutlined,
+  SafetyOutlined
 } from '@ant-design/icons';
 import { Menu } from 'antd';
 import { useRouter, usePathname } from 'next/navigation';
@@ -67,6 +68,11 @@ const items = [
     key: '/admin/log',
     label: '网站日志',
     icon: <TableOutlined />,
+  },
+  {
+    key: '/admin/security',
+    label: '安全事件',
+    icon: <SafetyOutlined />,
   },
 ];
 const SideBar = () => {

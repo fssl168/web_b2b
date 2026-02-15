@@ -1,7 +1,8 @@
 # Create your views here.
 
-from rest_framework.decorators import api_view, throttle_classes
+from rest_framework.decorators import api_view, throttle_classes, permission_classes
 from rest_framework.throttling import AnonRateThrottle
+from rest_framework.permissions import AllowAny
 
 from myapp import utils
 from myapp.handler import APIResponse
@@ -18,6 +19,7 @@ class MyRateThrottle(AnonRateThrottle):
 
 @api_view(['POST'])
 @throttle_classes([MyRateThrottle])
+@permission_classes([AllowAny])
 def create(request):
     data = request.data.copy()
     data['ip'] = utils.get_ip(request)

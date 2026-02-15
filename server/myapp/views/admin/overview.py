@@ -39,7 +39,7 @@ def count(request):
 
 
 @api_view(['GET'])
-# @authentication_classes([AdminTokenAuthtication])
+@authentication_classes([AdminTokenAuthtication])
 def dataCount(request):
     if request.method == 'GET':
         today = timezone.now().date()

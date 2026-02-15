@@ -59,16 +59,67 @@ else:
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(asctime)s [%(levelname)s] [%(module)s] %(message)s',
+            'datefmt': '%Y-%m-%d %H:%M:%S'
+        },
+        'simple': {
+            'format': '%(asctime)s [%(levelname)s] %(message)s',
+            'datefmt': '%Y-%m-%d %H:%M:%S'
+        },
+    },
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
     'handlers': {
         'file': {
             'level': 'INFO',
             'class': 'logging.FileHandler',
             'filename': os.path.join(BASE_DIR, 'info.log'),
+            'formatter': 'verbose',
+        },
+        'error_file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'error.log'),
+            'formatter': 'verbose',
+        },
+        'security_file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'security.log'),
+            'formatter': 'verbose',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
         },
     },
     'loggers': {
         'django': {
-            'handlers': ['file'],
+            'handlers': ['file', 'error_file', 'console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'django.security': {
+            'handlers': ['security_file', 'error_file'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'django.request': {
+            'handlers': ['error_file'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+        'myapp': {
+            'handlers': ['file', 'error_file', 'security_file'],
             'level': 'INFO',
             'propagate': True,
         },
@@ -78,7 +129,8 @@ LOGGING = {
 
 # 直接设置ALLOWED_HOSTS以确保正确解析
 # 生产环境请配置具体域名，如: ['example.com', 'www.example.com']
-ALLOWED_HOSTS = env('ALLOWED_HOSTS', default=['localhost', '127.0.0.1'])
+# 开发环境允许所有主机以避免DisallowedHost错误
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -105,6 +157,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # 'myapp.middlewares.LogMiddleware.OpLogs'
     'myapp.middlewares.AdminProtectionMiddleware.AdminProtectionMiddleware',
+    'myapp.middlewares.SecurityLoggingMiddleware.SecurityLoggingMiddleware',
 ]
 
 # 后台防黑保护设置
@@ -260,18 +313,21 @@ SENDER_PASS = env('SENDER_PASS')
 # BASE_HOST_URL = 'http://127.0.0.1:8000'
 BASE_HOST_URL = 'http://mytest.com'
 
+# 安全团队配置
+SECURITY_TEAM_EMAILS = env('SECURITY_TEAM_EMAILS', default=[])  # 安全团队邮箱列表
+
 # ========================================
 # 生产环境安全配置
 # ========================================
 if not DEBUG:
-    # HTTPS 相关配置（需要在部署HTTPS后启用）
-    # SECURE_SSL_REDIRECT = True
-    # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    # HTTPS 相关配置
+    SECURE_SSL_REDIRECT = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     
     # HSTS - 强制使用HTTPS
-    # SECURE_HSTS_SECONDS = 31536000  # 1年
-    # SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    # SECURE_HSTS_PRELOAD = True
+    SECURE_HSTS_SECONDS = 31536000  # 1年
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
     
     # 安全响应头
     SECURE_CONTENT_TYPE_NOSNIFF = True
@@ -282,16 +338,24 @@ if not DEBUG:
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_HTTPONLY = True
     CSRF_COOKIE_HTTPONLY = True
-    SESSION_COOKIE_SAMESITE = 'Lax'
-    CSRF_COOKIE_SAMESITE = 'Lax'
+    SESSION_COOKIE_SAMESITE = 'Strict'
+    CSRF_COOKIE_SAMESITE = 'Strict'
     
     # 其他安全配置
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
+    
+    # 内容安全策略（CSP）
+    # 注意：需要根据实际情况调整CSP策略
+    # SECURE_CONTENT_SECURITY_POLICY = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:;"
 else:
     # 开发环境配置
     SESSION_COOKIE_SECURE = False
     CSRF_COOKIE_SECURE = False
+    SESSION_COOKIE_HTTPONLY = True
+    CSRF_COOKIE_HTTPONLY = True
+    SESSION_COOKIE_SAMESITE = 'Lax'
+    CSRF_COOKIE_SAMESITE = 'Lax'
 
 # REST Framework 配置
 REST_FRAMEWORK = {

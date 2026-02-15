@@ -1,7 +1,8 @@
 from django.core.cache import cache
 from django.db.models import Q
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
 
 from myapp.handler import APIResponse
 from myapp.models import BasicSite, Category, BasicGlobal
@@ -45,6 +46,7 @@ def test(request):
 
 @csrf_exempt
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def section(request):
     """
     获取导航和页脚数据的接口

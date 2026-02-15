@@ -2,8 +2,8 @@ import axios from 'axios';
 
 // 创建 axios 实例
 const api = axios.create({
-    // 在服务器端渲染时，使用 127.0.0.1 而不是 localhost
-    baseURL: typeof window !== 'undefined' ? process.env.NEXT_PUBLIC_DJANGO_BASE_URL : 'http://127.0.0.1:8000',
+    // 在服务器端渲染时，使用 localhost 而不是 127.0.0.1
+    baseURL: typeof window !== 'undefined' ? process.env.NEXT_PUBLIC_DJANGO_BASE_URL : 'http://localhost:8000',
     timeout: 15000, // 设置请求超时时间
     headers: {
         'Content-Type': 'application/json',

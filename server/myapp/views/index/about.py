@@ -1,5 +1,6 @@
 from django.core.cache import cache
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
 
 from myapp.handler import APIResponse
 from myapp.models import BasicSite, Category, BasicGlobal, BasicBanner, Thing, BasicTdk, BasicAdditional, Advantage
@@ -8,6 +9,7 @@ from myapp.serializers import CategorySerializer, BasicGlobalSerializer, ThingSe
 
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def section(request):
     if request.method == 'GET':
 

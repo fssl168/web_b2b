@@ -1,5 +1,6 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.permissions import AllowAny
 
 from myapp import utils
 from myapp.handler import APIResponse
@@ -15,26 +16,37 @@ class MyPageNumberPagination(PageNumberPagination):
 
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def section(request):
     if request.method == 'GET':
         sectionData = {}
 
         # seo数据
         basicTdk = BasicTdk.get_solo()
-        sectionData['seoData'] = {
-            'seo_title': basicTdk.tdk_case_title,
-            'seo_description': basicTdk.tdk_case_description,
-            'seo_keywords': basicTdk.tdk_case_keywords,
-        }
+        if basicTdk:
+            sectionData['seoData'] = {
+                'seo_title': basicTdk.tdk_case_title,
+                'seo_description': basicTdk.tdk_case_description,
+                'seo_keywords': basicTdk.tdk_case_keywords,
+            }
+        else:
+            sectionData['seoData'] = {
+                'seo_title': 'Case',
+                'seo_description': 'Case',
+                'seo_keywords': 'Case',
+            }
 
         # siteName
         basicSite = BasicSite.get_solo()
-        basicSiteSerializer = BasicSiteSerializer(basicSite, many=False)
-        sectionData['siteName'] = basicSiteSerializer.data['site_name']
+        if basicSite:
+            basicSiteSerializer = BasicSiteSerializer(basicSite, many=False)
+            sectionData['siteName'] = basicSiteSerializer.data.get('site_name', 'B2B外贸演示站')
+        else:
+            sectionData['siteName'] = 'B2B外贸演示站'
 
         # banner数据
         basicBanner = BasicBanner.get_solo()
-        sectionData['bannerData'] = basicBanner.banner_case
+        sectionData['bannerData'] = basicBanner.banner_case if basicBanner else ''
 
         # 分页列表
         cases = Case.objects.all().order_by('-create_time')
@@ -50,6 +62,7 @@ def section(request):
 
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def detail(request):
     data = {}
     try:

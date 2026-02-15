@@ -28,6 +28,9 @@
 4. **前端cookie设置HttpOnly冲突**：修复了axios.js中的cookie设置，移除了HttpOnly属性，因为在前端JavaScript中设置该属性是无效的。
 5. **管理员删除保护逻辑不完善**：修复了user.py中的管理员删除保护逻辑，确保即使管理员处于非激活状态，也不会删除最后一个管理员账号。
 6. **默认密钥安全隐患**：修复了settings.py中的SECRET_KEY设置，在生产环境强制要求设置自定义密钥，保留开发环境的默认密钥以便于开发。
+7. **安全事件通知**：添加了incident_response.py中的安全事件通知功能，当发生安全事件时，会通知管理员和安全团队。
+9. **安全事件日志**：添加了incident_response.py中的安全事件日志功能，记录所有安全事件的详细信息。
+
 
 #### 升级的依赖
 - **前端**：将@next/third-parties和eslint-config-next升级到与Next.js 16.1.6兼容的版本
@@ -76,22 +79,15 @@ mysql> use xxx(数据库名);
 mysql> source D:/xxx/xxx/xxx.sql;
 ```
 
-(4) 配置数据库。在server目录下的server下的settings.py中配置您的数据库账号密码
+(4) 配置数据库。在server目录下的.env中配置您的数据库账号密码
 
 ```
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'python_db',   # 您的数据库
-        'USER': 'root',        # 您的用户名
-        'PASSWORD': 'xxxxx', # 您的密码
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'OPTIONS': {
-            "init_command": "SET foreign_key_checks = 0;",
-        }
-    }
-}
+# Database settings
+DB_NAME=web_b2b
+DB_USER=root
+DB_PASSWORD=root123456
+DB_HOST=localhost
+DB_PORT=3306
 ```
 
 (5) 启动django服务。在server目录下执行：
@@ -117,6 +113,36 @@ npm run build
 ```
 npm run start
 ```
+
+#### 开发环境启动脚本 (start-dev.sh)
+
+```bash
+./start-dev.sh
+```
+
+此脚本将：
+1. 设置 DJANGO_ENV=development 环境变量
+2. 在新终端窗口中启动 Django 后端 (端口 8000)
+3. 在新终端窗口中启动 Next.js 前端 (端口 3000)
+
+#### 生产环境启动脚本 (start-prod.sh)
+
+```bash
+./start-prod.sh
+```
+
+此脚本将：
+1. 设置 DJANGO_ENV=production 环境变量
+2. 检查 .env.production 中的 SECRET_KEY 是否已更改
+3. 启动 Django 后端 (端口 8000)
+
+### 使用前准备
+
+1. 确保已安装 Python 和 Node.js
+2. 在 Debian/Ubuntu 系统上，给脚本添加可执行权限：
+   ```bash
+   chmod +x start-dev.sh start-prod.sh
+   ```
 
 ### nginx配置
 
@@ -189,8 +215,19 @@ server {
 
 ```
 
+### 注意事项
 
+1 **SECRET_KEY**: 请使用安全的随机值，可用以下方式生成：
+```python
+python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+```
 
+2 **HTTPS**: 部署 HTTPS 后，取消注释 settings.py 中的 HTTPS 配置：
+```python
+SECURE_SSL_REDIRECT = True
+SECURE_HSTS_SECONDS = 31536000
+# ...
+```
 
 
 ## 付费咨询
@@ -214,4 +251,8 @@ server {
 
 **4. 后台管理的默认账号密码是？**
 
-答：管理员账号密码是：admin123 / admin123
+答：管理员账号密码是：admin / admin123
+
+**5. 项目不否已达线等保安全标准！**
+
+项目已经实施了大部分安全措施，包括验证码、bcrypt加密、账户锁定、后台保护等。主要风险点已经修复，包括CSRF保护、ALLOWED_HOSTS配置、环境变量管理等。

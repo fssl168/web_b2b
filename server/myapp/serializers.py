@@ -166,6 +166,18 @@ class AboutSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     create_time = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S', required=False)
+    
+    def validate_password(self, value):
+        """
+        验证密码强度
+        """
+        if value and len(value) < 8:
+            raise serializers.ValidationError('密码长度不能少于8位')
+        if value and not any(char.isdigit() for char in value):
+            raise serializers.ValidationError('密码必须包含至少一个数字')
+        if value and not any(char.isalpha() for char in value):
+            raise serializers.ValidationError('密码必须包含至少一个字母')
+        return value
 
     class Meta:
         model = User

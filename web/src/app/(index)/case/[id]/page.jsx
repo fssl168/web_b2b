@@ -25,25 +25,37 @@ const getCaseDetailCached = cache(async (id) => {
 
 // 动态生成metadata
 export async function generateMetadata({params}) {
-    // 读取路由参数
-    const {id} = params;
+    // 读取路由参数 (params is a Promise in Next.js 13+)
+    const resolvedParams = await params;
+    const {id} = resolvedParams;
 
     // 使用缓存的函数获取案例详情数据
     const data = await getCaseDetailCached(id);
+
+    // 检查数据是否存在
+    if (!data || !data.detailData) {
+        return {
+            title: 'Case Detail',
+            description: 'Case Detail',
+            keywords: 'Case Detail',
+        };
+    }
 
     // 从详情数据中提取信息
     const {seo_title, seo_description, seo_keywords, title} = data.detailData;
 
     // 返回动态生成的metadata
     return {
-        title: seo_title || title,
-        description: seo_description || title,
-        keywords: seo_keywords || title,
+        title: seo_title || title || 'Case Detail',
+        description: seo_description || title || 'Case Detail',
+        keywords: seo_keywords || title || 'Case Detail',
     };
 }
 
 export default async function Page({params}) {
-    const {id} = params;
+    // 读取路由参数 (params is a Promise in Next.js 13+)
+    const resolvedParams = await params;
+    const {id} = resolvedParams;
 
     // 使用相同的缓存函数获取数据
     const data = await getCaseDetailCached(id);
