@@ -33,6 +33,24 @@ export default function UserList() {
             ellipsis: true,
         },
         {
+            title: '邮箱',
+            dataIndex: 'email',
+            key: 'email',
+            width: '220px',
+            textWrap: 'word-break',
+            ellipsis: true,
+            render: (text) => <div>{text || '-'}</div>,
+        },
+        {
+            title: '手机号',
+            dataIndex: 'mobile',
+            key: 'mobile',
+            width: '150px',
+            textWrap: 'word-break',
+            ellipsis: true,
+            render: (text) => <div>{text || '-'}</div>,
+        },
+        {
             title: '角色',
             dataIndex: 'role',
             key: 'role',
@@ -43,12 +61,12 @@ export default function UserList() {
             key: 'action',
             fixed: 'right',
             align: 'center',
-            width: '180px',
+            width: '250px',
             textWrap: 'word-break',
             ellipsis: true,
             render: (_, item) => (
                 <Space size="middle">
-
+                    <a className="text-adminPrimaryColor" onClick={() => openModal(item)}>编辑</a>
                     <a className="text-adminPrimaryColor" onClick={() => openPasswordModal(item)}>修改密码</a>
                     <Popconfirm
                         title="确定删除？"

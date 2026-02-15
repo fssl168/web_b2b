@@ -1,12 +1,13 @@
 'use client';
 import React, {useEffect, useState} from "react";
-import {Button, Divider, Input, InputNumber, message, Modal, Select, Spin} from "antd";
+import {Button, Divider, Input, InputNumber, message, Modal, Select, Spin, App} from "antd";
 import FormLabel from "@/components/admin/formLabel";
 import axiosInstance from "@/utils/axios";
 import TextArea from "antd/es/input/TextArea";
 
 
 const PasswordModal = ({isOpen, onRequestClose, initialItem}) => {
+    const { message: antdMessage } = App.useApp();
     const [currentItem, setCurrentItem] = useState(initialItem || {});
     const [loading, setLoading] = useState(false);
 
@@ -35,15 +36,15 @@ const PasswordModal = ({isOpen, onRequestClose, initialItem}) => {
                 formData.append('id', currentItem.id);
             }
             if (!currentItem.password) {
-                message.error('不能为空')
+                antdMessage.error('不能为空')
                 return;
             }
             if (!currentItem.newPassword1) {
-                message.error('不能为空')
+                antdMessage.error('不能为空')
                 return;
             }
             if (!currentItem.newPassword2) {
-                message.error('不能为空')
+                antdMessage.error('不能为空')
                 return;
             }
             formData.append('password', currentItem.password || '');
@@ -52,10 +53,10 @@ const PasswordModal = ({isOpen, onRequestClose, initialItem}) => {
             setLoading(true);
             const {code, msg, data} = await axiosInstance.post(post_url, formData);
             if (code === 0) {
-                message.success("操作成功")
+                antdMessage.success("操作成功")
                 onRequestClose(true);
             } else {
-                message.error(msg || '网络异常')
+                antdMessage.error(msg || '网络异常')
             }
             setLoading(false);
         } catch (err) {

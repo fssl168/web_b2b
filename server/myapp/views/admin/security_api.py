@@ -238,7 +238,8 @@ def get_security_overview(request):
         return APIResponse(code=0, data={
             'two_factor': {
                 'enabled': user.two_factor_enabled,
-                'method': user.two_factor_method
+                'method': user.two_factor_method,
+                'has_email': bool(user.email)
             },
             'password': password_info,
             'devices': {

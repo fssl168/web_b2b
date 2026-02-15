@@ -12,7 +12,8 @@ const nextConfig = {
         NEXT_PUBLIC_CLOUDINARY_PRESET_NAME: "fi0lxkc1",
     },
     images: {
-        domains: [process.env.NEXT_PUBLIC_HOST],
+        domains: [process.env.NEXT_PUBLIC_HOST, 'localhost'],
+        unoptimized: true, // 禁用图片优化，避免私有IP限制
     },
     swcMinify: true,
     compiler: {

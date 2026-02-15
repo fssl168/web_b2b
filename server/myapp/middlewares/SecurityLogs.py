@@ -171,6 +171,10 @@ class SecurityLoggingMiddleware(MiddlewareMixin):
         
         # 检查是否有Referer或Origin头
         if not referer and not origin:
+            # 对于本地IP（开发环境），放宽检测
+            client_ip = request.META.get('REMOTE_ADDR', '')
+            if client_ip in ['127.0.0.1', 'localhost', '::1']:
+                return None
             # 对于敏感操作，缺少Referer/Origin可能是CSRF攻击
             if '/admin/' in request.path:
                 return "Missing Referer and Origin headers for sensitive operation"
@@ -190,7 +194,9 @@ class SecurityLoggingMiddleware(MiddlewareMixin):
         # 检查Host头是否与Referer/Origin匹配
         if host and referer:
             referer_host = self._extract_host(referer)
-            if referer_host and referer_host != host:
+            # 从host中移除端口号进行比较
+            host_without_port = host.split(':')[0]
+            if referer_host and referer_host != host_without_port:
                 return f"Host mismatch: Host={host}, Referer={referer_host}"
         
         return None

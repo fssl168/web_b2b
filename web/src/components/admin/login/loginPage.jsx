@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Button, Input, Spin, App} from "antd";
+import {Button, Input, Spin, App, Modal, message as AntdMessage} from "antd";
 import axiosInstance, { setCookie } from "@/utils/axios";
 import {useRouter} from "next/navigation";
 import { UserOutlined } from '@ant-design/icons';
@@ -19,6 +19,11 @@ const LoginPage = () => {
     const [captchaUrl, setCaptchaUrl] = useState("");
 
     const [wechat, setWechat] = useState("");
+    const [show2FAModal, setShow2FAModal] = useState(false);
+    const [twoFactorCode, setTwoFactorCode] = useState("");
+    const [tempToken, setTempToken] = useState("");
+    const [emailMasked, setEmailMasked] = useState("");
+    const [verifying2FA, setVerifying2FA] = useState(false);
 
     useEffect(() => {
         setYear(new Date().getFullYear());
@@ -35,6 +40,45 @@ const LoginPage = () => {
 
     const handleInputChange = (name, value) => {
         setCurrentItem((prev) => ({...prev, [name]: value}));
+    };
+
+    const verify2FA = async () => {
+        if (!twoFactorCode) {
+            message.error('验证码不能为空');
+            return;
+        }
+        try {
+            setVerifying2FA(true);
+            const url = `${process.env.NEXT_PUBLIC_DJANGO_BASE_URL}/myapp/admin/verify-2fa-login`;
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    temp_token: tempToken,
+                    code: twoFactorCode
+                })
+            });
+            
+            const {code, msg, data} = await response.json();
+            if (code === 0) {
+                message.success("登录成功");
+                setCookie('admintoken', data.admin_token);
+                setCookie('username', data.username);
+                setShow2FAModal(false);
+                // 添加短暂延迟，确保cookie被正确设置
+                setTimeout(() => {
+                    router.push('/admin/main');
+                }, 100);
+            } else {
+                message.error(msg || '验证失败');
+            }
+            setVerifying2FA(false);
+        } catch (err) {
+            message.error('网络异常');
+            setVerifying2FA(false);
+        }
     };
 
     const login = async () => {
@@ -71,6 +115,12 @@ const LoginPage = () => {
                 setTimeout(() => {
                     router.push('/admin/main');
                 }, 100);
+            } else if (code === 3) {
+                // 需要双因素认证
+                setTempToken(data.temp_token);
+                setEmailMasked(data.email_masked);
+                setShow2FAModal(true);
+                message.info('请输入邮箱验证码');
             } else {
                 message.error(msg || '网络异常');
                 refreshCaptcha();
@@ -228,6 +278,43 @@ const LoginPage = () => {
                     <p className="mt-1">技术支持微信: {wechat}</p>
                 </div>
             </div>
+
+            {/* 双因素认证模态框 */}
+            <Modal
+                title="双因素认证"
+                open={show2FAModal}
+                onCancel={() => setShow2FAModal(false)}
+                footer={[
+                    <Button key="cancel" onClick={() => setShow2FAModal(false)}>
+                        取消
+                    </Button>,
+                    <Button
+                        key="submit"
+                        type="primary"
+                        loading={verifying2FA}
+                        onClick={verify2FA}
+                    >
+                        验证
+                    </Button>
+                ]}
+            >
+                <div className="space-y-4">
+                    <p>验证码已发送至您的邮箱: <strong>{emailMasked}</strong></p>
+                    <p className="text-sm text-gray-500">请查收邮件并输入6位验证码</p>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                            验证码
+                        </label>
+                        <Input
+                            placeholder="请输入6位验证码"
+                            value={twoFactorCode}
+                            onChange={(e) => setTwoFactorCode(e.target.value)}
+                            maxLength={6}
+                            style={{ width: '100%' }}
+                        />
+                    </div>
+                </div>
+            </Modal>
         </div>
     );
 };

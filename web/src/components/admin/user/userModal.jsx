@@ -1,12 +1,13 @@
 'use client';
 import React, {useEffect, useState} from "react";
-import {Button, Divider, Input, InputNumber, message, Modal, Select, Spin} from "antd";
+import {Button, Divider, Input, InputNumber, message, Modal, Select, Spin, App} from "antd";
 import FormLabel from "@/components/admin/formLabel";
 import axiosInstance from "@/utils/axios";
 import TextArea from "antd/es/input/TextArea";
 
 
 const UserModal = ({isOpen, onRequestClose, initialItem}) => {
+    const { message: antdMessage } = App.useApp();
     const [currentItem, setCurrentItem] = useState(initialItem || {});
     const [loading, setLoading] = useState(false);
 
@@ -29,30 +30,37 @@ const UserModal = ({isOpen, onRequestClose, initialItem}) => {
 
     const handleSave = async () => {
         try {
-            const post_url = '/myapp/admin/user/create';
+            const post_url = currentItem.id ? '/myapp/admin/user/update' : '/myapp/admin/user/create';
             const formData = new FormData();
             if (currentItem.id) {
                 formData.append('id', currentItem.id);
             }
             if(!currentItem.username){
-                message.error('用户名不能为空');
-            }
-            if(!currentItem.password){
-                message.error('密码不能为空');
+                antdMessage.error('用户名不能为空');
+                return;
             }
             if(!currentItem.role){
-                message.error('角色不能为空');
+                antdMessage.error('角色不能为空');
+                return;
+            }
+            if(!currentItem.password && !currentItem.id){
+                antdMessage.error('密码不能为空');
+                return;
             }
             formData.append('username', currentItem.username || '');
-            formData.append('password', currentItem.password || '');
+            if (currentItem.password) {
+                formData.append('password', currentItem.password);
+            }
             formData.append('role', currentItem.role || '');
+            formData.append('email', currentItem.email || '');
+            formData.append('mobile', currentItem.mobile || '');
             setLoading(true);
             const {code, msg, data} = await axiosInstance.post(post_url, formData);
             if (code === 0) {
-                message.success("操作成功")
+                antdMessage.success("操作成功")
                 onRequestClose(true);
             } else {
-                message.error(msg || '网络异常')
+                antdMessage.error(msg || '网络异常')
             }
             setLoading(false);
         } catch (err) {
@@ -86,8 +94,8 @@ const UserModal = ({isOpen, onRequestClose, initialItem}) => {
                                            style={{width: 400}}/>
                                 </div>
                                 <div className="flex flex-row gap-4">
-                                    <FormLabel title="密码" required={true}></FormLabel>
-                                    <Input.Password placeholder="请输入" value={currentItem.password}
+                                    <FormLabel title="密码" required={currentItem.id ? false : true}></FormLabel>
+                                    <Input.Password placeholder={currentItem.id ? "留空表示不修改密码" : "请输入"} value={currentItem.password}
                                            onChange={(e) => handleInputChange("password", e.target.value)}
                                            style={{width: 400}}/>
                                 </div>
@@ -103,6 +111,18 @@ const UserModal = ({isOpen, onRequestClose, initialItem}) => {
                                             { value: '3', label: '演示员' },
                                         ]}
                                     />
+                                </div>
+                                <div className="flex flex-row gap-4">
+                                    <FormLabel title="邮箱" required={false}></FormLabel>
+                                    <Input placeholder="请输入邮箱地址" value={currentItem.email}
+                                           onChange={(e) => handleInputChange("email", e.target.value)}
+                                           style={{width: 400}}/>
+                                </div>
+                                <div className="flex flex-row gap-4">
+                                    <FormLabel title="手机号" required={false}></FormLabel>
+                                    <Input placeholder="请输入手机号" value={currentItem.mobile}
+                                           onChange={(e) => handleInputChange("mobile", e.target.value)}
+                                           style={{width: 400}}/>
                                 </div>
 
                             </div>

@@ -500,7 +500,7 @@ class UserDevice(models.Model):
     
     id = models.BigAutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='devices')
-    device_id = models.CharField(max_length=64, unique=True)  # 设备唯一标识
+    device_id = models.CharField(max_length=64)  # 设备唯一标识
     device_name = models.CharField(max_length=100, blank=True, null=True)  # 设备名称
     device_type = models.CharField(max_length=20, choices=DEVICE_TYPE_CHOICES, default='unknown')
     user_agent = models.CharField(max_length=500, blank=True, null=True)  # User-Agent
@@ -515,6 +515,7 @@ class UserDevice(models.Model):
     
     class Meta:
         db_table = "b_user_device"
+        unique_together = [['user', 'device_id']]  # 确保每个用户的设备ID唯一
         indexes = [
             models.Index(fields=['user', 'is_active'], name='ud_user_active'),
             models.Index(fields=['device_id'], name='ud_device_id'),

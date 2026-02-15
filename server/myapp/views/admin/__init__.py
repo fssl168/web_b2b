@@ -19,3 +19,4 @@ from myapp.views.admin.opLog import *
 from myapp.views.admin.errorLog import *
 from myapp.views.admin.cdn import *
 from myapp.views.admin.security import *
+from myapp.views.admin.security_api import *

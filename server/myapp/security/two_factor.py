@@ -8,6 +8,7 @@ import time
 from datetime import datetime, timedelta
 from django.core.cache import cache
 from myapp.utils import send_email
+from django.conf import settings
 import logging
 
 logger = logging.getLogger('myapp')
@@ -65,6 +66,11 @@ class TwoFactorAuthService:
         # 生成验证码
         code = cls.generate_code()
         
+        # 打印验证码到控制台（开发环境用）
+        print(f"2FA code for user {user.username} ({user.email}): {code}")
+        # 记录验证码到日志（开发环境用）
+        logger.info(f"2FA code for user {user.username} ({user.email}): {code}")
+        
         # 存储验证码到缓存
         cache_key = cls.get_cache_key(user.id, 'email')
         cache.set(cache_key, {
@@ -95,8 +101,9 @@ class TwoFactorAuthService:
                 subject=subject,
                 receivers=[user.email],
                 content=content,
-                sender_email='',
-                sender_pass=''
+                smtp_server=getattr(settings, 'SMTP_SERVER', 'smtp.qq.com'),
+                sender_email=getattr(settings, 'SENDER_EMAIL', ''),
+                sender_pass=getattr(settings, 'SENDER_PASS', '')
             )
             
             logger.info(f"2FA code sent to user {user.username} ({user.email})")

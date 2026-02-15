@@ -70,10 +70,20 @@ const items = [
     icon: <TableOutlined />,
   },
   {
-    key: '/admin/security',
-    label: '安全事件',
-    icon: <SafetyOutlined />,
-  },
+        key: '/admin/security',
+        label: '安全中心',
+        icon: <SafetyOutlined />,
+        children: [
+          {
+            key: '/admin/security/events',
+            label: '安全事件',
+          },
+          {
+            key: '/admin/security/settings',
+            label: '安全设置',
+          },
+        ],
+      },
 ];
 const SideBar = () => {
   const router = useRouter();
@@ -126,7 +136,6 @@ const SideBar = () => {
             style={{
               maxWidth: 280,
             }}
-            defaultOpenKeys={['sub1']}
             selectedKeys={[current]}
             mode="inline"
             inlineCollapsed={adminApp.collapsed}

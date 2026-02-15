@@ -346,24 +346,50 @@ def create(request):
 @after_call(clear_cache)
 def update(request):
     try:
-        pk = request.data['id']
+        # 同时支持 FormData 和 JSON 格式的请求
+        pk = request.data.get('id') or request.POST.get('id')
+        if not pk:
+            return APIResponse(code=1, msg='用户ID不能为空')
         user = User.objects.get(pk=pk)
     except User.DoesNotExist:
         return APIResponse(code=1, msg='对象不存在')
 
-    data = request.data.copy()
-    if 'username' in data.keys():
-        del data['username']
-    if 'password' in data.keys():
+    # 同时支持 FormData 和 JSON 格式的请求
+    data = {}
+    # 优先使用 request.data（JSON格式），如果没有则使用 request.POST（FormData格式）
+    if hasattr(request, 'data') and request.data:
+        data.update(request.data)
+    elif hasattr(request, 'POST') and request.POST:
+        data.update(request.POST.dict())
+    
+    # 处理用户名更新
+    if 'username' in data:
+        # 检查用户名是否已存在（排除当前用户）
+        if User.objects.filter(username=data['username']).exclude(id=pk).exists():
+            return APIResponse(code=1, msg='该用户名已存在')
+    
+    # 处理密码更新
+    if 'password' in data and data['password']:
+        # 验证密码复杂度
+        is_valid, error_msg = validate_password_complexity(data['password'])
+        if not is_valid:
+            return APIResponse(code=1, msg=error_msg)
+        # 哈希密码
+        data['password'] = hash_password(data['password'])
+        data['password_hash_type'] = 'bcrypt'
+        # 更新密码修改时间
+        PasswordPolicyService.update_password_changed_time(user)
+    elif 'password' in data and not data['password']:
+        # 密码为空，不更新
         del data['password']
+    
     serializer = UserSerializer(user, data=data)
-    print(serializer.is_valid())
     if serializer.is_valid():
         serializer.save()
         return APIResponse(code=0, msg='更新成功', data=serializer.data)
     else:
         print(serializer.errors)
-    return APIResponse(code=1, msg='更新失败')
+        return APIResponse(code=1, msg='更新失败: ' + str(serializer.errors))
 
 
 @api_view(['POST'])

@@ -74,6 +74,7 @@ urlpatterns = [
     path('admin/user/list', views.admin.user.list_api),
     path('admin/user/create', views.admin.user.create),
     path('admin/user/delete', views.admin.user.delete),
+    path('admin/user/update', views.admin.user.update),
     path('admin/user/updatePwd', views.admin.user.updatePwd),
     path('admin/adminLogin', views.admin.user.admin_login),
     path('admin/verify-2fa-login', views.admin.user.verify_2fa_login),

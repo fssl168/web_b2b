@@ -117,33 +117,35 @@ class DeviceManager:
     def register_device(cls, user, request):
         """
         注册或更新设备信息
-        
+
         Args:
             user: 用户对象
             request: 请求对象
-            
+
         Returns:
             UserDevice: 设备对象
         """
         from myapp.models import UserDevice
-        
+
         device_id = cls.generate_device_id(request)
         user_agent = request.META.get('HTTP_USER_AGENT', '')
         ip_address = request.META.get('REMOTE_ADDR', '')
-        
-        # 尝试获取已存在的设备
+
+        logger.info(f"Registering device for user {user.username} (ID: {user.id}), device_id: {device_id}")
+
+        # 尝试获取已存在的设备（特定用户的）
         try:
-            device = UserDevice.objects.get(device_id=device_id)
+            device = UserDevice.objects.get(user=user, device_id=device_id)
             # 更新设备信息
             device.last_login_time = timezone.now()
             device.last_login_ip = ip_address
             device.login_count += 1
             device.user_agent = user_agent[:500]
             device.save()
-            
+
             logger.info(f"Device updated: {device.device_name} for user {user.username}")
             return device
-            
+
         except UserDevice.DoesNotExist:
             # 创建新设备
             device = UserDevice.objects.create(
@@ -158,7 +160,7 @@ class DeviceManager:
                 login_count=1,
                 is_trusted=False
             )
-            
+
             logger.info(f"New device registered: {device.device_name} for user {user.username}")
             return device
     
