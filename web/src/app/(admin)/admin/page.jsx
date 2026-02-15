@@ -1,10 +1,10 @@
 import { redirect } from 'next/navigation';
-import { headers } from 'next/headers';
+import { cookies } from 'next/headers';
 
 export default async function Page() {
-  // 从请求头中获取token
-  const headersList = await headers();
-  const token = headersList.get('admintoken');
+  // 从cookie中获取token
+  const cookieStore = await cookies();
+  const token = cookieStore.get('admintoken')?.value;
   
   // 如果没有token，重定向到登录页面
   if (!token) {
@@ -13,7 +13,7 @@ export default async function Page() {
   
   // 验证token的有效性
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/admin/verify-token`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_DJANGO_BASE_URL}/myapp/admin/verify-token`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

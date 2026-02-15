@@ -2,7 +2,8 @@
 import datetime
 from datetime import timedelta
 
-from rest_framework.decorators import api_view, authentication_classes, throttle_classes
+from rest_framework.decorators import api_view, authentication_classes, throttle_classes, permission_classes
+from rest_framework.permissions import AllowAny
 from rest_framework.throttling import AnonRateThrottle
 from django.core.cache import cache
 from django.utils import timezone
@@ -14,7 +15,13 @@ from myapp.models import User
 from myapp.permission.permission import isDemoAdminUser, check_if_demo
 from myapp.serializers import UserSerializer, NormalUserSerializer
 from myapp.utils import md5value, after_call, clear_cache
-from myapp.password_utils import hash_password, verify_password, is_bcrypt_hash
+from myapp.password_utils import hash_password, verify_password, is_bcrypt_hash, validate_password_complexity
+from myapp.security.two_factor import TwoFactorAuthService
+from myapp.security.password_policy import PasswordPolicyService
+from myapp.security.device_manager import DeviceManager
+import logging
+
+logger = logging.getLogger('myapp')
 
 
 class UserRateThrottle(AnonRateThrottle):
@@ -24,6 +31,7 @@ class UserRateThrottle(AnonRateThrottle):
 
 @api_view(['POST'])
 @throttle_classes([UserRateThrottle])
+@permission_classes([AllowAny])
 def admin_login(request):
     try:
         username = request.data.get('username')
@@ -31,25 +39,32 @@ def admin_login(request):
         captcha_code = request.data.get('captcha_code')  # 验证码
         captcha_key = request.data.get('captcha_key')  # 验证码key
 
+        print(f"Login attempt - Username: {username}, Captcha: {captcha_code}, Key: {captcha_key}")
+
         # 验证必填字段
         if not username or not password:
+            print("Missing username or password")
             return APIResponse(code=1, msg='用户名或密码不能为空')
 
         # 验证验证码
         if not captcha_code or not captcha_key:
+            print("Missing captcha")
             return APIResponse(code=1, msg='验证码不能为空')
 
         # 从缓存中获取正确的验证码
         stored_captcha = cache.get(captcha_key)
+        print(f"Stored captcha: {stored_captcha}, Input captcha: {captcha_code}")
 
         # 验证码不存在或已过期
         if not stored_captcha:
+            print("Captcha expired")
             return APIResponse(code=1, msg='验证码已过期，请刷新后重试')
 
         # 验证码不匹配（不区分大小写）
         if captcha_code.upper() != stored_captcha.upper():
             # 清除错误的验证码缓存，防止暴力破解
             cache.delete(captcha_key)
+            print("Captcha mismatch")
             return APIResponse(code=1, msg='验证码错误')
 
         # 验证通过，清除验证码缓存
@@ -57,16 +72,20 @@ def admin_login(request):
 
         try:
             user = User.objects.get(username=username)
+            print(f"User found: {user.username}, Role: {user.role}, Status: {user.status}")
         except User.DoesNotExist:
             # 统一错误信息，防止用户名枚举
+            print("User not found")
             return APIResponse(code=1, msg='用户名或密码错误')
 
         # 检查账号状态
         if user.status == '1':
+            print("Account disabled")
             return APIResponse(code=1, msg='账号已被禁用')
 
         # 检查用户角色
         if user.role == '2':
+            print("Not admin role")
             return APIResponse(code=1, msg='用户名或密码错误')
 
         # 检查账户是否被锁定
@@ -75,6 +94,7 @@ def admin_login(request):
             if user.lock_time > timezone.now():
                 remaining_time = (user.lock_time - timezone.now()).total_seconds()
                 minutes = int(remaining_time / 60) + 1
+                print(f"Account locked for {minutes} minutes")
                 return APIResponse(code=1, msg=f'账户已被锁定，请在{minutes}分钟后重试')
             else:
                 # 锁定已过期，重置登录失败次数
@@ -83,6 +103,7 @@ def admin_login(request):
                 user.save()
 
         # 验证密码
+        print(f"Verifying password for user: {username}")
         if not verify_password(password, user.password):
             # 登录失败，增加失败次数
             user.login_attempts = (user.login_attempts or 0) + 1
@@ -91,41 +112,180 @@ def admin_login(request):
             if user.login_attempts >= 5:
                 user.lock_time = timezone.now() + timedelta(minutes=30)
                 user.save()
+                print("Account locked due to too many attempts")
                 return APIResponse(code=1, msg='登录失败次数过多，账户已被锁定30分钟')
 
             user.save()
 
             # 返回剩余尝试次数
             remaining_attempts = 5 - user.login_attempts
+            print(f"Password incorrect, remaining attempts: {remaining_attempts}")
             return APIResponse(code=1, msg=f'用户名或密码错误，剩余尝试次数：{remaining_attempts}')
 
-        # 登录成功，重置登录失败次数
+        print("Login successful")
+
+        is_password_expired, days_remaining = PasswordPolicyService.is_password_expired(user)
+        if is_password_expired:
+            logger.info(f"Password expired for user: {username}")
+            return APIResponse(code=2, msg='密码已过期，请修改密码', data={'user_id': user.id, 'require_password_change': True})
+
+        should_warn, warn_days = PasswordPolicyService.should_warn_expiry(user)
+        if should_warn and not is_password_expired:
+            logger.info(f"Password expiring soon for user: {username}, days remaining: {warn_days}")
+
+        if TwoFactorAuthService.is_2fa_enabled(user):
+            temp_token = f"2fa_pending_{user.id}_{utils.get_timestamp()}"
+            cache.set(temp_token, user.id, 300)
+            
+            success, message = TwoFactorAuthService.send_email_code(user)
+            if not success:
+                logger.error(f"Failed to send 2FA code: {message}")
+                return APIResponse(code=1, msg=message)
+            
+            logger.info(f"2FA required for user: {username}")
+            return APIResponse(code=3, msg='需要双因素认证', data={
+                'require_2fa': True,
+                'temp_token': temp_token,
+                'email_masked': f"{user.email[:3]}***{user.email.split('@')[-1]}" if user.email else None
+            })
+
+        suspicious_check = DeviceManager.check_suspicious_login(user, request)
+        if suspicious_check['is_suspicious']:
+            logger.warning(f"Suspicious login detected for user {username}: {suspicious_check['reasons']}")
+
+        DeviceManager.register_device(user, request)
+
         user.login_attempts = 0
         user.lock_time = None
         user.last_login_time = timezone.now()
         user.last_login_ip = utils.get_ip(request)
 
-        # 更新密码为bcrypt格式（如果是旧密码）
         if not is_bcrypt_hash(user.password):
             user.password = hash_password(password)
 
-        # 生成新的token和过期时间
         ts = utils.get_timestamp()
         data = {
-            'admin_token': utils.generate_secure_token(username),  # 使用安全的token生成函数
-            'exp': ts + (24 * 60 * 60 * 1000)  # 24小时过期
+            'admin_token': utils.generate_secure_token(username),
+            'exp': ts + (24 * 60 * 60 * 1000)
         }
 
         serializer = UserSerializer(user, data=data, partial=True)
         if serializer.is_valid():
             serializer.save()
-            return APIResponse(code=0, msg='登录成功', data=serializer.data)
+            
+            response_data = serializer.data
+            if should_warn and not is_password_expired:
+                response_data['password_warning'] = {
+                    'show_warning': True,
+                    'days_remaining': warn_days,
+                    'message': f'您的密码将在{warn_days}天后过期，请及时修改'
+                }
+            
+            logger.info(f"Login successful for user: {username}")
+            return APIResponse(code=0, msg='登录成功', data=response_data)
         else:
+            print(f"Serializer errors: {serializer.errors}")
             return APIResponse(code=1, msg='登录失败')
 
     except Exception as e:
         print(f"登录异常: {e}")
         return APIResponse(code=1, msg='登录失败')
+
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def verify_2fa_login(request):
+    """验证双因素认证并完成登录"""
+    try:
+        temp_token = request.data.get('temp_token')
+        code = request.data.get('code')
+        
+        if not temp_token or not code:
+            return APIResponse(code=1, msg='参数不完整')
+        
+        user_id = cache.get(temp_token)
+        if not user_id:
+            return APIResponse(code=1, msg='验证已过期，请重新登录')
+        
+        try:
+            user = User.objects.get(id=user_id)
+        except User.DoesNotExist:
+            return APIResponse(code=1, msg='用户不存在')
+        
+        success, message = TwoFactorAuthService.verify_code(user, code)
+        if not success:
+            return APIResponse(code=1, msg=message)
+        
+        cache.delete(temp_token)
+        
+        DeviceManager.register_device(user, request)
+        
+        user.login_attempts = 0
+        user.lock_time = None
+        user.last_login_time = timezone.now()
+        user.last_login_ip = utils.get_ip(request)
+        
+        ts = utils.get_timestamp()
+        data = {
+            'admin_token': utils.generate_secure_token(user.username),
+            'exp': ts + (24 * 60 * 60 * 1000)
+        }
+        
+        serializer = UserSerializer(user, data=data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            logger.info(f"2FA login successful for user: {user.username}")
+            return APIResponse(code=0, msg='登录成功', data=serializer.data)
+        return APIResponse(code=1, msg='登录失败')
+        
+    except Exception as e:
+        logger.error(f"2FA verification error: {str(e)}")
+        return APIResponse(code=1, msg='验证失败')
+
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def force_change_password(request):
+    """强制修改过期密码"""
+    try:
+        user_id = request.data.get('user_id')
+        new_password = request.data.get('new_password')
+        confirm_password = request.data.get('confirm_password')
+        
+        if not user_id or not new_password or not confirm_password:
+            return APIResponse(code=1, msg='参数不完整')
+        
+        if new_password != confirm_password:
+            return APIResponse(code=1, msg='两次密码不一致')
+        
+        is_valid, error_msg = validate_password_complexity(new_password)
+        if not is_valid:
+            return APIResponse(code=1, msg=error_msg)
+        
+        try:
+            user = User.objects.get(id=user_id)
+        except User.DoesNotExist:
+            return APIResponse(code=1, msg='用户不存在')
+        
+        if PasswordPolicyService.is_password_reused(user, new_password):
+            return APIResponse(code=1, msg='不能使用最近5次使用过的密码')
+        
+        PasswordPolicyService.add_password_to_history(user, user.password)
+        
+        user.password = hash_password(new_password)
+        PasswordPolicyService.update_password_changed_time(user)
+        
+        ts = utils.get_timestamp()
+        user.admin_token = utils.generate_secure_token(user.username)
+        user.exp = ts + (24 * 60 * 60 * 1000)
+        user.save()
+        
+        logger.info(f"Password force changed for user: {user.username}")
+        return APIResponse(code=0, msg='密码修改成功', data=UserSerializer(user).data)
+        
+    except Exception as e:
+        logger.error(f"Force change password error: {str(e)}")
+        return APIResponse(code=1, msg='修改失败')
 
 
 @api_view(['GET'])
@@ -154,17 +314,15 @@ def create(request):
         if User.objects.filter(username=username).exists():
             return APIResponse(code=1, msg='该用户名已存在')
 
-        # 密码强度验证
-        if len(password) < 8:
-            return APIResponse(code=1, msg='密码长度不能少于8位')
+        is_valid, error_msg = validate_password_complexity(password)
+        if not is_valid:
+            return APIResponse(code=1, msg=error_msg)
 
-        # 准备用户数据
         data = request.data.copy()
-        data['password'] = hash_password(password)  # 使用 bcrypt 加密
-        data['password_hash_type'] = 'bcrypt'  # 标记密码加密类型
-        # 设置默认值
-        data.setdefault('role', '1')  # 默认为管理员
-        data.setdefault('status', '0')  # 默认为启用
+        data['password'] = hash_password(password)
+        data['password_hash_type'] = 'bcrypt'
+        data.setdefault('role', '1')
+        data.setdefault('status', '0')
 
         serializer = UserSerializer(data=data)
         if serializer.is_valid():
@@ -230,30 +388,35 @@ def updatePwd(request):
         if not password or not newPassword1 or not newPassword2:
             return APIResponse(code=1, msg='所有字段不能为空')
 
-        # 验证原密码
         if not verify_password(password, user.password):
             return APIResponse(code=1, msg='原密码不正确')
 
-        # 验证两次新密码是否一致
         if newPassword1 != newPassword2:
             return APIResponse(code=1, msg='两次密码不一致')
 
-        # 密码强度验证
-        if len(newPassword1) < 8:
-            return APIResponse(code=1, msg='新密码长度不能少于8位')
+        is_valid, error_msg = validate_password_complexity(newPassword1)
+        if not is_valid:
+            return APIResponse(code=1, msg=error_msg)
 
-        # 更新密码
+        if PasswordPolicyService.is_password_reused(user, newPassword1):
+            return APIResponse(code=1, msg='不能使用最近5次使用过的密码')
+
+        PasswordPolicyService.add_password_to_history(user, user.password)
+
         user.password = hash_password(newPassword1)
         user.password_hash_type = 'bcrypt'
-        # 重置token和过期时间
+        PasswordPolicyService.update_password_changed_time(user)
+        
         ts = utils.get_timestamp()
         user.admin_token = utils.generate_secure_token(user.username)
         user.exp = ts + (24 * 60 * 60 * 1000)
         user.save()
 
+        logger.info(f"Password updated for user: {user.username}")
         return APIResponse(code=0, msg='密码更新成功', data=UserSerializer(user).data)
 
     except Exception as e:
+        logger.error(f"Password update error: {str(e)}")
         return APIResponse(code=1, msg='密码更新失败: ' + str(e))
 
 

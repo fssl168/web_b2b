@@ -76,13 +76,26 @@ urlpatterns = [
     path('admin/user/delete', views.admin.user.delete),
     path('admin/user/updatePwd', views.admin.user.updatePwd),
     path('admin/adminLogin', views.admin.user.admin_login),
+    path('admin/verify-2fa-login', views.admin.user.verify_2fa_login),
+    path('admin/force-change-password', views.admin.user.force_change_password),
     path('admin/verify-token', verify_token.VerifyTokenView.as_view()),
     path('admin/verify-access', verify_access),
     # 安全事件
     path('admin/security/list', views.admin.security.list_security_events),
     path('admin/security/stats', views.admin.security.get_security_stats),
     path('admin/security/report', views.admin.security.get_security_report),
-
+    # 安全功能API
+    path('admin/security/2fa/enable', views.admin.security_api.enable_2fa),
+    path('admin/security/2fa/disable', views.admin.security_api.disable_2fa),
+    path('admin/security/2fa/send', views.admin.security_api.send_2fa_code),
+    path('admin/security/2fa/verify', views.admin.security_api.verify_2fa_code),
+    path('admin/security/2fa/status', views.admin.security_api.get_2fa_status),
+    path('admin/security/devices', views.admin.security_api.get_devices),
+    path('admin/security/device/revoke', views.admin.security_api.revoke_device),
+    path('admin/security/device/trust', views.admin.security_api.trust_device),
+    path('admin/security/password/policy', views.admin.security_api.get_password_policy),
+    path('admin/security/password/change', views.admin.security_api.change_password),
+    path('admin/security/overview', views.admin.security_api.get_security_overview),
 
     # 前台管理api
     path('index/thing/section', views.index.thing.section),

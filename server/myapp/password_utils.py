@@ -1,5 +1,52 @@
 import bcrypt
 import hashlib
+import re
+
+
+def validate_password_complexity(password):
+    """
+    验证密码复杂度
+    
+    要求：
+    - 至少8个字符
+    - 至少1个大写字母
+    - 至少1个小写字母
+    - 至少1个数字
+    - 至少1个特殊字符
+    
+    Returns:
+        tuple: (is_valid, error_message)
+    """
+    if not password:
+        return False, "密码不能为空"
+    
+    if len(password) < 8:
+        return False, "密码长度至少为8个字符"
+    
+    if len(password) > 128:
+        return False, "密码长度不能超过128个字符"
+    
+    if not re.search(r'[A-Z]', password):
+        return False, "密码必须包含至少1个大写字母"
+    
+    if not re.search(r'[a-z]', password):
+        return False, "密码必须包含至少1个小写字母"
+    
+    if not re.search(r'\d', password):
+        return False, "密码必须包含至少1个数字"
+    
+    if not re.search(r'[!@#$%^&*()_+\-=\[\]{};\':"\\|,.<>\/?]', password):
+        return False, "密码必须包含至少1个特殊字符（!@#$%^&*等）"
+    
+    # 检查常见弱密码
+    common_passwords = [
+        'password', 'Password1!', '12345678', 'qwerty', 'abc123',
+        'admin123', 'Admin123!', 'password123', 'Password123!'
+    ]
+    if password.lower() in [p.lower() for p in common_passwords]:
+        return False, "密码过于简单，请使用更复杂的密码"
+    
+    return True, ""
 
 
 def hash_password(password, salt="987654321hello"):

@@ -22,7 +22,8 @@ function getCookie(name) {
 // 设置cookie
 function setCookie(name, value, days = 1) {
     const expires = new Date(Date.now() + days * 86400000).toUTCString();
-    document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/; secure; SameSite=Strict`;
+    const secure = window.location.protocol === 'https:' ? 'secure;' : '';
+    document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/; ${secure} SameSite=Lax`;
 }
 
 // 删除cookie
@@ -33,12 +34,10 @@ function deleteCookie(name) {
 // 请求拦截器
 axiosInstance.interceptors.request.use(
     (config) => {
-        // 在发送请求之前添加 token 等信息
         if (typeof window !== 'undefined') {
-            const token = getCookie('admintoken'); // 从cookie中获取token
+            const token = getCookie('admintoken');
             config.headers.admintoken = token || '';
         }
-
         return config;
     },
     (error) => {

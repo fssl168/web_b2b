@@ -1,7 +1,7 @@
 // 'use client';
 import "@/styles/globals.css";
 import {AntdRegistry} from '@ant-design/nextjs-registry';
-import {ConfigProvider} from "antd";
+import {ConfigProvider, App} from "antd";
 import ReduxProvider from "@/redux/redux-provider";
 
 
@@ -70,7 +70,9 @@ export default function RootLayout({children}) {
                         },
                     }}
                 >
-                    {children}
+                    <App>
+                        {children}
+                    </App>
                 </ConfigProvider>
             </AntdRegistry>
 

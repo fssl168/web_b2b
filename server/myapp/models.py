@@ -18,14 +18,38 @@ class User(models.Model):
     email = models.CharField(max_length=50, blank=True, null=True)
     description = models.TextField(max_length=200, null=True)
     create_time = models.DateTimeField(auto_now_add=True, null=True)
-    admin_token = models.CharField(max_length=32, blank=True, null=True)
-    token = models.CharField(max_length=32, blank=True, null=True)
+    admin_token = models.CharField(max_length=64, blank=True, null=True)
+    token = models.CharField(max_length=64, blank=True, null=True)
     exp = models.CharField(max_length=32, blank=True, null=True)
     # 登录安全相关字段
     login_attempts = models.IntegerField(default=0)  # 登录失败次数
     lock_time = models.DateTimeField(null=True, blank=True)  # 账户锁定时间
     last_login_time = models.DateTimeField(null=True, blank=True)  # 最后登录时间
     last_login_ip = models.CharField(max_length=50, null=True, blank=True)  # 最后登录IP
+    # 双因素认证相关字段
+    two_factor_enabled = models.BooleanField(default=False)  # 是否启用双因素认证
+    two_factor_method = models.CharField(max_length=20, default='email', blank=True)  # 认证方式
+    # 密码过期相关字段
+    password_changed_at = models.DateTimeField(null=True, blank=True)  # 密码修改时间
+    password_expired = models.BooleanField(default=False)  # 密码是否过期
+    # 密码历史记录（JSON格式存储最近5次密码哈希）
+    password_history = models.TextField(null=True, blank=True)
+
+    # DRF认证需要的属性
+    @property
+    def is_authenticated(self):
+        return True
+
+    @property
+    def is_anonymous(self):
+        return False
+
+    @property
+    def is_active(self):
+        return self.status == '0'
+
+    def __str__(self):
+        return self.username or str(self.id)
 
     class Meta:
         db_table = "b_user"
@@ -414,3 +438,105 @@ class ErrorLog(models.Model):
 
     class Meta:
         db_table = "b_error_log"
+
+
+class SecurityEvent(models.Model):
+    LEVEL_CHOICES = (
+        ('LOW', '低'),
+        ('MEDIUM', '中'),
+        ('HIGH', '高'),
+        ('CRITICAL', '严重'),
+    )
+    
+    TYPE_CHOICES = (
+        ('LOGIN_FAILURE', '登录失败'),
+        ('LOGIN_SUCCESS', '登录成功'),
+        ('PERMISSION_DENIED', '权限拒绝'),
+        ('SQL_INJECTION_ATTEMPT', 'SQL注入尝试'),
+        ('XSS_ATTEMPT', 'XSS攻击尝试'),
+        ('CSRF_ATTEMPT', 'CSRF攻击尝试'),
+        ('FILE_UPLOAD_VIOLATION', '文件上传违规'),
+        ('BRUTE_FORCE_ATTEMPT', '暴力破解尝试'),
+        ('UNAUTHORIZED_ACCESS', '未授权访问'),
+        ('SUSPICIOUS_ACTIVITY', '可疑活动'),
+    )
+    
+    id = models.BigAutoField(primary_key=True)
+    incident_type = models.CharField(max_length=50, choices=TYPE_CHOICES, default='SUSPICIOUS_ACTIVITY')
+    level = models.CharField(max_length=20, choices=LEVEL_CHOICES, default='MEDIUM')
+    description = models.TextField(blank=True, null=True)
+    user_id = models.BigIntegerField(blank=True, null=True)
+    username = models.CharField(max_length=50, blank=True, null=True)
+    ip = models.CharField(max_length=100, blank=True, null=True)
+    user_agent = models.CharField(max_length=500, blank=True, null=True)
+    request_url = models.CharField(max_length=500, blank=True, null=True)
+    request_method = models.CharField(max_length=10, blank=True, null=True)
+    response_status = models.IntegerField(blank=True, null=True)
+    additional_data = models.TextField(blank=True, null=True)
+    is_resolved = models.BooleanField(default=False)
+    resolved_by = models.CharField(max_length=50, blank=True, null=True)
+    resolved_time = models.DateTimeField(blank=True, null=True)
+    create_time = models.DateTimeField(auto_now_add=True, null=True)
+
+    class Meta:
+        db_table = "b_security_event"
+        indexes = [
+            models.Index(fields=['create_time'], name='se_create_time'),
+            models.Index(fields=['incident_type'], name='se_incident_type'),
+            models.Index(fields=['level'], name='se_level'),
+        ]
+
+
+class UserDevice(models.Model):
+    """
+    用户登录设备管理
+    """
+    DEVICE_TYPE_CHOICES = (
+        ('desktop', '桌面设备'),
+        ('mobile', '移动设备'),
+        ('tablet', '平板设备'),
+        ('unknown', '未知设备'),
+    )
+    
+    id = models.BigAutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='devices')
+    device_id = models.CharField(max_length=64, unique=True)  # 设备唯一标识
+    device_name = models.CharField(max_length=100, blank=True, null=True)  # 设备名称
+    device_type = models.CharField(max_length=20, choices=DEVICE_TYPE_CHOICES, default='unknown')
+    user_agent = models.CharField(max_length=500, blank=True, null=True)  # User-Agent
+    ip_address = models.CharField(max_length=50, blank=True, null=True)  # IP地址
+    last_login_time = models.DateTimeField(null=True, blank=True)  # 最后登录时间
+    last_login_ip = models.CharField(max_length=50, blank=True, null=True)  # 最后登录IP
+    login_count = models.IntegerField(default=0)  # 登录次数
+    is_trusted = models.BooleanField(default=False)  # 是否为可信设备
+    is_active = models.BooleanField(default=True)  # 是否活跃
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        db_table = "b_user_device"
+        indexes = [
+            models.Index(fields=['user', 'is_active'], name='ud_user_active'),
+            models.Index(fields=['device_id'], name='ud_device_id'),
+        ]
+    
+    def __str__(self):
+        return f"{self.user.username} - {self.device_name or self.device_id}"
+
+
+class PasswordHistory(models.Model):
+    """
+    密码历史记录
+    用于防止用户重复使用最近使用过的密码
+    """
+    id = models.BigAutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='password_histories')
+    password_hash = models.CharField(max_length=255)  # 密码哈希
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        db_table = "b_password_history"
+        ordering = ['-created_at']
+    
+    def __str__(self):
+        return f"{self.user.username} - {self.created_at}"

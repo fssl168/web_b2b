@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {Button, Input, Spin, App, message} from "antd";
+import {Button, Input, Spin, App} from "antd";
 import axiosInstance, { setCookie } from "@/utils/axios";
 import {useRouter} from "next/navigation";
 import { UserOutlined } from '@ant-design/icons';
 
 const LoginPage = () => {
     const router = useRouter();
+    const { message } = App.useApp();
     const [loading, setLoading] = useState(false);
     const [year, setYear] = useState(new Date().getFullYear());
 
@@ -22,27 +23,13 @@ const LoginPage = () => {
     useEffect(() => {
         setYear(new Date().getFullYear());
         getInfo();
-        refreshCaptcha(); // 加载验证码
-
-        // 检查当前域名
-        if (typeof window !== 'undefined') {
-            const currentHost = window.location.hostname;
-            // 如果域名包含fktool.com
-            if (currentHost.includes('fktool.com')) {
-                setCurrentItem({
-                    username: "test",
-                    password: "test"
-                });
-            }
-        }
+        refreshCaptcha();
     }, []);
 
-    // 刷新验证码
     const refreshCaptcha = () => {
-        const newKey = Date.now().toString(); // 使用时间戳作为key
+        const newKey = Date.now().toString();
         setCaptchaKey(newKey);
-        // 使用环境变量中的API基础URL
-        const url = `${process.env.NEXT_PUBLIC_DJANGO_BASE_URL}/myapp/admin/captcha?key=${newKey}&t=${Date.now()}`;
+        const url = `${process.env.NEXT_PUBLIC_BASE_URL}/myapp/admin/captcha?key=${newKey}&t=${Date.now()}`;
         setCaptchaUrl(url);
     };
 
@@ -61,17 +48,18 @@ const LoginPage = () => {
         }
         try {
             setLoading(true);
-            // 使用环境变量中的API基础URL
             const url = `${process.env.NEXT_PUBLIC_DJANGO_BASE_URL}/myapp/admin/adminLogin`;
-            const formData = new FormData();
-            formData.append('username', currentItem.username);
-            formData.append('password', currentItem.password);
-            formData.append('captcha_code', currentItem.captcha);
-            formData.append('captcha_key', captchaKey);
-            
             const response = await fetch(url, {
                 method: 'POST',
-                body: formData
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: currentItem.username,
+                    password: currentItem.password,
+                    captcha_code: currentItem.captcha,
+                    captcha_key: captchaKey
+                })
             });
             
             const {code, msg, data} = await response.json();
@@ -79,27 +67,28 @@ const LoginPage = () => {
                 message.success("登录成功");
                 setCookie('admintoken', data.admin_token);
                 setCookie('username', data.username);
-                router.push('/admin/main');
+                // 添加短暂延迟，确保cookie被正确设置
+                setTimeout(() => {
+                    router.push('/admin/main');
+                }, 100);
             } else {
                 message.error(msg || '网络异常');
-                refreshCaptcha(); // 登录失败刷新验证码
+                refreshCaptcha();
             }
             setLoading(false);
         } catch (err) {
             message.error('网络异常');
-            refreshCaptcha(); // 登录失败刷新验证码
+            refreshCaptcha();
             setLoading(false);
         }
     };
 
     const getInfo = async () => {
-        // 只在浏览器端执行
         if (typeof window === 'undefined') {
             return;
         }
         
         try {
-            // 使用环境变量中的API基础URL
             const url = `${process.env.NEXT_PUBLIC_DJANGO_BASE_URL}/myapp/admin/basicGlobal/listInfo`;
             const response = await fetch(url);
             const {code, msg, data} = await response.json();
@@ -107,14 +96,12 @@ const LoginPage = () => {
                 setWechat(data.global_wechat);
             }
         } catch (err) {
-            // 避免在服务器端渲染时使用message.error
             if (typeof window !== 'undefined') {
                 message.error('网络异常');
             }
         }
     };
 
-    // 键盘按Enter登录
     const handleKeyPress = (e) => {
         if(e.key === 'Enter'){
             login();
@@ -123,132 +110,125 @@ const LoginPage = () => {
     const bgImage = "linear-gradient(to right, #92fe9d 0%, #00c9ff 100%)";
 
     return (
-        <App>
-            <div
-                style={{
-                backgroundImage: `${bgImage}`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-            }} className="min-h-screen w-full flex flex-col items-center justify-center">
-                {/* 背景装饰元素 - 在小屏幕上减小或隐藏部分装饰 */}
-                <div className="absolute inset-0 z-0 overflow-hidden">
-                    <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-100 rounded-full opacity-50 blur-3xl hidden sm:block"></div>
-                    <div className="absolute top-1/3 -right-20 w-60 h-60 bg-indigo-100 rounded-full opacity-40 blur-3xl"></div>
-                    <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-cyan-100 rounded-full opacity-30 blur-3xl hidden sm:block"></div>
+        <div
+            style={{
+            backgroundImage: `${bgImage}`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+        }} className="min-h-screen w-full flex flex-col items-center justify-center">
+            <div className="absolute inset-0 z-0 overflow-hidden">
+                <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-100 rounded-full opacity-50 blur-3xl hidden sm:block"></div>
+                <div className="absolute top-1/3 -right-20 w-60 h-60 bg-indigo-100 rounded-full opacity-40 blur-3xl"></div>
+                <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-cyan-100 rounded-full opacity-30 blur-3xl hidden sm:block"></div>
+            </div>
+            
+            <div className="z-10 w-full max-w-sm px-4 sm:px-0">
+                <div className="text-center mb-4">
+                    <h1 className="text-lg sm:text-xl font-bold text-gray-800 tracking-wide mb-1">网站后台内容管理系统</h1>
+                    <p className="text-gray-500 text-xs sm:text-sm">专业的企业官网内容管理平台</p>
                 </div>
                 
-                <div className="z-10 w-full max-w-sm px-4 sm:px-0">
-                    {/* 品牌标识 - 在移动端调整大小 */}
-                    <div className="text-center mb-4">
-                        <h1 className="text-lg sm:text-xl font-bold text-gray-800 tracking-wide mb-1">网站后台内容管理系统</h1>
-                        <p className="text-gray-500 text-xs sm:text-sm">专业的企业官网内容管理平台</p>
+                <div className="bg-white/80 backdrop-blur-lg rounded shadow-md p-4 sm:p-6 border border-gray-100">
+                    <div className="flex items-center justify-center h-10 sm:h-12 w-10 sm:w-12 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto mb-3 sm:mb-4 shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter">
+                            <rect x="3" y="11" width="18" height="11" rx="1" />
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                        </svg>
                     </div>
                     
-                    {/* 登录卡片 - 移动端减少内边距 */}
-                    <div className="bg-white/80 backdrop-blur-lg rounded shadow-md p-4 sm:p-6 border border-gray-100">
-                        <div className="flex items-center justify-center h-10 sm:h-12 w-10 sm:w-12 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto mb-3 sm:mb-4 shadow-lg">
-                            {/* 使用扁平风格的锁图标 - 移动端稍小 */}
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter">
-                                <rect x="3" y="11" width="18" height="11" rx="1" />
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                            </svg>
+                    <h2 className="text-base sm:text-lg font-semibold text-center mb-3 sm:mb-4 text-gray-800">管理员登录</h2>
+                    
+                    <div className="space-y-3 sm:space-y-4">
+                        <div className="space-y-1">
+                            <label className="block text-xs font-medium text-gray-700" htmlFor="username">
+                                用户名
+                            </label>
+                            <Input 
+                                prefix={<UserOutlined className="site-form-item-icon text-gray-400" />}
+                                placeholder="请输入管理员用户名" 
+                                value={currentItem.username}
+                                onChange={(e) => handleInputChange("username", e.target.value)}
+                                onKeyPress={handleKeyPress}
+                                className="py-1"
+                                size="middle"
+                                style={{ borderRadius: '2px' }}
+                            />
                         </div>
                         
-                        <h2 className="text-base sm:text-lg font-semibold text-center mb-3 sm:mb-4 text-gray-800">管理员登录</h2>
-                        
-                        <div className="space-y-3 sm:space-y-4">
-                            <div className="space-y-1">
-                                <label className="block text-xs font-medium text-gray-700" htmlFor="username">
-                                    用户名
-                                </label>
-                                <Input 
-                                    prefix={<UserOutlined className="site-form-item-icon text-gray-400" />}
-                                    placeholder="请输入管理员用户名" 
-                                    value={currentItem.username}
-                                    onChange={(e) => handleInputChange("username", e.target.value)}
-                                    onKeyPress={handleKeyPress}
-                                    className="py-1"
-                                    size="middle"
-                                    style={{ borderRadius: '2px' }}
-                                />
-                            </div>
-                            
-                            <div className="space-y-1">
-                                <label className="block text-xs font-medium text-gray-700" htmlFor="password">
-                                    密码
-                                </label>
-                                <Input.Password 
-                                    prefix={
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter">
-                                            <rect x="3" y="11" width="18" height="11" rx="1" />
-                                            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                                        </svg>
-                                    }
-                                    placeholder="请输入管理员密码"
-                                    value={currentItem.password}
-                                    onChange={(e) => handleInputChange("password", e.target.value)}
-                                    onKeyPress={handleKeyPress}
-                                    className="py-1"
-                                    size="middle"
-                                    style={{ borderRadius: '2px' }}
-                                />
-                            </div>
+                        <div className="space-y-1">
+                            <label className="block text-xs font-medium text-gray-700" htmlFor="password">
+                                密码
+                            </label>
+                            <Input.Password 
+                                prefix={
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter">
+                                        <rect x="3" y="11" width="18" height="11" rx="1" />
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                    </svg>
+                                }
+                                placeholder="请输入管理员密码"
+                                value={currentItem.password}
+                                onChange={(e) => handleInputChange("password", e.target.value)}
+                                onKeyPress={handleKeyPress}
+                                className="py-1"
+                                size="middle"
+                                style={{ borderRadius: '2px' }}
+                            />
+                        </div>
 
-                            <div className="space-y-1">
-                                <label className="block text-xs font-medium text-gray-700" htmlFor="captcha">
-                                    验证码
-                                </label>
-                                <div className="flex gap-2">
-                                    <Input
-                                        placeholder="请输入验证码"
-                                        value={currentItem.captcha}
-                                        onChange={(e) => handleInputChange("captcha", e.target.value)}
-                                        onKeyPress={handleKeyPress}
-                                        className="py-1 flex-1"
-                                        size="middle"
+                        <div className="space-y-1">
+                            <label className="block text-xs font-medium text-gray-700" htmlFor="captcha">
+                                验证码
+                            </label>
+                            <div className="flex gap-2">
+                                <Input
+                                    placeholder="请输入验证码"
+                                    value={currentItem.captcha}
+                                    onChange={(e) => handleInputChange("captcha", e.target.value)}
+                                    onKeyPress={handleKeyPress}
+                                    className="py-1 flex-1"
+                                    size="middle"
+                                    style={{ borderRadius: '2px' }}
+                                />
+                                <div
+                                    className="h-8 w-24 sm:w-32 cursor-pointer"
+                                    onClick={refreshCaptcha}
+                                    title="点击刷新验证码"
+                                >
+                                    <img
+                                        src={captchaUrl || null}
+                                        alt="验证码"
+                                        className="h-full w-full object-cover rounded"
                                         style={{ borderRadius: '2px' }}
                                     />
-                                    <div
-                                        className="h-8 w-24 sm:w-32 cursor-pointer"
-                                        onClick={refreshCaptcha}
-                                        title="点击刷新验证码"
-                                    >
-                                        <img
-                                            src={captchaUrl || null}
-                                            alt="验证码"
-                                            className="h-full w-full object-cover rounded"
-                                            style={{ borderRadius: '2px' }}
-                                        />
-                                    </div>
                                 </div>
-                                <p className="text-xs text-gray-400 mt-1">点击图片可刷新验证码</p>
                             </div>
-                            
-                            <div className="pt-3">
-                                <Button 
-                                    loading={loading} 
-                                    type="primary" 
-                                    className="w-full h-8 sm:h-9 bg-gradient-to-r from-blue-500 to-cyan-500 border-0 shadow-md transition-all"
-                                    onClick={() => login()}
-                                    size="middle"
-                                    style={{ borderRadius: '2px' }}
-                                >
-                                    {loading ? '登录中...' : '登录'}
-                                </Button>
-                            </div>
+                            <p className="text-xs text-gray-400 mt-1">点击图片可刷新验证码</p>
+                        </div>
+                        
+                        <div className="pt-3">
+                            <Button 
+                                loading={loading} 
+                                type="primary" 
+                                className="w-full h-8 sm:h-9 bg-gradient-to-r from-blue-500 to-cyan-500 border-0 shadow-md transition-all"
+                                onClick={() => login()}
+                                size="middle"
+                                style={{ borderRadius: '2px' }}
+                            >
+                                {loading ? '登录中...' : '登录'}
+                            </Button>
                         </div>
                     </div>
-                    
-                    {/* 底部版权信息 - 移动端缩小 */}
-                    <div className="mt-4 sm:mt-6 text-center text-gray-500 text-xs">
-                        <p>安全连接 | 管理员专用入口</p>
-                        <p className="mt-1">© {year} 企业内容管理系统. 保留所有权利</p>
-                        <p className="mt-1">技术支持微信: {wechat}</p>
-                    </div>
+                </div>
+                
+                <div className="mt-4 sm:mt-6 text-center text-gray-500 text-xs">
+                    <p>安全连接 | 管理员专用入口</p>
+                    <p className="mt-1">© {year} 企业内容管理系统. 保留所有权利</p>
+                    <p className="mt-1">技术支持微信: {wechat}</p>
                 </div>
             </div>
-        </App>
+        </div>
     );
 };
 

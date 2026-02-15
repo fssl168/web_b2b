@@ -1,6 +1,7 @@
 # Create your views here.
 
-from rest_framework.decorators import api_view, authentication_classes
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.permissions import AllowAny
 
 from myapp.auth.authentication import AdminTokenAuthtication
 from myapp.handler import APIResponse
@@ -21,6 +22,7 @@ def list_api(request):
 
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def list_info(request):
     if request.method == 'GET':
         basicGlobal = BasicGlobal.get_solo()

@@ -6,6 +6,8 @@ import io
 from PIL import Image
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
+from rest_framework.decorators import api_view, permission_classes
 from django.http import HttpResponse
 from django.core.cache import cache
 from myapp.handler import APIResponse
@@ -40,6 +42,7 @@ def create_captcha_image():
 
 class CaptchaView(APIView):
     """获取验证码"""
+    permission_classes = [AllowAny]
 
     def get(self, request):
         try:
@@ -59,6 +62,8 @@ class CaptchaView(APIView):
             return APIResponse(code=1, msg=f'验证码生成失败: {str(e)}')
 
 
+@api_view(['GET'])
+@permission_classes([AllowAny])
 def get_captcha_key(request):
     """获取验证码key"""
     try:

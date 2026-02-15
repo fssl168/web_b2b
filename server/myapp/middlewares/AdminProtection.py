@@ -21,12 +21,24 @@ class AdminProtectionMiddleware(MiddlewareMixin):
     # 后台入口路径
     ADMIN_PATH_PREFIX = getattr(settings, 'ADMIN_PATH_PREFIX', 'admin')
     
+    # 公开访问的API路径（不需要IP白名单和密码验证）
+    PUBLIC_PATHS = [
+        '/myapp/admin/captcha',
+        '/myapp/admin/captcha/key',
+        '/myapp/admin/basicGlobal/listInfo',
+        '/myapp/admin/adminLogin',
+    ]
+    
     def process_request(self, request):
         """
         处理请求
         """
         # 获取请求路径
         path = request.path
+        
+        # 检查是否是公开访问的API
+        if path in self.PUBLIC_PATHS:
+            return None
         
         # 检查是否是后台相关路径
         if f'/{self.ADMIN_PATH_PREFIX}' in path:

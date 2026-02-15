@@ -4,7 +4,7 @@ import {
     Button, Cascader,
     Divider,
     Input,
-    message, Modal, Select, TreeSelect,
+    Modal, Select, TreeSelect, App,
 } from 'antd';
 import LabelPanel from "@/components/admin/labelPanel";
 import FormLabel from "@/components/admin/formLabel";
@@ -23,6 +23,7 @@ const WangEditor = dynamic(
 )
 
 const ProductModal = ({isOpen, onRequestClose, initialItem}) => {
+    const { message } = App.useApp();
 
     const [currentItem, setCurrentItem] = useState(initialItem || {})
 
@@ -227,7 +228,7 @@ const ProductModal = ({isOpen, onRequestClose, initialItem}) => {
                             <div className="flex flex-row gap-4">
                                 <FormLabel title="分类" required={true}></FormLabel>
                                 <TreeSelect
-                                    dropdownStyle={{maxHeight: 300, overflow: 'auto', minWidth: 300}}
+                                    styles={{ popup: { root: { maxHeight: 300, overflow: 'auto', minWidth: 300 } } }}
                                     style={{
                                         width: 300,
                                     }}

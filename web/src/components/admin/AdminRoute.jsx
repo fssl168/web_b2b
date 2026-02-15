@@ -15,15 +15,6 @@ export default function AdminRouteWrapper({ children }) {
 
     const checkAccess = async () => {
         try {
-            // 检查是否有访问令牌
-            const accessToken = document.cookie.split('; ').find(row => row.startsWith('admin_access_token='))?.split('=')[1];
-            
-            if (!accessToken) {
-                // 没有访问令牌，重定向到访问验证页面
-                router.push('/admin/access-verify');
-                return;
-            }
-
             // 验证token的有效性
             const token = document.cookie.split('; ').find(row => row.startsWith('admintoken='))?.split('=')[1];
             
@@ -45,7 +36,7 @@ export default function AdminRouteWrapper({ children }) {
                 }
             );
 
-            if (response.data.code === 0) {
+            if (response.data.success) {
                 // 验证成功
                 setIsVerified(true);
             } else {

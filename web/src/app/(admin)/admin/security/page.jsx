@@ -1,5 +1,6 @@
+'use client';
 import React, { useState, useEffect } from 'react';
-import { Button, Table, Tag, Space, Badge, DatePicker, Input, Select, Card, Statistic, Row, Col } from 'antd';
+import { Button, Table, Tag, Space, Badge, DatePicker, Input, Select, Card, Statistic, Row, Col, App } from 'antd';
 import { SearchOutlined, ReloadOutlined, DownloadOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import axiosInstance from '@/utils/axios';
 import dayjs from 'dayjs';
@@ -9,6 +10,7 @@ const { Option } = Select;
 const { Search } = Input;
 
 const SecurityPage = () => {
+  const { modal } = App.useApp();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [total, setTotal] = useState(0);
@@ -116,8 +118,8 @@ const SecurityPage = () => {
     },
     {
       title: '事件类型',
-      dataIndex: 'method',
-      key: 'method',
+      dataIndex: 'incident_type',
+      key: 'incident_type',
       render: (text) => (
         <Tag color="blue">
           {incidentTypeMap[text] || text}
@@ -139,8 +141,8 @@ const SecurityPage = () => {
     },
     {
       title: '事件描述',
-      dataIndex: 'url',
-      key: 'url',
+      dataIndex: 'description',
+      key: 'description',
       ellipsis: true,
     },
     {
@@ -151,10 +153,10 @@ const SecurityPage = () => {
     },
     {
       title: '时间',
-      dataIndex: 'log_time',
-      key: 'log_time',
+      dataIndex: 'create_time',
+      key: 'create_time',
       width: 200,
-      render: (text) => dayjs(text).format('YYYY-MM-DD HH:mm:ss'),
+      render: (text) => text ? dayjs(text).format('YYYY-MM-DD HH:mm:ss') : '-',
     },
     {
       title: '操作',
@@ -165,8 +167,7 @@ const SecurityPage = () => {
           <Button 
             size="small" 
             type="link" 
-            danger
-            onClick={() => console.log('View details:', record.id)}
+            onClick={() => showDetail(record)}
           >
             详情
           </Button>
@@ -174,6 +175,27 @@ const SecurityPage = () => {
       ),
     },
   ];
+
+  // 显示详情
+  const showDetail = (record) => {
+    modal.info({
+      title: '安全事件详情',
+      width: 600,
+      content: (
+        <div className="space-y-2">
+          <p><strong>事件类型:</strong> {incidentTypeMap[record.incident_type] || record.incident_type}</p>
+          <p><strong>事件级别:</strong> {incidentLevelMap[record.level]?.text || record.level}</p>
+          <p><strong>事件描述:</strong> {record.description}</p>
+          <p><strong>IP地址:</strong> {record.ip}</p>
+          <p><strong>用户:</strong> {record.username || 'anonymous'}</p>
+          <p><strong>请求URL:</strong> {record.request_url || '-'}</p>
+          <p><strong>请求方法:</strong> {record.request_method || '-'}</p>
+          <p><strong>User-Agent:</strong> {record.user_agent || '-'}</p>
+          <p><strong>时间:</strong> {record.create_time ? dayjs(record.create_time).format('YYYY-MM-DD HH:mm:ss') : '-'}</p>
+        </div>
+      ),
+    });
+  };
 
   return (
     <div className="p-6">

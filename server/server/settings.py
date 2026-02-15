@@ -155,16 +155,33 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'myapp.middlewares.LogMiddleware.OpLogs'
-    'myapp.middlewares.AdminProtectionMiddleware.AdminProtectionMiddleware',
-    'myapp.middlewares.SecurityLoggingMiddleware.SecurityLoggingMiddleware',
+    'myapp.middlewares.LogMiddleware.OpLogs',
+    'myapp.middlewares.AdminProtection.AdminProtectionMiddleware',
+    'myapp.middlewares.SecurityLogs.SecurityLoggingMiddleware',
 ]
 
 # 后台防黑保护设置
-ADMIN_ALLOWED_IPS = env('ADMIN_ALLOWED_IPS', default=[])  # 允许访问的IP白名单，留空则不限制
+# 读取ADMIN_ALLOWED_IPS，如果为空字符串或'[]'则设置为空列表
+_admin_allowed_ips_raw = env('ADMIN_ALLOWED_IPS', default=[])
+if isinstance(_admin_allowed_ips_raw, str):
+    if _admin_allowed_ips_raw in ['[]', '', '']:
+        ADMIN_ALLOWED_IPS = []
+    else:
+        ADMIN_ALLOWED_IPS = _admin_allowed_ips_raw.split(',')
+elif isinstance(_admin_allowed_ips_raw, list):
+    # 如果是列表，检查是否包含空字符串或'[]'
+    if len(_admin_allowed_ips_raw) == 1 and _admin_allowed_ips_raw[0] in ['[]', '', '']:
+        ADMIN_ALLOWED_IPS = []
+    else:
+        ADMIN_ALLOWED_IPS = _admin_allowed_ips_raw
+else:
+    ADMIN_ALLOWED_IPS = []
 ADMIN_ACCESS_PASSWORD = env('ADMIN_ACCESS_PASSWORD', default='')  # 后台访问密码，留空则不启用
 ADMIN_PASSWORD_EXPIRE_TIME = env('ADMIN_PASSWORD_EXPIRE_TIME', default=3600)  # 访问密码有效期（秒）
 ADMIN_PATH_PREFIX = env('ADMIN_PATH_PREFIX', default='admin')  # 后台入口路径前缀
+
+# 安全事件通知设置
+SECURITY_EMAIL_NOTIFICATION_ENABLED = env('SECURITY_EMAIL_NOTIFICATION_ENABLED', default=True)  # 是否启用邮件通知
 
 ROOT_URLCONF = 'server.urls'
 
@@ -226,17 +243,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
-
-
 LANGUAGE_CODE = 'zh-hans'
 
 # 时区
 TIME_ZONE = 'Asia/Shanghai'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = False
 
 # 日期时间格式

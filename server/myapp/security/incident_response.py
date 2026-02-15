@@ -1,7 +1,8 @@
 import logging
 import datetime
+import json
 from django.db.models import Q
-from myapp.models import User, ErrorLog, OpLog
+from myapp.models import User, SecurityEvent
 from myapp.utils import send_email
 
 logger = logging.getLogger('myapp')
@@ -36,7 +37,7 @@ class SecurityIncidentResponse:
     }
     
     @classmethod
-    def detect_incident(cls, incident_type, level, description, user=None, ip=None):
+    def detect_incident(cls, incident_type, level, description, user=None, ip=None, request=None):
         """
         检测安全事件
         
@@ -46,26 +47,42 @@ class SecurityIncidentResponse:
             description: 事件描述
             user: 用户对象
             ip: 客户端IP
+            request: 请求对象
         
         Returns:
             bool: 是否成功检测
         """
         try:
-            # 记录安全事件
-            logger.info(f"Security incident detected: {incident_type} - {level} - {description} - User: {user.username if user else 'anonymous'} - IP: {ip}")
+            # 从description中提取用户名（格式: "Login success for user: xxx"）
+            import re
+            username_match = re.search(r'user: (\w+)', description)
+            extracted_username = username_match.group(1) if username_match else None
             
-            # 保存到错误日志
-            error_data = {
+            # 记录安全事件
+            logger.info(f"Security incident detected: {incident_type} - {level} - {description} - User: {extracted_username or (user.username if user else 'anonymous')} - IP: {ip}")
+            
+            # 创建安全事件记录
+            event_data = {
+                'incident_type': incident_type,
+                'level': level,
+                'description': description,
                 'ip': ip,
-                'url': description,
-                'method': incident_type,
-                'content': f"Level: {level} - Description: {description}"
+                'username': extracted_username or (user.username if user else 'anonymous'),
+                'user_id': user.id if user else None,
             }
             
-            from myapp.serializers import ErrorLogSerializer
-            serializer = ErrorLogSerializer(data=error_data)
-            if serializer.is_valid():
-                serializer.save()
+            # 如果有请求对象，提取更多信息
+            if request:
+                event_data['request_url'] = request.path
+                event_data['request_method'] = request.method
+                user_agent = request.META.get('HTTP_USER_AGENT', '')
+                if not user_agent:
+                    user_agent = request.META.get('USER_AGENT', '')
+                event_data['user_agent'] = user_agent[:500] if user_agent else 'Unknown'
+                logger.info(f"Security event - User-Agent: {event_data['user_agent']}")
+            
+            # 保存到数据库
+            SecurityEvent.objects.create(**event_data)
             
             # 对于高风险事件，发送邮件通知
             if level in ['HIGH', 'CRITICAL']:
@@ -74,6 +91,8 @@ class SecurityIncidentResponse:
             return True
         except Exception as e:
             logger.error(f"Error detecting security incident: {str(e)}")
+            import traceback
+            logger.error(traceback.format_exc())
             return False
     
     @classmethod
@@ -146,6 +165,14 @@ class SecurityIncidentResponse:
         通知安全团队
         """
         try:
+            from django.conf import settings
+            
+            # 检查是否启用邮件通知（开发环境可以禁用）
+            email_notification_enabled = getattr(settings, 'SECURITY_EMAIL_NOTIFICATION_ENABLED', True)
+            if not email_notification_enabled:
+                logger.info(f"Email notification disabled. Incident: {incident_type} - {level}")
+                return
+            
             # 发送邮件通知
             subject = f"[安全警报] {cls.INCIDENT_TYPES.get(incident_type, incident_type)} - {cls.INCIDENT_LEVELS.get(level, level)}"
             content = f"""
@@ -160,7 +187,6 @@ class SecurityIncidentResponse:
             """
             
             # 从环境变量获取安全团队邮箱
-            from django.conf import settings
             security_team_emails = getattr(settings, 'SECURITY_TEAM_EMAILS', [])
             
             # 从管理员列表获取邮箱
@@ -202,13 +228,13 @@ class SecurityIncidentResponse:
             dict: 事件报告
         """
         try:
-            # 查询错误日志
-            error_logs = ErrorLog.objects.filter(log_time__range=(start_time, end_time))
+            # 查询安全事件
+            security_events = SecurityEvent.objects.filter(create_time__range=(start_time, end_time))
             
             # 统计事件类型
             incident_stats = {}
-            for log in error_logs:
-                incident_type = log.method
+            for event in security_events:
+                incident_type = event.incident_type
                 if incident_type not in incident_stats:
                     incident_stats[incident_type] = 0
                 incident_stats[incident_type] += 1
@@ -217,15 +243,16 @@ class SecurityIncidentResponse:
             report = {
                 'start_time': start_time.strftime('%Y-%m-%d %H:%M:%S'),
                 'end_time': end_time.strftime('%Y-%m-%d %H:%M:%S'),
-                'total_incidents': error_logs.count(),
+                'total_incidents': security_events.count(),
                 'incident_stats': incident_stats,
                 'details': [{
-                    'time': log.log_time.strftime('%Y-%m-%d %H:%M:%S'),
-                    'ip': log.ip,
-                    'url': log.url,
-                    'method': log.method,
-                    'content': log.content
-                } for log in error_logs]
+                    'time': event.create_time.strftime('%Y-%m-%d %H:%M:%S'),
+                    'ip': event.ip,
+                    'username': event.username,
+                    'incident_type': event.incident_type,
+                    'level': event.level,
+                    'description': event.description
+                } for event in security_events]
             }
             
             return report
@@ -283,7 +310,8 @@ def security_monitor(incident_type, level):
                         level,
                         f"Success: {request.method} {request.path}",
                         user=getattr(request, 'user', None),
-                        ip=request.META.get('REMOTE_ADDR')
+                        ip=request.META.get('REMOTE_ADDR'),
+                        request=request
                     )
                 else:
                     # 记录失败事件
@@ -292,7 +320,8 @@ def security_monitor(incident_type, level):
                         'MEDIUM',
                         f"Failed: {request.method} {request.path} - Status: {response.status_code}",
                         user=getattr(request, 'user', None),
-                        ip=request.META.get('REMOTE_ADDR')
+                        ip=request.META.get('REMOTE_ADDR'),
+                        request=request
                     )
                 
                 return response
@@ -303,7 +332,8 @@ def security_monitor(incident_type, level):
                     'HIGH',
                     f"Exception: {request.method} {request.path} - {str(e)}",
                     user=getattr(request, 'user', None),
-                    ip=request.META.get('REMOTE_ADDR')
+                    ip=request.META.get('REMOTE_ADDR'),
+                    request=request
                 )
                 raise
         return wrapped_view
