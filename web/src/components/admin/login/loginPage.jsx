@@ -8,7 +8,7 @@ const LoginPage = () => {
     const router = useRouter();
     const { message } = App.useApp();
     const [loading, setLoading] = useState(false);
-    const [year, setYear] = useState(new Date().getFullYear());
+    const [year, setYear] = useState('');
 
     const [currentItem, setCurrentItem] = useState({
         username: "",
@@ -26,7 +26,8 @@ const LoginPage = () => {
     const [verifying2FA, setVerifying2FA] = useState(false);
 
     useEffect(() => {
-        setYear(new Date().getFullYear());
+        // 只在客户端计算年份，避免hydration mismatch
+        setYear(new Date().getFullYear().toString());
         getInfo();
         refreshCaptcha();
     }, []);
@@ -66,6 +67,7 @@ const LoginPage = () => {
                 message.success("登录成功");
                 setCookie('admintoken', data.admin_token);
                 setCookie('username', data.username);
+                setCookie('role', data.role || '');
                 setShow2FAModal(false);
                 // 添加短暂延迟，确保cookie被正确设置
                 setTimeout(() => {
@@ -111,6 +113,7 @@ const LoginPage = () => {
                 message.success("登录成功");
                 setCookie('admintoken', data.admin_token);
                 setCookie('username', data.username);
+                setCookie('role', data.role || '');
                 // 添加短暂延迟，确保cookie被正确设置
                 setTimeout(() => {
                     router.push('/admin/main');

@@ -135,34 +135,70 @@ class DeviceManager:
 
         # 尝试获取已存在的设备（特定用户的）
         try:
-            device = UserDevice.objects.get(user=user, device_id=device_id)
-            # 更新设备信息
-            device.last_login_time = timezone.now()
-            device.last_login_ip = ip_address
-            device.login_count += 1
-            device.user_agent = user_agent[:500]
-            device.save()
+            # 使用filter查询，处理可能的重复记录
+            devices = UserDevice.objects.filter(user=user, device_id=device_id)
+            
+            if devices.exists():
+                # 如果有多个重复记录，只保留最新的一个
+                if devices.count() > 1:
+                    logger.warning(f"Multiple devices found for user {user.username}, device_id {device_id}: {devices.count()}")
+                    # 按最后登录时间排序，保留最新的
+                    devices_sorted = devices.order_by('-last_login_time')
+                    # 保留第一个（最新的），删除其他
+                    device = devices_sorted.first()
+                    for old_device in devices_sorted[1:]:
+                        logger.info(f"Deleting duplicate device: {old_device.id} for user {user.username}")
+                        old_device.delete()
+                else:
+                    device = devices.first()
+                
+                # 更新设备信息
+                device.last_login_time = timezone.now()
+                device.last_login_ip = ip_address
+                device.login_count += 1
+                device.user_agent = user_agent[:500]
+                device.save()
 
-            logger.info(f"Device updated: {device.device_name} for user {user.username}")
-            return device
+                logger.info(f"Device updated: {device.device_name} for user {user.username}")
+                return device
+            else:
+                # 创建新设备
+                device = UserDevice.objects.create(
+                    user=user,
+                    device_id=device_id,
+                    device_name=cls.parse_device_name(user_agent),
+                    device_type=cls.detect_device_type(user_agent),
+                    user_agent=user_agent[:500],
+                    ip_address=ip_address,
+                    last_login_time=timezone.now(),
+                    last_login_ip=ip_address,
+                    login_count=1,
+                    is_trusted=False
+                )
 
-        except UserDevice.DoesNotExist:
-            # 创建新设备
-            device = UserDevice.objects.create(
-                user=user,
-                device_id=device_id,
-                device_name=cls.parse_device_name(user_agent),
-                device_type=cls.detect_device_type(user_agent),
-                user_agent=user_agent[:500],
-                ip_address=ip_address,
-                last_login_time=timezone.now(),
-                last_login_ip=ip_address,
-                login_count=1,
-                is_trusted=False
-            )
+                logger.info(f"New device registered: {device.device_name} for user {user.username}")
+                return device
 
-            logger.info(f"New device registered: {device.device_name} for user {user.username}")
-            return device
+        except Exception as e:
+            logger.error(f"Error registering device: {str(e)}")
+            # 即使出错也不影响登录，创建新设备
+            try:
+                device = UserDevice.objects.create(
+                    user=user,
+                    device_id=device_id,
+                    device_name=cls.parse_device_name(user_agent),
+                    device_type=cls.detect_device_type(user_agent),
+                    user_agent=user_agent[:500],
+                    ip_address=ip_address,
+                    last_login_time=timezone.now(),
+                    last_login_ip=ip_address,
+                    login_count=1,
+                    is_trusted=False
+                )
+                return device
+            except:
+                # 如果创建也失败，返回None，不影响登录
+                return None
     
     @classmethod
     def get_user_devices(cls, user, active_only=True):
@@ -259,13 +295,27 @@ class DeviceManager:
         
         # 检查是否是新设备
         try:
-            device = UserDevice.objects.get(device_id=device_id)
-            if not device.is_trusted:
+            # 使用filter查询，处理可能的重复记录
+            devices = UserDevice.objects.filter(device_id=device_id)
+            if devices.exists():
+                # 如果有多个重复记录，只使用最新的一个
+                if devices.count() > 1:
+                    logger.warning(f"Multiple devices found for device_id {device_id}: {devices.count()}")
+                    device = devices.order_by('-last_login_time').first()
+                else:
+                    device = devices.first()
+                
+                if not device.is_trusted:
+                    result['is_suspicious'] = True
+                    result['reasons'].append('新设备登录')
+            else:
                 result['is_suspicious'] = True
-                result['reasons'].append('新设备登录')
-        except UserDevice.DoesNotExist:
+                result['reasons'].append('首次登录设备')
+        except Exception as e:
+            logger.error(f"Error checking device: {str(e)}")
+            # 出错时视为新设备
             result['is_suspicious'] = True
-            result['reasons'].append('首次登录设备')
+            result['reasons'].append('设备检查异常')
         
         # 检查IP地址是否变化
         if user.last_login_ip and user.last_login_ip != ip_address:

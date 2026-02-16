@@ -8,6 +8,7 @@ import Image from "next/image";
 import {Dropdown} from "antd";
 import {useRouter} from "next/navigation";
 import Link from "next/link";
+import { getCookie } from "@/utils/axios";
 
 const Header = () => {
     const router = useRouter();
@@ -16,10 +17,15 @@ const Header = () => {
     const dispatch = useDispatch();
 
     const [username, setUsername] = useState('-');
+    const [role, setRole] = useState('');
 
     useEffect(() => {
-        let username = localStorage.getItem('username') || '';
-        setUsername(username);
+        if (typeof window !== 'undefined') {
+            let username = getCookie('username') || '';
+            setUsername(username);
+            let userRole = getCookie('role') || '';
+            setRole(userRole);
+        }
     }, []);
 
     const toggleSideBar = () => {
@@ -79,9 +85,9 @@ const Header = () => {
                         <div className="text-[14px] text-gray-900">网站首页</div>
                     </Link>
                     <div className="flex flex-col items-end">
-                        <div className={"ml-2 leading-[14px] text-gray-700 text-[12px]"}>{username}</div>
-                        <div className={"ml-2 leading-[14px] text-gray-400 text-[11px]"}>超级管理员</div>
-                    </div>
+                            <div className={"ml-2 leading-[14px] text-gray-700 text-[12px]"}>{username}</div>
+                            <div className={"ml-2 leading-[14px] text-gray-400 text-[11px]"}>{role === '3' ? '演示账号' : '超级管理员'}</div>
+                        </div>
 
                     <Dropdown
                         menu={{

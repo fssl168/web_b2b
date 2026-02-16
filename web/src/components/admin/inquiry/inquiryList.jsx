@@ -1,10 +1,11 @@
 'use client';
 import React, {useEffect, useState} from 'react';
-import {Button, message, Modal, Pagination, Popconfirm, Space, Spin, Table} from 'antd';
+import {Button, Modal, Pagination, Popconfirm, Space, Spin, Table, App} from 'antd';
 import {useDispatch, useSelector} from "react-redux";
 import axiosInstance from "@/utils/axios";
 
 export default function InquiryList() {
+    const { message } = App.useApp();
     const adminApp = useSelector((state) => state.adminSetting);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);

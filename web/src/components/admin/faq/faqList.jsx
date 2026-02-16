@@ -1,6 +1,7 @@
 'use client';
 import React, {useCallback, useEffect, useState} from 'react';
-import {Button, message, Pagination, Popconfirm, Space, Spin, Table} from 'antd';
+import {Button, Pagination, Popconfirm, Space, Spin, Table, App} from 'antd';
+import { message } from 'antd';
 import {useDispatch, useSelector} from "react-redux";
 import axiosInstance from "@/utils/axios";
 import FaqModal from "@/components/admin/faq/faqModal";
@@ -12,6 +13,7 @@ export default function FaqList() {
     const [loading, setLoading] = useState(false);
     const [selectedRowKeys, setSelectedRowKeys] = useState([]);
     const [searchValue, setSearchValue] = useState('');
+    const { message } = App.useApp();
 
     // 分页变量
     const [page, setPage] = useState(1);

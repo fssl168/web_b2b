@@ -1,7 +1,16 @@
+'use client';
+
 import Link from 'next/link';
-import lang from "@/locales"
+import lang from "@/locales";
+import { useState, useEffect } from 'react';
 
 export default function Footer({sectionData}) {
+    const [year, setYear] = useState('');
+    
+    useEffect(() => {
+        // 只在客户端计算年份，避免hydration mismatch
+        setYear(new Date().getFullYear().toString());
+    }, []);
 
     return (
         <div className="bg-mainColorLight">
@@ -91,7 +100,7 @@ export default function Footer({sectionData}) {
                     <div
                         className="flex flex-col sm:flex-row justify-between items-center border-t border-gray-400 pt-8">
                         <div className="flex flex-col text-sm text-gray-500 mb-4 sm:mb-0">
-                            <p>Copyright &copy; {new Date().getFullYear()} {sectionData.contactData.global_company_name}
+                            <p>Copyright &copy; {year} {sectionData.contactData.global_company_name}
                             </p>
                             <p className="mt-1">Powered by <a href="https://fktool.com" target="_blank"
                                                               rel="noopener noreferrer"

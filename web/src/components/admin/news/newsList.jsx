@@ -1,6 +1,6 @@
 'use client';
 import React, {useEffect, useState} from 'react';
-import {Button, ConfigProvider, message, Modal, Pagination, Popconfirm, Space, Spin, Table, Tabs, Tag} from 'antd';
+import {Button, ConfigProvider, Modal, Pagination, Popconfirm, Space, Spin, Table, Tabs, Tag, App} from 'antd';
 import {useDispatch, useSelector} from "react-redux";
 import Search from "antd/es/input/Search";
 import axios from "axios";
@@ -8,6 +8,7 @@ import axiosInstance from "@/utils/axios";
 import NewsModal from "@/components/admin/news/newsModal";
 
 export default function NewsList() {
+    const { message } = App.useApp();
     const adminApp = useSelector((state) => state.adminSetting);
     const dispatch = useDispatch();
     const [dataList, setDataList] = useState([]);

@@ -4,6 +4,7 @@ import {Roboto, Open_Sans, Lato, Nunito, Merriweather, Montserrat } from 'next/f
 import "@/styles/globals.css";
 import api from "@/utils/axiosApi";
 import ThemeScript from '@/components/index/sections/ThemeScript';
+import CopyrightYear from '@/components/index/CopyrightYear';
 
 export const revalidate = 0
 
@@ -89,7 +90,7 @@ export default async function RootLayout({children}) {
                         </p>
                         
                         <div className="mt-8 text-gray-500 text-sm">
-                            &copy; {new Date().getFullYear()} {navSectionData?.basicSite?.site_name || "Company Website"} | Technical Support
+                            <CopyrightYear siteName={navSectionData?.basicSite?.site_name} />
                         </div>
                     </div>
                 </body>
